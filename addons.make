@@ -1,0 +1,6 @@
+ofxAnimatable
+ofxDSHapVideoPlayer
+ofxGui
+ofxLayerMask
+ofxNetwork
+ofxXmlSettings
