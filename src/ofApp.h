@@ -1,24 +1,26 @@
 #pragma once
 
-#include "ofMain.h"
+#include "constParameter.h"
+#include "squareMgr.h"
 
 class ofApp : public ofBaseApp{
 
-	public:
-		void setup();
-		void update();
-		void draw();
+public:
+	void setup();
+	void update();
+	void draw();
+	void drawView(ofEventArgs & args);
 
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-		
+	void keyPressed(int key);
+
+private:
+	ofImage _test1, _test2;
+#pragma region squareMgr
+public:
+	void setupSquareMgr();	
+
+#pragma endregion
+
+
+
 };
