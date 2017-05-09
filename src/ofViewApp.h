@@ -3,24 +3,14 @@
 #include "constParameter.h"
 #include "squareMgr.h"
 
-class ofApp : public ofBaseApp{
-
+class ofViewApp : public ofBaseApp
+{
 public:
 	void setup();
 	void update();
 	void draw();
-	void drawView(ofEventArgs & args);
-
 	void keyPressed(int key);
-
+	void mouseDragged(int x, int y, int button);
 private:
 	ofImage _test1, _test2;
-#pragma region squareMgr
-public:
-	void setupSquareMgr();	
-
-#pragma endregion
-
-
-
 };

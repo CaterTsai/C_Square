@@ -5,6 +5,8 @@
 squareMgr::squareMgr()
 	:_isSetup(false)
 	,_ctrlID(-1)
+	,_groupWidth(1920)
+	,_groupHeight(1080)
 {
 }
 
@@ -17,13 +19,12 @@ void squareMgr::setup(string configName)
 		return;
 	}
 	init(configName);
-	ofRegisterMouseEvents(this);
 
 	_isSetup = true;
 }
 
 //------------------------------
-void squareMgr::drawOnGroup(ofVec2f groupPos)
+void squareMgr::displayUnitOnGroup(ofVec2f groupPos)
 {
 	//Draw Group
 	ofPushMatrix();
@@ -31,11 +32,12 @@ void squareMgr::drawOnGroup(ofVec2f groupPos)
 	{
 		ofPushStyle();
 		ofNoFill();
-		for (auto& unit : _squareList)
+		for (int i = 0; i < _squareList.size(); i++)
 		{
-			if (unit.type == eSquareGroup)
+			if (_squareList[i].type == eSquareGroup)
 			{
-				ofDrawRectangle(unit.cropRange);
+				(i == _ctrlID) ? ofSetColor(255, 0, 0) : ofSetColor(255);
+				ofDrawRectangle(_squareList[i].cropRange);
 			}
 		}
 		ofPopStyle();
@@ -44,7 +46,7 @@ void squareMgr::drawOnGroup(ofVec2f groupPos)
 }
 
 //------------------------------
-void squareMgr::drawEachUnit(ofVec2f pos, int width)
+void squareMgr::displayEachUnit(ofVec2f pos, int width)
 {
 	ofPushStyle();
 	ofPushMatrix();
@@ -125,8 +127,14 @@ void squareMgr::init(string configName)
 }
 #pragma endregion
 
-
 #pragma region On Group
+//------------------------------
+void squareMgr::setGroupSize(int width, int height)
+{
+	_groupWidth = width;
+	_groupHeight = height;
+}
+
 //------------------------------
 void squareMgr::updateByGroup(ofImage & groupCanvas)
 {
@@ -141,7 +149,6 @@ void squareMgr::updateByGroup(ofImage & groupCanvas)
 		{
 			unit.square.drawBegin();
 			{
-
 				groupCanvas.drawSubsection(
 					0, 0, unit.square.getWidth(), unit.square.getHeight(),
 					unit.cropRange.x, unit.cropRange.y, unit.cropRange.width, unit.cropRange.height
@@ -151,8 +158,33 @@ void squareMgr::updateByGroup(ofImage & groupCanvas)
 		}
 	}
 }
-#pragma endregion
 
+//------------------------------
+void squareMgr::moveUnitRect(int unitID, int x, int y)
+{
+	ofRectangle newRect;
+	newRect.setFromCenter(x, y, _squareList.at(_ctrlID).cropRange.width, _squareList.at(_ctrlID).cropRange.height);
+		
+	if (newRect.getMinX() < 0)
+	{
+		newRect.setX(0);
+	}
+	if (newRect.getMaxX() > _groupWidth)
+	{
+		newRect.setX(_groupWidth - newRect.width);
+	}
+	if (newRect.getMinY() < 0)
+	{
+		newRect.setY(0);
+	}
+	if (newRect.getMaxY() > _groupHeight)
+	{
+		newRect.setY(_groupHeight - newRect.height);
+	}
+
+	_squareList.at(_ctrlID).cropRange = newRect;
+}
+#pragma endregion
 
 #pragma region On Unit
 //------------------------------
@@ -180,33 +212,44 @@ void squareMgr::updateOnUnitEnd(int unitID)
 		_squareList.at(unitID).square.drawEnd();
 	}
 }
+
 #pragma endregion
 
 #pragma region Mouse
 //------------------------------
-void squareMgr::mousePressed(ofMouseEventArgs & e)
+void squareMgr::mouseDraggedFromView(int x, int y)
 {
 	if (_ctrlID != -1)
 	{
-		_squareList.at(_ctrlID).square.mousePress(e.x, e.y);
+		moveUnitRect(_ctrlID, x, y);
+	}
+}
+
+
+//------------------------------
+void squareMgr::mousePressedFromProjector(int x, int y)
+{
+	if (_ctrlID != -1)
+	{
+		_squareList.at(_ctrlID).square.mousePress(x, y);
 	}
 }
 
 //------------------------------
-void squareMgr::mouseDragged(ofMouseEventArgs & e)
+void squareMgr::mouseDraggedFromProjector(int x, int y)
 {
 	if (_ctrlID != -1)
 	{
-		_squareList.at(_ctrlID).square.mouseDrag(e.x, e.y);
+		_squareList.at(_ctrlID).square.mouseDrag(x, y);
 	}
 }
 
 //------------------------------
-void squareMgr::mouseReleased(ofMouseEventArgs & e)
+void squareMgr::mouseReleasedFromProject(int x, int y)
 {
 	if (_ctrlID != -1)
 	{
-		_squareList.at(_ctrlID).square.mouseRelease(e.x, e.y);
+		_squareList.at(_ctrlID).square.mouseRelease(x, y);
 	}
 }
 #pragma endregion

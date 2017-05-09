@@ -28,6 +28,11 @@ const int cCtrlPointNum = 4;
 
 const int cCtrlPointCircleRadius = cProjectionWindowHeight * 0.02;
 const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
+
+//--------------
+//Canvas
+//const int cCanvasWidth = 1920;
+//const int cCanvasHeight = 
 #pragma endregion
 
 //---------------------------

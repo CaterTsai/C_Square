@@ -172,7 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\ofProjectorApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.cpp" />
@@ -232,12 +232,13 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="src\ofViewApp.cpp" />
     <ClCompile Include="src\squareMgr.cpp" />
     <ClCompile Include="src\squareUnit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\constParameter.h" />
-    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\ofProjectorApp.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.h" />
@@ -309,6 +310,7 @@
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="src\ofViewApp.h" />
     <ClInclude Include="src\squareMgr.h" />
     <ClInclude Include="src\squareUnit.h" />
   </ItemGroup>

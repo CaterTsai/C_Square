@@ -25,8 +25,8 @@ class squareMgr
 public:
 	squareMgr();
 	void setup(string configName = "");
-	void drawOnGroup(ofVec2f groupPos);
-	void drawEachUnit(ofVec2f pos, int width);
+	void displayUnitOnGroup(ofVec2f groupPos);
+	void displayEachUnit(ofVec2f pos, int width);
 	void drawToProjection();
 	void setSquareType(int unitID, eSquareDrawType type);
 
@@ -42,8 +42,12 @@ private:
 
 //Draw On Group
 public:
+	void setGroupSize(int width, int height);
 	void updateByGroup(ofImage& groupCanvas);
-	
+	void moveUnitRect(int unitID, int x, int y);
+private:
+	int _groupWidth, _groupHeight;
+
 //Draw On Unit
 public:
 	void updateOnUnitBegin(int unitID);
@@ -51,13 +55,11 @@ public:
 	
 //Mouse Event
 public:
-	void mousePressed(ofMouseEventArgs& e);
-	void mouseDragged(ofMouseEventArgs& e);
-	void mouseReleased(ofMouseEventArgs& e);
-	void mouseMoved(ofMouseEventArgs& e) {};
-	void mouseScrolled(ofMouseEventArgs& e) {};
-	void mouseEntered(ofMouseEventArgs& e) {};
-	void mouseExited(ofMouseEventArgs& e) {};
+	void mouseDraggedFromView(int x, int y);
+
+	void mousePressedFromProjector(int x, int y);
+	void mouseDraggedFromProjector(int x, int y);
+	void mouseReleasedFromProject(int x, int y);
 
 //-------------------
 //Singleton
