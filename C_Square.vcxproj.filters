@@ -193,6 +193,12 @@
     <ClCompile Include="src\ofViewApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\drawer.cpp">
+      <Filter>src\drawer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\draw\DFlash.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -257,6 +263,15 @@
     </Filter>
     <Filter Include="src\square">
       <UniqueIdentifier>{e9507896-4bb2-444c-9155-e83508482bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\drawer">
+      <UniqueIdentifier>{536b52a4-8346-4fd4-b4be-6787c41d8f90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\drawer\DElement">
+      <UniqueIdentifier>{aaf15ab3-2958-439f-8b03-37b8904fed82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\drawer\base">
+      <UniqueIdentifier>{6666c727-b6c9-4423-a2f9-9c671d3bbe98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -487,6 +502,18 @@
     </ClInclude>
     <ClInclude Include="src\ofViewApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\drawer.h">
+      <Filter>src\drawer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DFlash.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DBase.h">
+      <Filter>src\drawer\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DType.h">
+      <Filter>src\drawer\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
