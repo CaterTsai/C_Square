@@ -1,8 +1,9 @@
 #pragma once
 
-#include "constParameter.h"
-#include "squareMgr.h"
+#include "../constParameter.h"
 #include "DType.h"
+
+#define CHECK_START() if(!isStart)return;
 
 union DParam
 {
@@ -16,14 +17,17 @@ class DBase
 public:
 	DBase(eDType type)
 		:eType(type)
-		, isSetup(false)
 		, isStart(false)
 	{};
 
-	virtual void setup() {};
 	virtual void update(float delta) {};
 	virtual void draw() {};
+	virtual void draw(int x, int y, int z = 0) {};
+	virtual void draw(int x, int y, int w, int h) {};
+
 	virtual void start() {};
+	virtual void stop() {};
+	
 	virtual void reset() {};
 
 	virtual void setValue(DParam& value) {};
@@ -36,10 +40,6 @@ public:
 	
 	virtual void onBeat() {};
 
-	inline bool getSetup()
-	{
-		return isSetup;
-	}
 
 	inline bool getStart()
 	{
@@ -52,7 +52,7 @@ public:
 	};
 
 protected:
-	bool isSetup, isStart;
+	bool isStart;
 	const eDType	eType;
 
 };

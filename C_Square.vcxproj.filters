@@ -193,11 +193,11 @@
     <ClCompile Include="src\ofViewApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\draw\drawer.cpp">
-      <Filter>src\drawer</Filter>
-    </ClCompile>
     <ClCompile Include="src\draw\DFlash.cpp">
       <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\STest.cpp">
+      <Filter>src\scence\SElement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +272,15 @@
     </Filter>
     <Filter Include="src\drawer\base">
       <UniqueIdentifier>{6666c727-b6c9-4423-a2f9-9c671d3bbe98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scence">
+      <UniqueIdentifier>{e520d0e6-15ca-4ed3-8c37-9d78be02925a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scence\SElement">
+      <UniqueIdentifier>{bae81623-3846-41e7-8794-4f6e7d375b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scence\base">
+      <UniqueIdentifier>{17242abd-b156-48f1-87f3-4cd884769c9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -514,6 +523,18 @@
     </ClInclude>
     <ClInclude Include="src\draw\DType.h">
       <Filter>src\drawer\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SBase.h">
+      <Filter>src\scence\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SType.h">
+      <Filter>src\scence\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\STest.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence.h">
+      <Filter>src\scence</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

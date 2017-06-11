@@ -97,6 +97,15 @@ void squareMgr::disableSquareControl()
 }
 
 //------------------------------
+ofRectangle squareMgr::getUnitRect(int unitID)
+{
+	ofRectangle rect;
+	rect.setWidth(_squareList.at(unitID).square.getWidth());
+	rect.setHeight(_squareList.at(unitID).square.getHeight());
+	return rect;
+}
+
+//------------------------------
 void squareMgr::init(string configName)
 {
 	//TODO - change to config xml file

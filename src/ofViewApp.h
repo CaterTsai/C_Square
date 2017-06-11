@@ -1,7 +1,7 @@
 #pragma once
 
 #include "constParameter.h"
-#include "squareMgr.h"
+#include "scence.h"
 
 class ofViewApp : public ofBaseApp
 {
@@ -11,6 +11,13 @@ public:
 	void draw();
 	void keyPressed(int key);
 	void mouseDragged(int x, int y, int button);
+
 private:
-	ofImage _test1, _test2;
+	float _mainTimer;
+
+
+//Scence
+private:
+	STest	_testScence;
+
 };

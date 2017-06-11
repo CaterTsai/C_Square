@@ -33,6 +33,8 @@ public:
 	void enableSquareControl(int unitID);
 	void disableSquareControl();
 	
+	ofRectangle getUnitRect(int unitID);
+
 private:
 	void init(string configName);
 private:

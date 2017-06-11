@@ -4,42 +4,41 @@
 void ofViewApp::setup()
 {
 	ofBackground(0);
-
-	_test1.loadImage("images/test1.jpg");
-	_test2.loadImage("images/test2.jpg");
-
 	ofDisableArbTex();
-	
-	squareMgr::GetInstance()->setGroupSize(_test2.getWidth(), _test2.getHeight());
+	ofSetFrameRate(60);
+	_mainTimer = ofGetElapsedTimef();
 }
 
 //--------------------------------------------------------------
 void ofViewApp::update()
 {
-	squareMgr::GetInstance()->updateOnUnitBegin(0);
-	{
-		_test1.draw(0, 0);
-	}
-	squareMgr::GetInstance()->updateOnUnitEnd(0);
+	float delta = ofGetElapsedTimef() - _mainTimer;
+	_mainTimer += delta;
 
-	squareMgr::GetInstance()->updateByGroup(_test2);
+	_testScence.update(delta);
 }
 
 //--------------------------------------------------------------
 void ofViewApp::draw()
 {
 	ofSetBackgroundColor(0);
+	_testScence.draw();
 
-	ofSetColor(255);
-	_test2.draw(0, 0);
-
-	squareMgr::GetInstance()->displayUnitOnGroup(ofVec2f(0, 0));
-	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, _test2.getHeight()), cViewWindowWidth * 0.5);
+	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), cViewWindowWidth * 0.5);
 }
 
 //--------------------------------------------------------------
 void ofViewApp::keyPressed(int key)
 {
+	switch (key)
+	{
+	case 's':
+	{
+		_testScence.start();
+		break;
+	}
+	}
+
 	
 }
 
