@@ -16,6 +16,8 @@ void ofViewApp::update()
 	_mainTimer += delta;
 
 	_testScence.update(delta);
+
+	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -24,7 +26,7 @@ void ofViewApp::draw()
 	ofSetBackgroundColor(0);
 	_testScence.draw();
 
-	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), cViewWindowWidth * 0.5);
+	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), cViewWindowWidth);
 }
 
 //--------------------------------------------------------------

@@ -3,7 +3,7 @@
 #include "../constParameter.h"
 #include "DType.h"
 
-#define CHECK_START() if(!isStart)return;
+#define CHECK_START() if(!_isStart)return;
 
 union DParam
 {
@@ -16,8 +16,9 @@ class DBase
 {
 public:
 	DBase(eDType type)
-		:eType(type)
-		, isStart(false)
+		:_eType(type)
+		,_isStart(false)
+		, _timer(0.0f)
 	{};
 
 	virtual void update(float delta) {};
@@ -43,16 +44,17 @@ public:
 
 	inline bool getStart()
 	{
-		return isStart;
+		return _isStart;
 	}
 
 	inline eDType getType()
 	{
-		return eType;
+		return _eType;
 	};
 
 protected:
-	bool isStart;
-	const eDType	eType;
+	bool _isStart;
+	const eDType	_eType;
+	float _timer;
 
 };

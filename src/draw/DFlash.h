@@ -8,7 +8,6 @@ public:
 	DFlash()
 		:DBase(eDFlash)
 		,_flashT(1.0)
-		,_timer(0.0)
 		,_flash(false)
 		,_flashColor(255)
 	{}
@@ -22,7 +21,7 @@ public:
 	void setValue(DParam& value) override;
 
 private:
-	float _timer, _flashT;
+	float _flashT;
 	bool _flash;
 	ofColor _flashColor;
 };

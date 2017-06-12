@@ -20,6 +20,7 @@ int main( ){
 	settings_.width = cViewWindowWidth;
 	settings_.height = cViewWindowHeight;
 	settings_.setPosition(ofVec2f(0, 0));
+	settings_.resizable = true;
 	settings_.shareContextWith = _projectionWindow;
 	shared_ptr<ofAppBaseWindow> _viewWindow = ofCreateWindow(settings_);
 	

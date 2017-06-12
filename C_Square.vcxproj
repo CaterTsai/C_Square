@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\draw\DFlash.cpp" />
+    <ClCompile Include="src\draw\DLife.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofProjectorApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp" />
@@ -239,6 +240,7 @@
     <ClCompile Include="src\STest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\draw\DLife.h" />
     <ClInclude Include="src\SBase.h" />
     <ClInclude Include="src\constParameter.h" />
     <ClInclude Include="src\draw\DBase.h" />

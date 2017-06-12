@@ -7,7 +7,7 @@ void STest::update(float delta)
 	{
 		return;
 	}
-
+	_life.update(delta);
 }
 
 //-------------------------------------
@@ -22,6 +22,7 @@ void STest::draw()
 	{
 		auto rect = squareMgr::GetInstance()->getUnitRect(0);
 		squareMgr::GetInstance()->updateOnUnitBegin(0);
+		_life.draw(0, 0, rect.width, rect.height);
 		squareMgr::GetInstance()->updateOnUnitEnd(0);
 	}
 	ofPopStyle();
@@ -31,6 +32,7 @@ void STest::draw()
 void STest::start()
 {
 	_isStart = true;
+	_life.start();
 
 }
 
@@ -38,5 +40,5 @@ void STest::start()
 void STest::stop()
 {
 	_isStart = false;
-
+	_life.stop();
 }

@@ -15,4 +15,5 @@ public:
 	void stop() override;
 
 private:
+	DLife _life;
 };

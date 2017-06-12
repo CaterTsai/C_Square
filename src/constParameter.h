@@ -33,6 +33,15 @@ const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
 //Canvas
 //const int cCanvasWidth = 1920;
 //const int cCanvasHeight = 
+
+
+#pragma region DElement
+//DLife
+const int cWorldWidth = 100;
+const int cWorldHeight = 100;
+#pragma endregion
+
+
 #pragma endregion
 
 //---------------------------

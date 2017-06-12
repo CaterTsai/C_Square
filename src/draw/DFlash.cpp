@@ -35,13 +35,13 @@ void DFlash::draw(int x, int y, int w, int h)
 void DFlash::start()
 {
 	_timer = _flashT;
-	isStart = true;
+	_isStart = true;
 }
 
 //-------------------------------------
 void DFlash::stop()
 {
-	isStart = false;
+	_isStart = false;
 }
 
 //-------------------------------------
