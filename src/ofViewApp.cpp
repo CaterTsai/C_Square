@@ -5,6 +5,7 @@ void ofViewApp::setup()
 {
 	ofBackground(0);
 	ofDisableArbTex();
+	squareMgr::GetInstance()->setup();
 	ofSetFrameRate(60);
 	_mainTimer = ofGetElapsedTimef();
 }

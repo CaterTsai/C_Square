@@ -6,7 +6,7 @@ void ofProjectorApp::setup()
 	ofBackground(0);
 	ofDisableArbTex();
 
-	squareMgr::GetInstance()->setup();
+	
 }
 
 //--------------------------------------------------------------
