@@ -1,5 +1,62 @@
 #include "DLife.h"
 
+#pragma region Life Element
+//-------------------------------------
+void DLife::LifeElement::setType(eLifeType type)
+{
+	_type = type;
+	switch (type) {
+		case eNormal:
+		{
+			_weight = 1;
+			_liveMax = 3;
+			_liveMin = 2;
+			_dieMax = 3;
+			_dieMin = 3;
+			break;
+		}
+		case eStrong:
+		{
+			_weight = 1;
+			_liveMax = 3;
+			_liveMin = 2;
+			_dieMax = 3;
+			_dieMin = 3;
+			break;
+		}
+		case eFast:
+		{
+			_weight = 1;
+			_liveMax = 3;
+			_liveMin = 2;
+			_dieMax = 3;
+			_dieMin = 3;
+			break;
+		}
+	}
+}
+
+//-------------------------------------
+void DLife::LifeElement::evolution(int counter, eLifeType type)
+{
+	if (!_live)
+	{
+		if (counter <= _dieMax && counter >= _dieMin)
+		{
+			setType(type);
+			setLive(true);
+		}
+	}
+	else
+	{
+		if (counter > _liveMax || counter < _liveMin)
+		{
+			setLive(false);
+		}
+	}
+}
+#pragma endregion
+
 //-------------------------------------
 void DLife::update(float delta)
 {
@@ -29,8 +86,26 @@ void DLife::draw(int x, int y, int w, int h)
 			for (int ty = 0; ty < cWorldHeight; ty++)
 			{
 				auto index = tx + ty * cWorldWidth;
-				if (_nowGeneration[index])
+				if (_nowGeneration[index].getLive())
 				{
+					switch (_nowGeneration[index].getType())
+					{
+						case eNormal:
+						{
+							ofSetColor(255);
+							break;
+						}
+						case eStrong:
+						{
+							ofSetColor(255, 0, 0);
+							break;
+						}
+						case eFast:
+						{
+							ofSetColor(0, 255, 0);
+							break;
+						}
+					}
 					ofDrawRectangle((tx * unitW) + x, (ty * unitH) + y, unitW, unitH);
 				}
 			}
@@ -59,8 +134,16 @@ void DLife::createWorld()
 {
 	_nowGeneration = _worldA;
 	_nextGeneration = _worldB;
-	ZeroMemory(_nowGeneration, cWorldHeight * cWorldWidth * sizeof(bool));
-	ZeroMemory(_nextGeneration, cWorldHeight * cWorldWidth * sizeof(bool));
+
+	for (int tx = 0; tx < cWorldWidth; tx++)
+	{
+		for (int ty = 0; ty < cWorldHeight; ty++)
+		{
+			auto index = tx + ty * cWorldWidth;
+			_nowGeneration[index].setType(eLifeType::eNormal);
+			_nowGeneration[index].setLive(false);
+		}
+	}
 
 	int pNum = rand() % 30 + 20;
 	for (int i = 0; i < pNum; i++)
@@ -80,14 +163,21 @@ void DLife::setPattern(int x, int y)
 		for (int ty = y - 1; ty <= y + 1; ty++)
 		{
 			int index = tx + ty * cWorldWidth;
-			if (rand() % 2 == 0)
+			int rVal = rand() % 4;
+			bool live = (rand() % 2 == 0);
+			if (rVal == 0)
 			{
-				_nowGeneration[index] = true;
+				_nowGeneration[index].setType(eLifeType::eNormal);
+			}
+			else if(rVal == 1)
+			{
+				_nowGeneration[index].setType(eLifeType::eStrong);
 			}
 			else
 			{
-				_nowGeneration[index] = false;
+				_nowGeneration[index].setType(eLifeType::eFast);
 			}
+			_nowGeneration[index].setLive(live);
 		}
 	}
 }
@@ -95,7 +185,6 @@ void DLife::setPattern(int x, int y)
 //-------------------------------------
 void DLife::nextGeneration()
 {
-	ZeroMemory(_nextGeneration, cWorldHeight * cWorldWidth * sizeof(bool));
 	for (int x = 0; x < cWorldWidth; x++)
 	{
 		for (int y = 0; y < cWorldHeight; y++)
@@ -109,6 +198,7 @@ void DLife::nextGeneration()
 //-------------------------------------
 void DLife::evolution(int x, int y)
 {
+	int typeCounter[eLifeNum] = {0};
 	int counter = 0;
 	for (int sx = -1; sx <= 1; sx++)
 	{
@@ -125,35 +215,51 @@ void DLife::evolution(int x, int y)
 			ty = (ty < 0) ? (cWorldHeight + ty) : ((ty >= cWorldHeight) ? (ty - cWorldHeight) : ty);
 			int index = tx + ty * cWorldWidth;
 
-			if (_nowGeneration[index])
+			if (_nowGeneration[index].getLive())
 			{
 				counter++;
+				typeCounter[_nowGeneration[index].getType()]++;
 			}
-			
 		}
 	}
 
+	int val = 0;
+	eLifeType nextType;
+	
+	for (int i = 0; i < eLifeNum; i++)
+	{
+		if (typeCounter[i] > val)
+		{
+			val = typeCounter[i];
+			nextType = (eLifeType)i;
+		}
+	}
+	
 	int index = x + y * cWorldWidth;
-	if (_nowGeneration[index])
-	{
-		if (counter < 2)
-		{
-			_nextGeneration[index] = false;
-		}
-		else if (counter > 3)
-		{
-			_nextGeneration[index] = false;
-		}
-		else
-		{
-			_nextGeneration[index] = true;
-		}
-	}
-	else
-	{
-		if (counter == 3)
-		{
-			_nextGeneration[index] = true;
-		}
-	}
+	_nextGeneration[index] = _nowGeneration[index];
+	_nextGeneration[index].evolution(counter, nextType);
+	//if (_nowGeneration[index])
+	//{
+	//	if (counter < 2)
+	//	{
+	//		_nextGeneration[index] = false;
+	//	}
+	//	else if (counter > 3)
+	//	{
+	//		_nextGeneration[index] = false;
+	//	}
+	//	else
+	//	{
+	//		_nextGeneration[index] = true;
+	//	}
+	//}
+	//else
+	//{
+	//	if (counter == 3)
+	//	{
+	//		_nextGeneration[index] = true;
+	//	}
+	//}
 }
+
+

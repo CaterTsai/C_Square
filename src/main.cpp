@@ -6,9 +6,7 @@
 
 //========================================================================
 int main() {
-
-
-
+	
 #ifdef PROJECTION_MODE
 	ofGLFWWindowSettings settings_;
 	//Projection Window

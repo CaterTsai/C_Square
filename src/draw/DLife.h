@@ -4,6 +4,56 @@
 
 class DLife : public DBase
 {
+#pragma region Life Element
+	enum eLifeType
+	{
+		eNormal = 0
+		,eStrong
+		,eFast
+		,eLifeNum
+	};
+
+	class LifeElement
+	{
+	public:
+		LifeElement()
+			:_live(false)
+		{
+			setType(eNormal);
+		}
+
+		inline int getWeight()
+		{
+			return _weight;
+		}
+		inline bool getLive()
+		{
+			return _live;
+		}
+		inline void setLive(bool live)
+		{
+			_live = live;
+		}
+
+		inline eLifeType getType()
+		{
+			return _type;
+		}
+
+		void setType(eLifeType type);
+		
+		void evolution(int counter, eLifeType type);
+
+	private:
+		bool _live;
+		eLifeType _type;
+		int _weight;
+		int _liveMax, _liveMin;
+		int _dieMax, _dieMin;
+	};
+#pragma endregion
+
+
 public:
 	DLife()
 		:DBase(eDLife)
@@ -24,8 +74,8 @@ private:
 	
 private:
 	float _generationT;
-	bool* _nowGeneration;
-	bool* _nextGeneration;
-	bool _worldA[cWorldHeight * cWorldWidth];
-	bool _worldB[cWorldHeight * cWorldWidth];
+	LifeElement* _nowGeneration;
+	LifeElement* _nextGeneration;
+	LifeElement _worldA[cWorldHeight * cWorldWidth];
+	LifeElement _worldB[cWorldHeight * cWorldWidth];
 };
