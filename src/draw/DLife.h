@@ -22,10 +22,6 @@ class DLife : public DBase
 			setType(eNormal);
 		}
 
-		inline int getWeight()
-		{
-			return _weight;
-		}
 		inline bool getLive()
 		{
 			return _live;
@@ -47,9 +43,9 @@ class DLife : public DBase
 	private:
 		bool _live;
 		eLifeType _type;
-		int _weight;
 		int _liveMax, _liveMin;
 		int _dieMax, _dieMin;
+		int _generation;
 	};
 #pragma endregion
 
@@ -57,7 +53,7 @@ class DLife : public DBase
 public:
 	DLife()
 		:DBase(eDLife)
-		,_generationT(0.1f)
+		,_generationT(0.05f)
 	{}
 
 	void update(float delta) override;

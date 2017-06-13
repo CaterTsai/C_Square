@@ -5,10 +5,10 @@
 void DLife::LifeElement::setType(eLifeType type)
 {
 	_type = type;
+	_generation = 0;
 	switch (type) {
 		case eNormal:
 		{
-			_weight = 1;
 			_liveMax = 3;
 			_liveMin = 2;
 			_dieMax = 3;
@@ -17,20 +17,18 @@ void DLife::LifeElement::setType(eLifeType type)
 		}
 		case eStrong:
 		{
-			_weight = 1;
-			_liveMax = 3;
-			_liveMin = 2;
-			_dieMax = 3;
-			_dieMin = 3;
+			_liveMax = 4;
+			_liveMin = 3;
+			_dieMax = 2;
+			_dieMin = 1;
 			break;
 		}
 		case eFast:
 		{
-			_weight = 1;
 			_liveMax = 3;
 			_liveMin = 2;
 			_dieMax = 3;
-			_dieMin = 3;
+			_dieMin = 2;
 			break;
 		}
 	}
@@ -52,6 +50,26 @@ void DLife::LifeElement::evolution(int counter, eLifeType type)
 		if (counter > _liveMax || counter < _liveMin)
 		{
 			setLive(false);
+		}
+		else
+		{
+			if (_type == eNormal)
+			{
+				_generation++;
+				auto p = pow(0.995, _generation);
+				if (ofRandom(0.0, 1.0) > p)
+				{
+					if (rand() % 2 == 0)
+					{
+						setType(eFast);
+					}
+					else
+					{
+						setType(eStrong);
+					}
+					
+				}
+			}
 		}
 	}
 }
