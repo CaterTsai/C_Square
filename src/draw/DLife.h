@@ -53,7 +53,7 @@ class DLife : public DBase
 public:
 	DLife()
 		:DBase(eDLife)
-		,_generationT(0.05f)
+		,_generationT(0.1f)
 	{}
 
 	void update(float delta) override;

@@ -39,6 +39,11 @@ const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
 //DLife
 const int cWorldWidth = 100;
 const int cWorldHeight = 100;
+
+//DECA
+const int cCASize = 50;
+const int cCACodeSize = 8;
+const int cCAMaxGeneration = 50;
 #pragma endregion
 
 

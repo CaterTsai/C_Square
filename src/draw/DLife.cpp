@@ -256,28 +256,6 @@ void DLife::evolution(int x, int y)
 	int index = x + y * cWorldWidth;
 	_nextGeneration[index] = _nowGeneration[index];
 	_nextGeneration[index].evolution(counter, nextType);
-	//if (_nowGeneration[index])
-	//{
-	//	if (counter < 2)
-	//	{
-	//		_nextGeneration[index] = false;
-	//	}
-	//	else if (counter > 3)
-	//	{
-	//		_nextGeneration[index] = false;
-	//	}
-	//	else
-	//	{
-	//		_nextGeneration[index] = true;
-	//	}
-	//}
-	//else
-	//{
-	//	if (counter == 3)
-	//	{
-	//		_nextGeneration[index] = true;
-	//	}
-	//}
 }
 
 

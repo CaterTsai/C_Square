@@ -202,6 +202,9 @@
     <ClCompile Include="src\draw\DLife.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DECA.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -540,6 +543,9 @@
       <Filter>src\scence</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DLife.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DECA.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

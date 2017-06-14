@@ -16,4 +16,5 @@ public:
 
 private:
 	DLife _life;
+	DECA _eca;
 };
