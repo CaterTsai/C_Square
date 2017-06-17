@@ -33,7 +33,6 @@ private:
 	void nextGeneration();
 	int getCode(int x);
 	void setCode(int value);
-	
 
 private:
 	float _generationT;

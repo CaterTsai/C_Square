@@ -205,6 +205,9 @@
     <ClCompile Include="src\draw\DECA.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxPostGlitch\src\ofxPostGlitch.cpp">
+      <Filter>addons\ofxPostGlitch\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -287,6 +290,12 @@
     </Filter>
     <Filter Include="src\scence\base">
       <UniqueIdentifier>{17242abd-b156-48f1-87f3-4cd884769c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxPostGlitch">
+      <UniqueIdentifier>{973baac8-68b6-43dc-995c-3371031d6828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxPostGlitch\src">
+      <UniqueIdentifier>{0f65677a-779b-443f-8eaf-28c339fc3646}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -547,6 +556,9 @@
     </ClInclude>
     <ClInclude Include="src\draw\DECA.h">
       <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxPostGlitch\src\ofxPostGlitch.h">
+      <Filter>addons\ofxPostGlitch\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
