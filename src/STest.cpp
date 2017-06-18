@@ -9,6 +9,12 @@ void STest::update(float delta)
 	}
 	_life.update(delta);
 	//_eca.update(delta);
+
+	_glitch.begin();
+	{
+		_life.draw(0, 0, _drawRect.width, _drawRect.height);
+	}
+	_glitch.end();
 }
 
 //-------------------------------------
@@ -21,10 +27,11 @@ void STest::draw()
 
 	ofPushStyle();
 	{
-		auto rect = squareMgr::GetInstance()->getUnitRect(0);
 		squareMgr::GetInstance()->updateOnUnitBegin(0);
-		_life.draw(0, 0, rect.width, rect.height);
-		//_eca.draw(0, 0, rect.width, rect.height);
+		//_life.draw(0, 0, _drawRect.width, _drawRect.height);
+		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
+		_glitch.draw(0, 0, _drawRect.width, _drawRect.height);
+		
 		squareMgr::GetInstance()->updateOnUnitEnd(0);
 	}
 	ofPopStyle();
@@ -33,9 +40,12 @@ void STest::draw()
 //-------------------------------------
 void STest::start()
 {
+	_drawRect = squareMgr::GetInstance()->getUnitRect(0);
 	_isStart = true;
 	_life.start();
 	//_eca.start();
+	_glitch.set(_drawRect.width, _drawRect.height);
+	_glitch.setGlitchType(eGlitchType::eGlitchLittle);
 
 }
 
