@@ -37,8 +37,8 @@ const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
 
 #pragma region DElement
 //DLife
-const int cWorldWidth = 100;
-const int cWorldHeight = 100;
+const int cWorldWidth = 150;
+const int cWorldHeight = 150;
 
 //DECA
 const int cCASize = 50;

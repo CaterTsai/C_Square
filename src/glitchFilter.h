@@ -5,12 +5,14 @@
 
 enum eGlitchType
 {
-	eGlitchLittle = 0
-	,eGlitchNoice
-	,eGlitchTwist
+	eGlitchNormal = 0
+	,eGlitchNoise
+	,eGlitchHeavy
 	,eGlitchSwell
-	,eGlitchShake
+	,eGlitchCut
+	,eGlitchSlitscan
 };
+
 
 class glitchFilter
 {
@@ -22,6 +24,7 @@ public:
 	void end();
 
 	void setGlitchType(eGlitchType type);
+	
 
 private:
 	

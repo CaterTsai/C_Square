@@ -3,7 +3,6 @@
 //--------------------------------------------------------------
 void glitchFilter::set(int width, int height)
 {
-
 	_raw.allocate(width, height);
 	_glitch.setFbo(&_raw);
 }
@@ -42,11 +41,47 @@ void glitchFilter::setGlitchType(eGlitchType type)
 
 	switch (type)
 	{
-		case eGlitchLittle:
+		case eGlitchNormal:
 		{
-			_glitch.setFx(OFXPOSTGLITCH_GLOW, true);
-			_glitch.setFx(OFXPOSTGLITCH_SWELL, true);
-
+			_glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
+			_glitch.setFx(OFXPOSTGLITCH_SHAKER, true);
+			_glitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE, true);
+			break;
 		}
+		case eGlitchNoise:
+		{
+			_glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
+			_glitch.setFx(OFXPOSTGLITCH_NOISE, true);
+			_glitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE, true);
+			break;
+		}
+		case eGlitchHeavy:
+		{
+			_glitch.setFx(OFXPOSTGLITCH_TWIST, true);
+			_glitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
+			break;
+		}
+		case eGlitchSwell:
+		{
+			_glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
+			_glitch.setFx(OFXPOSTGLITCH_SWELL, true);
+			_glitch.setFx(OFXPOSTGLITCH_INVERT, true);
+			break;
+		}
+		case eGlitchCut:
+		{
+			_glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
+			_glitch.setFx(OFXPOSTGLITCH_CUTSLIDER, true);
+			_glitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE, true);
+			_glitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE, true);
+			break;
+		}
+		case eGlitchSlitscan:
+		{
+			_glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
+			_glitch.setFx(OFXPOSTGLITCH_SLITSCAN, true);
+			break;
+		}
+
 	}
 }

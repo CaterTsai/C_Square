@@ -55,7 +55,6 @@ void DLife::LifeElement::evolution(int counter, eLifeType type)
 		{
 			if (_type == eNormal)
 			{
-				_generation++;
 				auto p = pow(0.995, _generation);
 				if (ofRandom(0.0, 1.0) > p)
 				{
@@ -70,6 +69,7 @@ void DLife::LifeElement::evolution(int counter, eLifeType type)
 					
 				}
 			}
+			_generation++;
 		}
 	}
 }
@@ -106,24 +106,26 @@ void DLife::draw(int x, int y, int w, int h)
 				auto index = tx + ty * cWorldWidth;
 				if (_nowGeneration[index].getLive())
 				{
+					ofColor color;
 					switch (_nowGeneration[index].getType())
-					{
+					{						
 						case eNormal:
 						{
-							ofSetColor(255);
+							color.set(137, 207, 207);
 							break;
 						}
 						case eStrong:
 						{
-							ofSetColor(255, 0, 0);
+							color.set(60, 150, 240);
 							break;
 						}
 						case eFast:
 						{
-							ofSetColor(0, 255, 0);
+							color.set(232, 166, 113);
 							break;
 						}
 					}
+					ofSetColor(color);
 					ofDrawRectangle((tx * unitW) + x, (ty * unitH) + y, unitW, unitH);
 				}
 			}
@@ -257,5 +259,3 @@ void DLife::evolution(int x, int y)
 	_nextGeneration[index] = _nowGeneration[index];
 	_nextGeneration[index].evolution(counter, nextType);
 }
-
-

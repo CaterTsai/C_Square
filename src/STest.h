@@ -22,4 +22,5 @@ private:
 	DECA _eca;
 
 	glitchFilter _glitch;
+	bool _enableGlitch;
 };

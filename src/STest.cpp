@@ -10,11 +10,17 @@ void STest::update(float delta)
 	_life.update(delta);
 	//_eca.update(delta);
 
-	_glitch.begin();
+	_enableGlitch = (ofGetFrameNum() % 5 == 0 && rand() % 10 < 5 ) ? true : false;
+
+	if (_enableGlitch)
 	{
-		_life.draw(0, 0, _drawRect.width, _drawRect.height);
+		_glitch.begin();
+		{
+			_life.draw(0, 0, _drawRect.width, _drawRect.height);
+		}
+		_glitch.end();
 	}
-	_glitch.end();
+	
 }
 
 //-------------------------------------
@@ -28,9 +34,17 @@ void STest::draw()
 	ofPushStyle();
 	{
 		squareMgr::GetInstance()->updateOnUnitBegin(0);
-		//_life.draw(0, 0, _drawRect.width, _drawRect.height);
+		if (_enableGlitch)
+		{
+			_glitch.draw(0, 0, _drawRect.width, _drawRect.height);
+		}
+		else
+		{
+			_life.draw(0, 0, _drawRect.width, _drawRect.height);
+		}
+		
 		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
-		_glitch.draw(0, 0, _drawRect.width, _drawRect.height);
+		
 		
 		squareMgr::GetInstance()->updateOnUnitEnd(0);
 	}
@@ -45,7 +59,7 @@ void STest::start()
 	_life.start();
 	//_eca.start();
 	_glitch.set(_drawRect.width, _drawRect.height);
-	_glitch.setGlitchType(eGlitchType::eGlitchLittle);
+	_glitch.setGlitchType(eGlitchType::eGlitchCut);
 
 }
 

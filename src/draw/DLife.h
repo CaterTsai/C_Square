@@ -36,9 +36,14 @@ class DLife : public DBase
 			return _type;
 		}
 
+		inline int getGeneration()
+		{
+			return _generation;
+		}
+
 		void setType(eLifeType type);
-		
 		void evolution(int counter, eLifeType type);
+		
 
 	private:
 		bool _live;
@@ -53,7 +58,7 @@ class DLife : public DBase
 public:
 	DLife()
 		:DBase(eDLife)
-		,_generationT(0.1f)
+		,_generationT(0.02f)
 	{}
 
 	void update(float delta) override;
