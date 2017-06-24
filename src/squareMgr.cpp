@@ -197,7 +197,7 @@ void squareMgr::moveUnitRect(int unitID, int x, int y)
 
 #pragma region On Unit
 //------------------------------
-void squareMgr::updateOnUnitBegin(int unitID)
+void squareMgr::updateOnUnitBegin(int unitID, bool needClear)
 {
 	if (!_isSetup)
 	{
@@ -205,7 +205,7 @@ void squareMgr::updateOnUnitBegin(int unitID)
 	}
 	if (_squareList.at(unitID).type == eSquareDrawType::eSquareIndependent)
 	{
-		_squareList.at(unitID).square.drawBegin();
+		_squareList.at(unitID).square.drawBegin(needClear);
 	}
 }
 

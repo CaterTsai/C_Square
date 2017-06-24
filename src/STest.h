@@ -20,7 +20,9 @@ private:
 	ofRectangle _drawRect;
 	DLife _life;
 	DECA _eca;
+	DCircleLine _cl;
 
 	glitchFilter _glitch;
 	bool _enableGlitch;
+
 };

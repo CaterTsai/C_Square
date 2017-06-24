@@ -44,6 +44,9 @@ const int cWorldHeight = 150;
 const int cCASize = 50;
 const int cCACodeSize = 8;
 const int cCAMaxGeneration = 50;
+
+//DCircleLine
+
 #pragma endregion
 
 

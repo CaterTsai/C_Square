@@ -286,6 +286,9 @@
     <ClCompile Include="src\glitchFilter.cpp">
       <Filter>src\filter</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DCircleLine.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -727,6 +730,9 @@
     </ClInclude>
     <ClInclude Include="src\glitchFilter.h">
       <Filter>src\filter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DCircleLine.h">
+      <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

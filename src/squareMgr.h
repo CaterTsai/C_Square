@@ -52,7 +52,7 @@ private:
 
 //Draw On Unit
 public:
-	void updateOnUnitBegin(int unitID);
+	void updateOnUnitBegin(int unitID, bool needClear = true);
 	void updateOnUnitEnd(int unitID);
 	
 //Mouse Event

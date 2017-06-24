@@ -27,7 +27,7 @@ void ofViewApp::draw()
 	ofSetBackgroundColor(0);
 	_testScence.draw();
 
-	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), cViewWindowWidth);
+	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 400);
 }
 
 //--------------------------------------------------------------

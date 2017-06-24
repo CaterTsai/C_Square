@@ -197,6 +197,7 @@
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.cpp" />
+    <ClCompile Include="src\draw\DCircleLine.cpp" />
     <ClCompile Include="src\draw\DECA.cpp" />
     <ClCompile Include="src\draw\DFlash.cpp" />
     <ClCompile Include="src\draw\DLife.cpp" />
@@ -295,6 +296,7 @@
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.h" />
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.h" />
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h" />
+    <ClInclude Include="src\draw\DCircleLine.h" />
     <ClInclude Include="src\draw\DECA.h" />
     <ClInclude Include="src\draw\DLife.h" />
     <ClInclude Include="src\glitchFilter.h" />
