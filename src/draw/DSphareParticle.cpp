@@ -19,6 +19,8 @@ void DSphareParticle::particle::update(float delta)
 	_pos.x = sin(_t) * cos(_p);
 	_pos.y = sin(_t) * sin(_p);
 	_pos.z = cos(_t);
+
+	_amt = ofMap(ofNoise(_pos), 0, 1, 0.8, 1.2);
 }
 
 #pragma endregion
@@ -47,10 +49,9 @@ void DSphareParticle::draw(int x, int y, int w, int h)
 		drawNear(w);
 		for (auto& iter : _particleList)
 		{
-			auto p = iter.getPos() * w;
+			auto p = iter._pos * iter._amt * w;
 			ofDrawSphere(p, 5);
 		}
-		
 	}
 	_cam.end();
 	ofPopStyle();
@@ -92,7 +93,10 @@ void DSphareParticle::drawNear(int size)
 	{
 		if (iter.haveNear())
 		{
-			ofDrawLine(iter.getPos() * size, iter.getNearPos() * size);
+			ofDrawLine(
+				iter._pos * iter._amt * size,
+				_particleList[iter._nearId]._pos * _particleList[iter._nearId]._amt * size
+			);
 		}
 	}
 }
@@ -110,12 +114,11 @@ void DSphareParticle::computeNear()
 			{
 				continue;
 			}
-			auto dist = _particleList[i].getPos().distance(_particleList[j].getPos());
+			auto dist = _particleList[i]._pos.distance(_particleList[j]._pos);
 			if (dist < min)
 			{
 				min = dist;
-				_particleList[i].setNearPos(_particleList[j].getPos());
-				break;
+				_particleList[i]._nearId = j;
 			}
 		}
 	}

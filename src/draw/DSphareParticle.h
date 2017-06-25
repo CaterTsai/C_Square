@@ -12,17 +12,19 @@ class DSphareParticle : public DBase
 		particle()
 			:_t(0.0)
 			,_p(0.0)
+			,_amt(1.0)
 			,_vt(0.0)
 			,_vp(0.0)
-			, _haveNear(false)
+			,_nearId(-1)
 		{};
 
 		particle(float t, float p, float vt, float vp)
 			:_t(t)
 			,_p(p)
+			,_amt(1.0)
 			, _vt(vt)
 			, _vp(vp)
-			,_haveNear(false)
+			, _nearId(-1)
 		{}
 
 		void set(float t, float p, float vt, float vp);
@@ -30,35 +32,20 @@ class DSphareParticle : public DBase
 
 		inline bool haveNear()
 		{
-			return _haveNear;
+			return _nearId != -1;
 		}
 
 		inline void resetNear()
 		{
-			_haveNear = false;
-		}
-
-		inline ofVec3f getPos()
-		{
-			return _pos;
-		}
-
-		inline ofVec3f getNearPos()
-		{
-			return _near;
-		}
-
-		inline void setNearPos(ofVec3f n)
-		{
-			_near = n;
-			_haveNear = true;
+			_nearId = -1;
 		}
 		
-	private:
-		bool _haveNear;
+	public:
 		float _t, _p;
+		float _amt;
 		float _vt, _vp;
-		ofVec3f _pos, _near;
+		ofVec3f _pos;
+		int _nearId;
 	};
 #pragma endregion
 
