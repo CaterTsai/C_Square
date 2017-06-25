@@ -47,6 +47,11 @@ const int cCAMaxGeneration = 50;
 
 //DCircleLine
 
+//DSphareParticle
+const int cDPNumber = 100;
+const float cDPSpeedMin = 30 * DEG_TO_RAD;
+const float cDPSpeedMax = 60 * DEG_TO_RAD;
+const float cDPNearLimit = 0.3;
 #pragma endregion
 
 

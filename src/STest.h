@@ -21,6 +21,7 @@ private:
 	DLife _life;
 	DECA _eca;
 	DCircleLine _cl;
+	DSphareParticle _dp;
 
 	glitchFilter _glitch;
 	bool _enableGlitch;

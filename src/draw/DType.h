@@ -6,5 +6,6 @@ enum eDType
 	,eDLife
 	,eDECA
 	,eDCircleLine
+	,eDSphereParticle
 	,eDTypeNum
 };
