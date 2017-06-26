@@ -22,6 +22,7 @@ private:
 	DECA _eca;
 	DCircleLine _cl;
 	DSphareParticle _dp;
+	DCylinderFlow _cf;
 
 	glitchFilter _glitch;
 	bool _enableGlitch;

@@ -13,8 +13,8 @@ void DSphareParticle::particle::update(float delta)
 {
 	_t += _vt * delta;
 	_p += _vp * delta;
-	_t = (_t >= TWO_PI) ? _t - TWO_PI : _t;
-	_p = (_p >= TWO_PI) ? _p - TWO_PI : _p;
+	_t = (_t >= TWO_PI) ? _t - TWO_PI : (_t < 0) ? _t + TWO_PI : _t;
+	_p = (_p >= TWO_PI) ? _p - TWO_PI : (_p < 0) ? _p + TWO_PI : _p;
 
 	_pos.x = sin(_t) * cos(_p);
 	_pos.y = sin(_t) * sin(_p);

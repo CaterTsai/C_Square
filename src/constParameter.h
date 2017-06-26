@@ -48,10 +48,19 @@ const int cCAMaxGeneration = 50;
 //DCircleLine
 
 //DSphareParticle
-const int cDPNumber = 100;
+const int cDPNumber = 1000;
 const float cDPSpeedMin = 30 * DEG_TO_RAD;
 const float cDPSpeedMax = 60 * DEG_TO_RAD;
 const float cDPNearLimit = 0.3;
+
+//DCylinderFlow
+const int cDCNumber = 1000;
+const int cDCFieldRows = 20;
+const int cDCFieldCols = 20;
+const float cDCPiSpeedMin = 30 * DEG_TO_RAD;
+const float cDCPiSpeedMax = 60 * DEG_TO_RAD;
+const float cDCZSpeedMin = 0.1;
+const float cDCZSpeedMax = 0.3;
 #pragma endregion
 
 

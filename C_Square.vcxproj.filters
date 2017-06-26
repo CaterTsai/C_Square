@@ -292,6 +292,9 @@
     <ClCompile Include="src\draw\DSphareParticle.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DCylinderFlow.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -738,6 +741,9 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DSphareParticle.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DCylinderFlow.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,5 +7,6 @@ enum eDType
 	,eDECA
 	,eDCircleLine
 	,eDSphereParticle
+	,eDCylinderFlow
 	,eDTypeNum
 };
