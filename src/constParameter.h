@@ -20,7 +20,7 @@ const int cProjectionWindowWidth = 1920;
 const int cProjectionWindowHeight = 1080;
 
 const int cViewWindowWidth = 1024;
-const int cViewWindowHeight = 760;
+const int cViewWindowHeight = 1024;
 
 //--------------
 //SquareUnit
@@ -48,15 +48,20 @@ const int cCAMaxGeneration = 50;
 //DCircleLine
 
 //DSphareParticle
-const int cDPNumber = 1000;
-const float cDPSpeedMin = 30 * DEG_TO_RAD;
-const float cDPSpeedMax = 60 * DEG_TO_RAD;
-const float cDPNearLimit = 0.3;
+const int cDPNumber = 500;
+const float cDPSpeedMin = 2 * DEG_TO_RAD;
+const float cDPSpeedMax = 8 * DEG_TO_RAD;
+const float cDPThetaMin = 30 * DEG_TO_RAD;
+const float cDPThetaMax = 150 * DEG_TO_RAD;
+const float cDPThetaMoveMin = 30 * DEG_TO_RAD;
+const float cDPThetaMoveMax = 90 * DEG_TO_RAD;
+const float cDPThetaLimit = 10 * DEG_TO_RAD;
+const float cDPNearLimit = 0.2;
 
 //DCylinderFlow
 const int cDCNumber = 1000;
 const int cDCFieldRows = 20;
-const int cDCFieldCols = 20;
+const int cDCFieldCols = 50;
 const float cDCPiSpeedMin = 30 * DEG_TO_RAD;
 const float cDCPiSpeedMax = 60 * DEG_TO_RAD;
 const float cDCZSpeedMin = 0.1;

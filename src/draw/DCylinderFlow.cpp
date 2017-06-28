@@ -19,9 +19,9 @@ void DCylinderFlow::flowParticle::update(float delta, ofVec2f desired)
 	_cyPos.x = (_cyPos.x >= TWO_PI) ? _cyPos.x - TWO_PI : (_cyPos.x < 0) ? _cyPos.x + TWO_PI : _cyPos.x;
 	_cyPos.y = (_cyPos.y >= 1.0) ? _cyPos.y - 1.0 : (_cyPos.y < 0) ? _cyPos.y + 1.0 : _cyPos.y;
 
-	_ePos.x = cos(_cyPos.x);
-	_ePos.y = sin(_cyPos.x);
-	_ePos.z = _cyPos.y;
+	_ePos.x = sin(_cyPos.x);
+	_ePos.y = _cyPos.y;
+	_ePos.z = cos(_cyPos.x);
 }
 #pragma endregion
 
@@ -34,6 +34,7 @@ void DCylinderFlow::update(float delta)
 	{
 		iter.update(delta, getFlow(iter._cyPos));
 	}
+
 }
 
 //-------------------------------------
@@ -42,20 +43,16 @@ void DCylinderFlow::draw(int x, int y, int w, int h)
 	CHECK_START();
 
 	ofPushStyle();
-	ofSetColor(255);
-	_cam.begin();
+	ofSetColor(33, 255, 54);
+	for (auto& iter : _particleList)
 	{
-		for (auto& iter : _particleList)
-		{
-			auto p = iter._ePos;
-			p.x *= w;
-			p.y *= w;
-			p.z = ofMap(p.z, 0, 1, -0.5, 0.5) * h;
+		auto p = iter._ePos;
+		p.x *= w;
+		p.y = ofMap(p.y, 0, 1, -0.5, 0.5) * h;
+		p.z *= w;
 
-			ofDrawSphere(p, 5);
-		}
+		ofDrawSphere(p, 5);
 	}
-	_cam.end();
 	ofPopStyle();
 	//Debug
 	//displayFlow(x, y, w, h);
@@ -67,6 +64,8 @@ void DCylinderFlow::start()
 	_isStart = true;
 	generateParticle();
 	generateFlowFields();
+
+	
 }
 
 //-------------------------------------
@@ -94,12 +93,15 @@ void DCylinderFlow::generateParticle()
 //-------------------------------------
 void DCylinderFlow::generateFlowFields()
 {
+	float offset = 0.1;
 	for (int i = 0; i < cDCFieldRows; i++)
 	{
 		for (int j = 0; j < cDCFieldCols; j++)
 		{
-			ofVec2f desired(ofMap(ofNoise(ofRandom(1.0)), 0, 1, -1, 1), ofMap(ofRandom(1.0), 0, 1, -1, 1));
-			//ofVec2f desired(0.5, 0.5);
+			//ofVec2f desired(ofMap(ofNoise(ofRandom(1.0)), 0, 1, -1, 1), ofMap(ofRandom(1.0), 0, 1, -1, 1));
+			ofVec2f desired(0.5, 0.5);
+			//float theta = ofMap(ofNoise(i * offset, j * offset), 0, 1, 0, TWO_PI);
+			//ofVec2f desired(cos(theta), sin(theta));
 			_flowFields[i][j].set(desired.normalized());
 		}
 	}
@@ -127,7 +129,6 @@ void DCylinderFlow::displayFlow(int x, int y, int w, int h)
 			ofLine(center, end);
 		}
 	}
-
 	ofPopStyle();
 }
 

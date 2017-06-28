@@ -119,7 +119,7 @@ void squareMgr::init(string configName)
 	param.ctrlPos[1] = ofVec2f(200, 0);
 	param.ctrlPos[2] = ofVec2f(200, 200);
 	param.ctrlPos[3] = ofVec2f(0, 200);
-	newUnit.square.setup(400, param);
+	newUnit.square.setup(1024, param);
 	_squareList.push_back(newUnit);
 
 	stSquareInfo newUnit2;
@@ -131,7 +131,7 @@ void squareMgr::init(string configName)
 	param.ctrlPos[2] = ofVec2f(400, 400);
 	param.ctrlPos[3] = ofVec2f(200, 400);
 	newUnit2.square.setup(200, param);
-	_squareList.push_back(newUnit2);
+	//_squareList.push_back(newUnit2);
 	
 }
 #pragma endregion

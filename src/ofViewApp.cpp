@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofViewApp::setup()
 {
-	ofBackground(0);
+	ofBackground(23, 24, 26);
 	//ofDisableArbTex();
 	squareMgr::GetInstance()->setup();
 	ofSetFrameRate(60);
@@ -27,7 +27,7 @@ void ofViewApp::draw()
 	ofSetBackgroundColor(0);
 	_testScence.draw();
 
-	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 800);
+	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
 }
 
 //--------------------------------------------------------------
@@ -38,6 +38,11 @@ void ofViewApp::keyPressed(int key)
 	case 's':
 	{
 		_testScence.start();
+		break;
+	}
+	case 't':
+	{
+		_testScence.trigger();
 		break;
 	}
 	}

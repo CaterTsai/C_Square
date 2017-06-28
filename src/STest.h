@@ -8,6 +8,7 @@ class STest : public SBase
 public:
 	STest()
 		:SBase(eSTest)
+		,_autoRotate(true)
 	{
 	}
 
@@ -15,6 +16,8 @@ public:
 	void draw() override;
 	void start() override;
 	void stop() override;
+
+	void trigger();
 
 private:
 	ofRectangle _drawRect;
@@ -27,4 +30,6 @@ private:
 	glitchFilter _glitch;
 	bool _enableGlitch;
 
+	bool _autoRotate;
+	ofEasyCam	_cam;
 };

@@ -31,6 +31,7 @@ public:
 	
 	virtual void reset() {};
 
+	virtual void trigger() {};
 	virtual void setValue(DParam& value) {};
 	virtual void setValue(DParam& value, DParam& value2) {};
 	virtual void setValue(DParam& value, DParam& value2, DParam& value3) {};

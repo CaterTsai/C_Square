@@ -27,7 +27,8 @@ class DCylinderFlow : public DBase
 public:
 	DCylinderFlow()
 		:DBase(eDCylinderFlow)
-	{}
+	{
+	}
 
 	void update(float delta) override;
 	void draw(int x, int y, int w, int h) override;
@@ -44,8 +45,7 @@ private:
 	
 
 private:
-	ofEasyCam _cam;
-	array<DCylinderFlow::flowParticle, cDPNumber> _particleList;
+	array<DCylinderFlow::flowParticle, cDCNumber> _particleList;
 
 	ofVec2f _flowFields[cDCFieldRows][cDCFieldCols];
 };
