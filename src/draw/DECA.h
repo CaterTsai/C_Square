@@ -19,7 +19,7 @@ class DECA : public DBase
 public:
 	DECA()
 		:DBase(eDECA)
-		, _generationT(0.1f)
+		, _generationT(0.5f)
 	{}
 
 	void update(float delta) override;

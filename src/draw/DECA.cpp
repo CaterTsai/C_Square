@@ -21,35 +21,28 @@ void DECA::draw(int x, int y, int w, int h)
 	ofPushStyle();
 	ofFill();
 	{
-		auto unitW = w / (float)cCASize;
-		auto unitH = h / (float)cCAMaxGeneration;
-		int ty = 0;
+		auto size = MIN(w / (float)cCASize, h / (float)cCAMaxGeneration);
+		auto halfS = size / 2.0;
+		int ty = h * -0.5;
 		for (auto& iter : _world)
 		{
-			int tx = 0;
+			int tx = w * -0.5;
 			for (int i = 0; i < cCASize; i++)
 			{
+				ofColor green(0, 255, 0);
+				
 				if (iter._state[i])
-				{
-					ofColor green(0, 255, 0);
+				{	
 					green.setBrightness(green.limit() * (iter._fromCode[i] / (float)cCACodeSize));
 					ofSetColor(green);
+					ofDrawBox(tx + halfS, ty + halfS, 0, size);
+					//ofDrawSphere(tx + halfS, ty + halfS, 0, size);
+				}
 
-					//ofDrawRectangle(tx + x, ty + y, unitW, unitH);
-					float r = unitW * 0.5;
-					ofDrawCircle(tx + x + r, ty + y + r, r);
-				}
-				tx += unitW;
-			}
-			for (auto& state : iter._state)
-			{
-				if (state)
-				{
-					
-				}
 				
+				tx += size;
 			}
-			ty += unitH;
+			ty += size;
 		}
 	}
 	ofPopStyle();

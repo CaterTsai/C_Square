@@ -9,10 +9,10 @@ void STest::update(float delta)
 	}
 	
 	//_life.update(delta);
-	//_eca.update(delta);
+	_eca.update(delta);
 	//_cl.update(delta);
-	_dp.update(delta);
-	_cf.update(delta);
+	//_dp.update(delta);
+	//_cf.update(delta);
 
 	//_enableGlitch = (ofGetFrameNum() % 5 == 0 && rand() % 10 < 5 ) ? true : false;
 
@@ -47,8 +47,9 @@ void STest::draw()
 		ofEnableDepthTest();
 		_post.begin(_cam);
 		{
-			_dp.draw(0, 0, _drawRect.width, _drawRect.height);
-			_cf.draw(0, 0, _drawRect.width, _drawRect.height * 0.2);
+			//_dp.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_cf.draw(0, 0, _drawRect.width, _drawRect.height * 0.2);
+			_eca.draw(0, 0, _drawRect.width * 2, _drawRect.height * 2);
 		}	
 		_post.end();
 		ofDisableDepthTest();
@@ -68,7 +69,6 @@ void STest::draw()
 		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
 		//_cl.draw(0, 0, _drawRect.width, _drawRect.height);
 		
-		
 		squareMgr::GetInstance()->updateOnUnitEnd(0);
 	}
 	
@@ -85,11 +85,11 @@ void STest::start()
 	
 	_isStart = true;
 	//_life.start();
-	//_eca.start();
+	_eca.start();
 	//_cl.start();
-	_dp.start();
-	_dp.setBaseSize(_drawRect.width * 0.5);
-	_cf.start();
+	//_dp.start();
+	//_dp.setBaseSize(_drawRect.width * 0.5);
+	//_cf.start();
 
 	_glitch.set(_drawRect.width, _drawRect.height);
 	_glitch.setGlitchType(eGlitchType::eGlitchCut);
@@ -110,7 +110,7 @@ void STest::stop()
 	//_eca.stop();
 	//_cl.stop();
 	//_dp.stop();
-	_cf.stop();
+	//_cf.stop();
 }
 
 //-------------------------------------
@@ -122,8 +122,7 @@ void STest::trigger()
 //-------------------------------------
 void STest::setupPost()
 {
-	
 	_post.init(_drawRect.getWidth(), _drawRect.getHeight());
-	_post.createPass<BloomPass>()->setEnabled(true);
-	_post.createPass<BloomPass>()->setEnabled(true);
+	//_post.createPass<ToonPass>()->setEnabled(true);
+	//_post.createPass<BloomPass>()->setEnabled(true);
 }

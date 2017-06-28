@@ -43,7 +43,7 @@ const int cWorldHeight = 150;
 //DECA
 const int cCASize = 50;
 const int cCACodeSize = 8;
-const int cCAMaxGeneration = 50;
+const int cCAMaxGeneration = 30;
 
 //DCircleLine
 
