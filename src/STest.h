@@ -2,14 +2,16 @@
 
 #include "SBase.h"
 #include "glitchFilter.h"
+#include "ofxPostProcessing.h"
 
 class STest : public SBase
 {
 public:
 	STest()
 		:SBase(eSTest)
-		,_autoRotate(true)
+		,_autoRotate(false)
 	{
+		setupPost();
 	}
 
 	void update(float delta) override;
@@ -27,9 +29,18 @@ private:
 	DSphareParticle _dp;
 	DCylinderFlow _cf;
 
+	//Filter
 	glitchFilter _glitch;
 	bool _enableGlitch;
 
+	//Camera
 	bool _autoRotate;
 	ofEasyCam	_cam;
+
+//PostProcessing
+private:
+	void setupPost();
+
+private:
+	ofxPostProcessing _post;
 };

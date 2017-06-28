@@ -62,8 +62,8 @@ const float cDPNearLimit = 0.2;
 const int cDCNumber = 1000;
 const int cDCFieldRows = 20;
 const int cDCFieldCols = 50;
-const float cDCPiSpeedMin = 30 * DEG_TO_RAD;
-const float cDCPiSpeedMax = 60 * DEG_TO_RAD;
+const float cDCPiSpeedMin = 10 * DEG_TO_RAD;
+const float cDCPiSpeedMax = 20 * DEG_TO_RAD;
 const float cDCZSpeedMin = 0.1;
 const float cDCZSpeedMax = 0.3;
 #pragma endregion
