@@ -295,6 +295,9 @@
     <ClCompile Include="src\draw\DCylinderFlow.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DDepthRect.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -744,6 +747,9 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DCylinderFlow.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DDepthRect.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

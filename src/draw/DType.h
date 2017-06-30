@@ -8,5 +8,6 @@ enum eDType
 	,eDCircleLine
 	,eDSphereParticle
 	,eDCylinderFlow
+	,eDDepthRect
 	,eDTypeNum
 };

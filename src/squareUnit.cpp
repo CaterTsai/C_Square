@@ -11,8 +11,7 @@ squareUnit::squareUnit()
 //------------------------------
 void squareUnit::setup(int size, const stSquareParam & param)
 {
-	
-	_canvas.allocate(size, size, GL_RGBA32F_ARB);
+	_canvas.allocate(size, size, GL_RGBA);
 	_canvas.getTextureReference().setTextureWrap(GL_REPEAT, GL_REPEAT);
 
 	for (int i = 0; i < cCtrlPointNum; i++)

@@ -66,6 +66,14 @@ const float cDCPiSpeedMin = 10 * DEG_TO_RAD;
 const float cDCPiSpeedMax = 20 * DEG_TO_RAD;
 const float cDCZSpeedMin = 0.1;
 const float cDCZSpeedMax = 0.3;
+
+//DDepthRect
+const int cDDepthRectNum = 10;
+const float cDDRotateMin = 30 * DEG_TO_RAD;
+const float cDDRotateMax = 60 * DEG_TO_RAD;
+const float cDDRotateDiffMin = 5 * DEG_TO_RAD;
+const float cDDRotateDiffMax = 30 * DEG_TO_RAD;
+const int cDDepthMax = 800;
 #pragma endregion
 
 

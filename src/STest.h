@@ -28,6 +28,7 @@ private:
 	DCircleLine _cl;
 	DSphareParticle _dp;
 	DCylinderFlow _cf;
+	DDepthRect	_dr;
 
 	//Filter
 	glitchFilter _glitch;
