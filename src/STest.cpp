@@ -8,13 +8,13 @@ void STest::update(float delta)
 		return;
 	}
 	
-	//_life.update(delta);
+	_life.update(delta);
 	//_eca.update(delta);
 	//_cl.update(delta);
 	//_dp.update(delta);
 	//_cf.update(delta);
-	_dr.update(delta);
-	_ds.update(delta);
+	//_dr.update(delta);
+	//_ds.update(delta);
 
 
 	//_enableGlitch = (ofGetFrameNum() % 5 == 0 && rand() % 10 < 5 ) ? true : false;
@@ -50,11 +50,12 @@ void STest::draw()
 		ofEnableDepthTest();
 		_post.begin(_cam);
 		{
+			_life.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dp.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_cf.draw(0, 0, _drawRect.width, _drawRect.height * 0.2);
 			//_eca.draw(0, 0, _drawRect.width * 2, _drawRect.height * 2);
-			_dr.draw(0, 0, _drawRect.width, _drawRect.height);
-			_ds.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_dr.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_ds.draw(0, 0, _drawRect.width, _drawRect.height);
 		}	
 		_post.end();
 		ofDisableDepthTest();
@@ -89,22 +90,22 @@ void STest::start()
 	squareMgr::GetInstance()->updateOnUnitEnd(0);
 	
 	_isStart = true;
-	//_life.start();
+	_life.start();
 	//_eca.start();
 	//_cl.start();
 	//_dp.start();
 	//_dp.setBaseSize(_drawRect.width * 0.5);
 	//_cf.start();
-	_dr.start();
-	_ds.start();
+	//_dr.start();
+	//_ds.start();
 
 	_glitch.set(_drawRect.width, _drawRect.height);
 	_glitch.setGlitchType(eGlitchType::eGlitchCut);
 
 	setupPost();
 
-	_cam.setDistance(1800);
-	_cam.setTarget(ofVec3f(0, 0, 0));
+	//_cam.setDistance(1800);
+	//_cam.setTarget(ofVec3f(0, 0, 0));
 
 }
 
@@ -123,16 +124,23 @@ void STest::stop()
 //-------------------------------------
 void STest::trigger()
 {
-	//_dp.trigger();
-	_dr.trigger();
+	_dp.trigger();
+	//_dr.trigger();
 }
 
 //-------------------------------------
 void STest::setupPost()
 {
-	_post.init(_drawRect.getWidth(), _drawRect.getHeight());
-	
-	_post.createPass<FxaaPass>()->setEnabled(true);
-	_post.createPass<BloomPass>()->setEnabled(true);
+	if (_post.getNumProcessedPasses() == 0)
+	{
+		_post.init(_drawRect.getWidth(), _drawRect.getHeight());
+
+		//_post.createPass<FxaaPass>()->setEnabled(true);
+		_post.createPass<BloomPass>()->setEnabled(true);
+		_post.createPass<BloomPass>()->setEnabled(true);
+		_post.createPass<NoiseWarpPass>()->setEnabled(true);
+		//_post.createPass<ZoomBlurPass>()->setEnabled(true);
+		
+	}
 
 }

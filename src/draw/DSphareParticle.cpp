@@ -93,10 +93,9 @@ void DSphareParticle::draw(int x, int y, int w, int h)
 			ofDrawSphere(iter._pos, 5);
 		}
 		
-		
 		if (_tri.hasIndices())
 		{
-			ofSetColor(255, 200);
+			ofSetColor(255, 150);
 			_tri.drawFaces();
 		}
 		

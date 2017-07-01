@@ -97,6 +97,8 @@ void DLife::draw(int x, int y, int w, int h)
 	ofSetColor(255);
 	ofFill();
 	{
+		auto halfW = w * 0.5f;
+		auto halfH = h * 0.5f;
 		auto unitW = w / (float)cWorldWidth;
 		auto unitH = h / (float)cWorldHeight;
 		for (int tx = 0; tx < cWorldWidth; tx++)
@@ -126,7 +128,7 @@ void DLife::draw(int x, int y, int w, int h)
 						}
 					}
 					ofSetColor(color);
-					ofDrawRectangle((tx * unitW) + x, (ty * unitH) + y, unitW, unitH);
+					ofDrawRectangle(-halfW + (tx * unitW) + x, -halfH + (ty * unitH) + y, unitW, unitH);
 				}
 			}
 		}
