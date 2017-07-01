@@ -8,3 +8,5 @@
 #include "DSphareParticle.h"
 #include "DCylinderFlow.h"
 #include "DDepthRect.h"
+#include "DStar.h"
+

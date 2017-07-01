@@ -9,5 +9,6 @@ enum eDType
 	,eDSphereParticle
 	,eDCylinderFlow
 	,eDDepthRect
+	,eDStar
 	,eDTypeNum
 };

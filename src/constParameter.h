@@ -74,6 +74,15 @@ const float cDDRotateMax = 60 * DEG_TO_RAD;
 const float cDDRotateDiffMin = 5 * DEG_TO_RAD;
 const float cDDRotateDiffMax = 30 * DEG_TO_RAD;
 const int cDDepthMax = 800;
+
+//DStar
+const int cDStarMaxNum = 200;
+const float cDStarAddMinT = 0.1;
+const float cDStarAddMaxT = 1.0;
+const float cDStarMinV = 0.2;
+const float cDStarMaxV = 0.5;
+const float cDStarMovMin = 0.0;
+const float cDStarMoveMax = 2.0;
 #pragma endregion
 
 
