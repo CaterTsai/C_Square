@@ -136,9 +136,9 @@ void STest::setupPost()
 		_post.init(_drawRect.getWidth(), _drawRect.getHeight());
 
 		//_post.createPass<FxaaPass>()->setEnabled(true);
-		_post.createPass<BloomPass>()->setEnabled(true);
-		_post.createPass<BloomPass>()->setEnabled(true);
-		_post.createPass<NoiseWarpPass>()->setEnabled(true);
+		//_post.createPass<BloomPass>()->setEnabled(true);
+		//_post.createPass<BloomPass>()->setEnabled(true);
+		//_post.createPass<NoiseWarpPass>()->setEnabled(true);
 		//_post.createPass<ZoomBlurPass>()->setEnabled(true);
 		
 	}

@@ -10,5 +10,6 @@ enum eDType
 	,eDCylinderFlow
 	,eDDepthRect
 	,eDStar
+	,eDMetaBall3D
 	,eDTypeNum
 };

@@ -301,6 +301,12 @@
     <ClCompile Include="src\draw\DStar.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\ofxKMarchingCubes\ofxKMarchingCubes.cpp">
+      <Filter>src\ofxKMarchingCubes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\draw\DMetaball3D.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -398,6 +404,9 @@
     </Filter>
     <Filter Include="src\filter">
       <UniqueIdentifier>{e537cc41-463e-4d34-8ca2-565f3d43d653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ofxKMarchingCubes">
+      <UniqueIdentifier>{1cca939c-dd56-4f4c-871b-f87860389bd1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -756,6 +765,15 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DStar.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubes.h">
+      <Filter>src\ofxKMarchingCubes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubesTables.h">
+      <Filter>src\ofxKMarchingCubes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DMetaball3D.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,4 +9,4 @@
 #include "DCylinderFlow.h"
 #include "DDepthRect.h"
 #include "DStar.h"
-
+#include "DMetaball3D.h"
