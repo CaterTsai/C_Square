@@ -9,7 +9,7 @@ private:
 	{
 	public:
 		ball(ofVec3f pos, ofVec3f vec, ofColor c, float size);
-		void update(float delta);
+		void update(float delta, ofVec3f force);
 		void checkLimit(float& p, float& v);
 
 	public:
@@ -22,6 +22,8 @@ public:
 	DMetaBall3D()
 		:DBase(eDMetaBall3D)
 		, _baseSize(1.0)
+		, _forceCenter(0)
+		, _forceValue(1.0)
 	{}
 
 	void update(float delta) override;
@@ -29,14 +31,20 @@ public:
 
 	void start() override;
 	void stop() override;
+	void trigger() override;
 	void setBaseSize(float baseSize);
 
 private:
 	void initMetaBall();
+	void drawBall();
+	void addBallElement(int num);
 
 private:
 	float _baseSize;
 	list<ball> _ballList;
 
 	ofxKMarchingCubes _mcubes;
+
+	ofVec3f _forceCenter;
+	float _forceValue;
 };

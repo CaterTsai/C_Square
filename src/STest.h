@@ -30,6 +30,7 @@ private:
 	DCylinderFlow _cf;
 	DDepthRect	_dr;
 	DStar _ds;
+	DMetaBall3D _dm;
 
 	//Filter
 	glitchFilter _glitch;

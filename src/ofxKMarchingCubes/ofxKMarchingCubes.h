@@ -12,7 +12,7 @@
 #include "ofMain.h"
 
 
-const int cGridResolution = 50;
+const int cGridResolution = 30;
 const int cGridTotalNum = cGridResolution * cGridResolution * cGridResolution;
 struct vec4 {
     ofVec3f vector;

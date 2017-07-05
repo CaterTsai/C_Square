@@ -8,14 +8,14 @@ void STest::update(float delta)
 		return;
 	}
 	
-	_life.update(delta);
+	//_life.update(delta);
 	//_eca.update(delta);
 	//_cl.update(delta);
 	//_dp.update(delta);
 	//_cf.update(delta);
 	//_dr.update(delta);
 	//_ds.update(delta);
-
+	_dm.update(delta);
 
 	//_enableGlitch = (ofGetFrameNum() % 5 == 0 && rand() % 10 < 5 ) ? true : false;
 
@@ -50,12 +50,13 @@ void STest::draw()
 		ofEnableDepthTest();
 		_post.begin(_cam);
 		{
-			_life.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_life.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dp.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_cf.draw(0, 0, _drawRect.width, _drawRect.height * 0.2);
 			//_eca.draw(0, 0, _drawRect.width * 2, _drawRect.height * 2);
 			//_dr.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_ds.draw(0, 0, _drawRect.width, _drawRect.height);
+			_dm.draw(0, 0, _drawRect.width, _drawRect.height);
 		}	
 		_post.end();
 		ofDisableDepthTest();
@@ -93,11 +94,15 @@ void STest::start()
 	_life.start();
 	//_eca.start();
 	//_cl.start();
-	//_dp.start();
-	//_dp.setBaseSize(_drawRect.width * 0.5);
+	_dp.setBaseSize(_drawRect.width * 0.5);
+	_dp.start();
+	
 	//_cf.start();
 	//_dr.start();
 	//_ds.start();
+	_dm.setBaseSize(_drawRect.width);
+	_dm.start();
+	
 
 	_glitch.set(_drawRect.width, _drawRect.height);
 	_glitch.setGlitchType(eGlitchType::eGlitchCut);
@@ -126,6 +131,7 @@ void STest::trigger()
 {
 	_dp.trigger();
 	//_dr.trigger();
+	_dm.trigger();
 }
 
 //-------------------------------------
