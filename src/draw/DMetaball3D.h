@@ -23,7 +23,7 @@ public:
 		:DBase(eDMetaBall3D)
 		, _baseSize(1.0)
 		, _forceCenter(0)
-		, _forceValue(1.0)
+		, _forceValue(10.0)
 	{}
 
 	void update(float delta) override;
@@ -39,12 +39,14 @@ private:
 	void drawBall();
 	void addBallElement(int num);
 
+	void updateCenter(float delta);
+
 private:
 	float _baseSize;
 	list<ball> _ballList;
 
 	ofxKMarchingCubes _mcubes;
 
-	ofVec3f _forceCenter;
+	ofVec3f _forceCenter, _forceVec;
 	float _forceValue;
 };
