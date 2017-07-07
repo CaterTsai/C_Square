@@ -307,6 +307,9 @@
     <ClCompile Include="src\draw\DMetaball3D.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DPingPong.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -774,6 +777,9 @@
       <Filter>src\ofxKMarchingCubes</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DMetaball3D.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DPingPong.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,7 +14,7 @@ void DMetaBall3D::ball::update(float delta, ofVec3f force)
 {
 	_pos += _vec * delta;
 	
-	_vec += -2.0 * _pos * delta;
+	_vec += -0.1 * _pos * delta;
 	//_vec += force * delta;
 
 	_vec.limit(1.0);
@@ -78,7 +78,7 @@ void DMetaBall3D::draw(int x, int y, int w, int h)
 		ofEnableDepthTest();
 		_mcubes.drawGrid();
 		_mcubes.draw(true);
-		drawBall();
+		//drawBall();
 		ofDisableDepthTest();
 	}
 	ofPopStyle();
@@ -137,14 +137,14 @@ void DMetaBall3D::drawBall()
 //-------------------------------------
 void DMetaBall3D::addBallElement(int num)
 {
-	ofColor red(128, 128, 128);
+	ofColor red(200, 150, 150);
 	for (int i = num; i > 0; i--)
 	{
 		ofColor c = red;
 		c.setHueAngle(ofRandom(0, 360));
 		ball newBall(
 			ofVec3f(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5)),
-			ofVec3f(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5)),
+			ofVec3f(ofRandom(-0.2, 0.2), ofRandom(-0.2, 0.2), ofRandom(-0.2, 0.2)),
 			c,
 			0.1
 		);

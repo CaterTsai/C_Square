@@ -11,5 +11,7 @@ enum eDType
 	,eDDepthRect
 	,eDStar
 	,eDMetaBall3D
+	,eDPingPong
+	,eDGrowShape
 	,eDTypeNum
 };

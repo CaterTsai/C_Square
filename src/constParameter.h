@@ -83,6 +83,11 @@ const float cDStarMinV = 0.2;
 const float cDStarMaxV = 0.5;
 const float cDStarMovMin = 0.0;
 const float cDStarMoveMax = 2.0;
+
+//DMetaball3D
+
+//DPingPong
+const int cDPPBetNum = 4;
 #pragma endregion
 
 
