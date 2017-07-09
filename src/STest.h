@@ -31,6 +31,7 @@ private:
 	DDepthRect	_dr;
 	DStar _ds;
 	DMetaBall3D _dm;
+	DPingPong _dpp;
 
 	//Filter
 	glitchFilter _glitch;

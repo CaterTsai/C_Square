@@ -88,6 +88,8 @@ const float cDStarMoveMax = 2.0;
 
 //DPingPong
 const int cDPPBetNum = 4;
+const int cDPPWireNode = 50;
+const int cDPPWireHodeHalf = 25;
 #pragma endregion
 
 

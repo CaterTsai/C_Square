@@ -15,7 +15,8 @@ void STest::update(float delta)
 	//_cf.update(delta);
 	//_dr.update(delta);
 	//_ds.update(delta);
-	_dm.update(delta);
+	//_dm.update(delta);
+	_dpp.update(delta);
 
 	//_enableGlitch = (ofGetFrameNum() % 5 == 0 && rand() % 10 < 5 ) ? true : false;
 
@@ -56,7 +57,8 @@ void STest::draw()
 			//_eca.draw(0, 0, _drawRect.width * 2, _drawRect.height * 2);
 			//_dr.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_ds.draw(0, 0, _drawRect.width, _drawRect.height);
-			_dm.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_dm.draw(0, 0, _drawRect.width, _drawRect.height);
+			_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
 		}	
 		_post.end();
 		ofDisableDepthTest();
@@ -91,17 +93,18 @@ void STest::start()
 	squareMgr::GetInstance()->updateOnUnitEnd(0);
 	
 	_isStart = true;
-	_life.start();
+	//_life.start();
 	//_eca.start();
 	//_cl.start();
-	_dp.setBaseSize(_drawRect.width * 0.5);
-	_dp.start();
+	//_dp.setBaseSize(_drawRect.width * 0.5);
+	//_dp.start();
 	
 	//_cf.start();
 	//_dr.start();
 	//_ds.start();
-	_dm.setBaseSize(_drawRect.width);
-	_dm.start();
+	//_dm.setBaseSize(_drawRect.width);
+	//_dm.start();
+	_dpp.start();
 	
 
 	_glitch.set(_drawRect.width, _drawRect.height);
@@ -129,9 +132,9 @@ void STest::stop()
 //-------------------------------------
 void STest::trigger()
 {
-	_dp.trigger();
+	//_dp.trigger();
 	//_dr.trigger();
-	_dm.trigger();
+	//_dm.trigger();
 }
 
 //-------------------------------------

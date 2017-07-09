@@ -4,6 +4,8 @@
 void ofViewApp::setup()
 {
 	ofBackground(23, 24, 26);
+	ofSetCircleResolution(60);
+	//ofEnableSmoothing();
 	//ofDisableArbTex();
 	squareMgr::GetInstance()->setup();
 	ofSetFrameRate(60);
