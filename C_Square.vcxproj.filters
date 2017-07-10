@@ -310,6 +310,9 @@
     <ClCompile Include="src\draw\DPingPong.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DMandelbrotSet.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -780,6 +783,9 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DPingPong.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DMandelbrotSet.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

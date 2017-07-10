@@ -32,10 +32,8 @@ private:
 	DStar _ds;
 	DMetaBall3D _dm;
 	DPingPong _dpp;
+	DMandelbrotSet _dms;
 
-	//Filter
-	glitchFilter _glitch;
-	bool _enableGlitch;
 
 	//Camera
 	bool _autoRotate;
@@ -47,4 +45,6 @@ private:
 
 private:
 	ofxPostProcessing _post;
+
+
 };

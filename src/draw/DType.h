@@ -12,6 +12,9 @@ enum eDType
 	,eDStar
 	,eDMetaBall3D
 	,eDPingPong
+	,eDMandelbrotSet
+	//Not Yet
+	,eDAudioMesh
 	,eDGrowShape
 	,eDTypeNum
 };

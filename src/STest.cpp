@@ -16,18 +16,9 @@ void STest::update(float delta)
 	//_dr.update(delta);
 	//_ds.update(delta);
 	//_dm.update(delta);
-	_dpp.update(delta);
+	//_dpp.update(delta);
+	_dms.update(delta);
 
-	//_enableGlitch = (ofGetFrameNum() % 5 == 0 && rand() % 10 < 5 ) ? true : false;
-
-	//if (_enableGlitch)
-	//{
-	//	_glitch.begin();
-	//	{
-	//		_life.draw(0, 0, _drawRect.width, _drawRect.height);
-	//	}
-	//	_glitch.end();
-	//}
 	if (_autoRotate)
 	{
 		_cam.rotateAround(delta * 30, ofVec3f(0, -1, 0), ofVec3f(0, 0, 0));
@@ -58,22 +49,12 @@ void STest::draw()
 			//_dr.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_ds.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dm.draw(0, 0, _drawRect.width, _drawRect.height);
-			_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
+			_dms.draw(0, 0, _drawRect.width, _drawRect.height);
 		}	
 		_post.end();
 		ofDisableDepthTest();
 
-		//ofFill();
-		//ofSetColor(255, 1);
-		//ofDrawRectangle(_drawRect);
-		//if (_enableGlitch)
-		//{
-		//	_glitch.draw(0, 0, _drawRect.width, _drawRect.height);
-		//}
-		//else
-		//{
-		//	_life.draw(0, 0, _drawRect.width, _drawRect.height);
-		//}
 		
 		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
 		//_cl.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -104,11 +85,9 @@ void STest::start()
 	//_ds.start();
 	//_dm.setBaseSize(_drawRect.width);
 	//_dm.start();
-	_dpp.start();
+	//_dpp.start();
+	_dms.start();
 	
-
-	_glitch.set(_drawRect.width, _drawRect.height);
-	_glitch.setGlitchType(eGlitchType::eGlitchCut);
 
 	setupPost();
 
@@ -149,7 +128,6 @@ void STest::setupPost()
 		//_post.createPass<BloomPass>()->setEnabled(true);
 		//_post.createPass<NoiseWarpPass>()->setEnabled(true);
 		//_post.createPass<ZoomBlurPass>()->setEnabled(true);
-		
 	}
 
 }
