@@ -92,9 +92,9 @@ const int cDPPWireNode = 50;
 const int cDPPWireHodeHalf = 25;
 
 //DMandelbrotSet
-const int cDMSCanvasWidth = 500;
-const int cDMSCanvasHeight = 500;
-const int cDMSMaximunCheck = 50;
+const int cDMSCanvasWidth = 800;
+const int cDMSCanvasHeight = 800;
+const int cDMSMaximunCheck = 500;
 const pair<double, double> cDMRealPartRange(-1.5, 1.5);
 const pair<double, double> cDMImaginePartRange(-1.5, 1.5);
 #pragma endregion

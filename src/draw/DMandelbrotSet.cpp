@@ -5,19 +5,27 @@ void DMandelbrotSet::update(float delta)
 {
 	CHECK_START();
 
-	if (_zoomScale < 500.0f)
+	_timer -= delta;
+	if (_timer < 0.0)
 	{
-		_zoomScale += _zoomVal * delta;
-		//_zoomScale *= 2;
-		float p = 1.0 / _zoomScale;
-		float rMin = _zoomCenter.x - _distRMin * p;
-		float rMax = _zoomCenter.x + _distRMax * p;
-		float iMin = _zoomCenter.y - _distIMin * p;
-		float iMax = _zoomCenter.y + _distIMax * p;
+		cout << _zoomScale << endl;
+		if (_zoomScale < 10000000.0)
+		{
+			//_zoomScale += _zoomVal * delta;
+			_zoomScale *= 2;
+			double p = 1.0 / _zoomScale;
+			double rMin = _zoomCenter.x - _distRMin * p;
+			double rMax = _zoomCenter.x + _distRMax * p;
+			double iMin = _zoomCenter.y - _distIMin * p;
+			double iMax = _zoomCenter.y + _distIMax * p;
 
-		drawMandelbrot(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
-		_display.update();
+			drawMandelbrot(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
+			_display.update();
+		}
+		_timer = _zoomTime;
 	}
+
+	
 
 	
 }
@@ -38,13 +46,14 @@ void DMandelbrotSet::draw(int x, int y, int w, int h)
 void DMandelbrotSet::start()
 {
 	_isStart = true;
-	//_pix.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
+	_timer = _zoomTime;
+
 	_display.clear();
 	_display.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
 	_zoomScale = 1.0f;
 	_zoomVal = 100.0f;
-	_zoomCenter.x = 0.26;//ofRandom(cDMRealPartRange.first, cDMRealPartRange.second);
-	_zoomCenter.y = 0;
+	_zoomCenter.x = -0.1011;//ofRandom(cDMRealPartRange.first, cDMRealPartRange.second);
+	_zoomCenter.y = 0.9563;
 	
 	_distRMin = abs(cDMRealPartRange.first - _zoomCenter.x);
 	_distRMax = abs(cDMRealPartRange.second - _zoomCenter.x);
@@ -59,7 +68,6 @@ void DMandelbrotSet::start()
 		, cDMImaginePartRange.second
 	);
 	_display.update();
-	//_display.setFromPixels(_pix);
 }
 
 //-------------------------------------
@@ -70,7 +78,7 @@ void DMandelbrotSet::stop()
 }
 
 //-------------------------------------
-void DMandelbrotSet::drawMandelbrot(ofPixelsRef pix, float rmin, float rmax, float imin, float imax)
+void DMandelbrotSet::drawMandelbrot(ofPixelsRef pix, double rmin, double rmax, double imin, double imax)
 {
 	double diffR = (rmax - rmin) / cDMSCanvasWidth;
 	double diffI = (imax - imin) / cDMSCanvasHeight;
@@ -79,22 +87,19 @@ void DMandelbrotSet::drawMandelbrot(ofPixelsRef pix, float rmin, float rmax, flo
 		for (int x = 0; x < cDMSCanvasWidth; x++)
 		{
 			int index = (x + y * cDMSCanvasWidth) * 3;
-			double rValS, rVal;
-			rValS = rVal = rmin + diffR * x;
-			double iValS, iVal;
-			iValS = iVal = imin + diffI * y;
+			double r0, r, i0, i;
+			double temp;
 
+			r0 = rmin + diffR * x;
+			i0 = imin + diffI * y;
+			r = 0;
+			i = 0;
 			int n = 0;
-			while (n < cDMSMaximunCheck)
+			while (n < cDMSMaximunCheck && (r * r + i * i) < 4)
 			{
-				double r = rVal * rVal - iVal * iVal;
-				double i = 2 * rVal * iVal;
-				rVal = r + rValS;
-				iVal = i + iValS;
-				if (abs(rVal + iVal) > 16)
-				{
-					break;
-				}
+				temp = r*r - i*i + r0;
+				i = 2 * r * i + i0;
+				r = temp;
 				n++;
 			}
 

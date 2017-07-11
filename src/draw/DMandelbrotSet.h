@@ -7,6 +7,7 @@ class DMandelbrotSet : public DBase
 public:
 	DMandelbrotSet()
 		:DBase(eDMandelbrotSet)
+		, _zoomTime(1.0)
 	{}
 
 	void update(float delta) override;
@@ -16,12 +17,13 @@ public:
 	void stop() override;
 
 private:
-	void drawMandelbrot(ofPixelsRef pix, float rmin, float rmax, float imin, float imax);
+	void drawMandelbrot(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 
 
 private:
+	float _zoomTime;
 	ofImage _display;
 	ofVec2f _zoomCenter;
-	float _distRMin, _distRMax, _distIMin, _distIMax;
-	float _zoomScale, _zoomVal;
+	double _distRMin, _distRMax, _distIMin, _distIMax;
+	double _zoomScale, _zoomVal;
 };
