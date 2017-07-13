@@ -24,10 +24,6 @@ void DMandelbrotSet::update(float delta)
 		}
 		_timer = _zoomTime;
 	}
-
-	
-
-	
 }
 
 //-------------------------------------
@@ -80,6 +76,10 @@ void DMandelbrotSet::stop()
 //-------------------------------------
 void DMandelbrotSet::drawMandelbrot(ofPixelsRef pix, double rmin, double rmax, double imin, double imax)
 {
+	int histogram[cDMSMaximunCheck] = {0};
+	ofColor pattern[cDMSMaximunCheck];
+
+	
 	double diffR = (rmax - rmin) / cDMSCanvasWidth;
 	double diffI = (imax - imin) / cDMSCanvasHeight;
 	for (int y = 0; y < cDMSCanvasHeight; y++)
@@ -102,16 +102,35 @@ void DMandelbrotSet::drawMandelbrot(ofPixelsRef pix, double rmin, double rmax, d
 				r = temp;
 				n++;
 			}
-
-			double gray = ofMap(n, 0, cDMSMaximunCheck, 0, 1);
-			gray = ofMap(sqrt(gray), 0, 1, 0, 255);
-			if (n == cDMSMaximunCheck)
-			{
-				gray = 0;
-			}
-			pix[index] = gray;
-			pix[index + 1] = gray;
-			pix[index + 2] = gray;
+			_iterMat[y][x] = n - 1;
+			histogram[n - 1]++;
 		}
 	}
+
+	//Create color pattern
+	float total = cDMSCanvasHeight * cDMSCanvasWidth;
+	int counter = 0;
+	ofColor c(255, 0, 0);
+	for (int i = 0; i < cDMSMaximunCheck; i++)
+	{
+		counter += histogram[i];
+		float hueAngle = 90 + (counter / total) * 180;
+		c.setHueAngle(hueAngle);
+		pattern[i].set(c);
+	}
+	pattern[cDMSMaximunCheck - 1].set(0, 0, 0);
+
+	//Render color
+	for (int y = 0; y < cDMSCanvasHeight; y++)
+	{
+		for (int x = 0; x < cDMSCanvasWidth; x++)
+		{
+			int index = (x + y * cDMSCanvasWidth) * 3;
+
+			pix[index] = pattern[_iterMat[y][x]].r;
+			pix[index + 1] = pattern[_iterMat[y][x]].g;
+			pix[index + 2] = pattern[_iterMat[y][x]].b;
+		}
+	}
+	
 }

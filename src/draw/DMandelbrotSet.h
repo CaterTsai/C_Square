@@ -26,4 +26,6 @@ private:
 	ofVec2f _zoomCenter;
 	double _distRMin, _distRMax, _distIMin, _distIMax;
 	double _zoomScale, _zoomVal;
+
+	int _iterMat[cDMSCanvasHeight][cDMSCanvasWidth];
 };
