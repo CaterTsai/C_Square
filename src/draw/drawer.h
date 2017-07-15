@@ -12,3 +12,4 @@
 #include "DMetaball3D.h"
 #include "DPingPong.h"
 #include "DMandelbrotSet.h"
+#include "DJuliaSet.h"

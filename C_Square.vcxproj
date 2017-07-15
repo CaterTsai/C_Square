@@ -202,6 +202,7 @@
     <ClCompile Include="src\draw\DDepthRect.cpp" />
     <ClCompile Include="src\draw\DECA.cpp" />
     <ClCompile Include="src\draw\DFlash.cpp" />
+    <ClCompile Include="src\draw\DJuliaSet.cpp" />
     <ClCompile Include="src\draw\DLife.cpp" />
     <ClCompile Include="src\draw\DMandelbrotSet.cpp" />
     <ClCompile Include="src\draw\DMetaball3D.cpp" />
@@ -306,6 +307,7 @@
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h" />
     <ClInclude Include="src\draw\DCircleLine.h" />
     <ClInclude Include="src\draw\DECA.h" />
+    <ClInclude Include="src\draw\DJuliaSet.h" />
     <ClInclude Include="src\draw\DLife.h" />
     <ClInclude Include="src\draw\DMandelbrotSet.h" />
     <ClInclude Include="src\draw\DMetaball3D.h" />

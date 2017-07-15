@@ -33,6 +33,7 @@ private:
 	DMetaBall3D _dm;
 	DPingPong _dpp;
 	DMandelbrotSet _dms;
+	DJuliaSet _djs;
 
 
 	//Camera

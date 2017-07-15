@@ -17,8 +17,8 @@ public:
 	void stop() override;
 
 private:
-	void drawMandelbrot(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
-
+	void drawMandelbrotHistogram(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
+	void drawMandelbrotSmooth(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 
 private:
 	float _zoomTime;
@@ -28,4 +28,5 @@ private:
 	double _zoomScale, _zoomVal;
 
 	int _iterMat[cDMSCanvasHeight][cDMSCanvasWidth];
+	float _pMat[cDMSCanvasHeight][cDMSCanvasWidth];
 };

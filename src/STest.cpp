@@ -18,7 +18,7 @@ void STest::update(float delta)
 	//_dm.update(delta);
 	//_dpp.update(delta);
 	_dms.update(delta);
-
+	//_djs.update(delta);
 	if (_autoRotate)
 	{
 		_cam.rotateAround(delta * 30, ofVec3f(0, -1, 0), ofVec3f(0, 0, 0));
@@ -51,6 +51,7 @@ void STest::draw()
 			//_dm.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
 			_dms.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_djs.draw(0, 0, _drawRect.width, _drawRect.height);
 		}	
 		_post.end();
 		ofDisableDepthTest();
@@ -87,7 +88,7 @@ void STest::start()
 	//_dm.start();
 	//_dpp.start();
 	_dms.start();
-	
+	//_djs.start();
 
 	setupPost();
 
