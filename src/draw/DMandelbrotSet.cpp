@@ -6,6 +6,7 @@ DMandelbrotSet::DMandelbrotSet()
 	, _zoomTime(1.0)
 {
 	if (ofIsGLProgrammableRenderer()) {
+		//string 
 		_mandelbrot.load("MandelbrotSet/shadersGL3/mandelbrot");
 	}
 	else {

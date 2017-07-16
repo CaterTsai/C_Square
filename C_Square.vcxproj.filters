@@ -417,6 +417,18 @@
     <Filter Include="src\ofxKMarchingCubes">
       <UniqueIdentifier>{1cca939c-dd56-4f4c-871b-f87860389bd1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shader">
+      <UniqueIdentifier>{3bd973bd-a509-4dd1-aedc-47fcae5bc0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\mandelbrot">
+      <UniqueIdentifier>{9fca14cc-bfe3-48b9-8c9c-cf66487ba066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\mandelbrot\GL2">
+      <UniqueIdentifier>{0741883f-34e5-4440-b1d0-8936a06d3f37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\mandelbrot\GL3">
+      <UniqueIdentifier>{e2b21f62-f217-436a-8aac-ce76c1d3ab0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h">
@@ -797,5 +809,19 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\data\MandelbrotSet\shadersGL2\mandelbrot.frag">
+      <Filter>shader\mandelbrot\GL2</Filter>
+    </None>
+    <None Include="bin\data\MandelbrotSet\shadersGL2\mandelbrot.vert">
+      <Filter>shader\mandelbrot\GL2</Filter>
+    </None>
+    <None Include="bin\data\MandelbrotSet\shadersGL3\mandelbrot.frag">
+      <Filter>shader\mandelbrot\GL3</Filter>
+    </None>
+    <None Include="bin\data\MandelbrotSet\shadersGL3\mandelbrot.vert">
+      <Filter>shader\mandelbrot\GL3</Filter>
+    </None>
   </ItemGroup>
 </Project>
