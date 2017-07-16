@@ -1,28 +1,41 @@
 #include "DMandelbrotSet.h"
 
 //-------------------------------------
+DMandelbrotSet::DMandelbrotSet()
+	:DBase(eDMandelbrotSet)
+	, _zoomTime(1.0)
+{
+	if (ofIsGLProgrammableRenderer()) {
+		_mandelbrot.load("MandelbrotSet/shadersGL3/mandelbrot");
+	}
+	else {
+		_mandelbrot.load("MandelbrotSet/shadersGL2/mandelbrot");
+	}
+}
+
+//-------------------------------------
 void DMandelbrotSet::update(float delta)
 {
 	CHECK_START();
 
 	_timer -= delta;
-	if (_timer < 0.0)
-	{
+	//if (_timer < 0.0)
+	//{
 		if (_zoomScale < 10000000.0)
 		{
 			//_zoomScale += _zoomVal * delta;
-			_zoomScale *= 2;
+			_zoomScale *= 1.05;
 			double p = 1.0 / _zoomScale;
 			double rMin = _zoomCenter.x - _distRMin * p;
 			double rMax = _zoomCenter.x + _distRMax * p;
 			double iMin = _zoomCenter.y - _distIMin * p;
 			double iMax = _zoomCenter.y + _distIMax * p;
 
-			drawMandelbrotSmooth(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
+			drawMandelbrotShader(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
 			_display.update();
 		}
 		_timer = _zoomTime;
-	}
+	//}
 }
 
 //-------------------------------------
@@ -35,34 +48,57 @@ void DMandelbrotSet::draw(int x, int y, int w, int h)
 		_display.draw(w * -0.5, h * -0.5, w, h);
 	}
 	ofPopStyle();
+
 }
 
 //-------------------------------------
 void DMandelbrotSet::start()
 {
 	_isStart = true;
-	_timer = _zoomTime;
 
-	_display.clear();
-	_display.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
+	_timer = _zoomTime;
 	_zoomScale = 1.0f;
 	_zoomVal = 100.0f;
-	_zoomCenter.x = -0.1011;//ofRandom(cDMSRealPartRange.first, cDMSRealPartRange.second);
-	_zoomCenter.y = 0.9563;
-	
+	//_zoomCenter.x = -0.1011;//ofRandom(cDMSRealPartRange.first, cDMSRealPartRange.second);
+	//_zoomCenter.y = 0.9563;
+	_zoomCenter.x = 0.28693186889504513;
+	_zoomCenter.y = 0.014286693904085048;
+
 	_distRMin = abs(cDMSRealPartRange.first - _zoomCenter.x);
 	_distRMax = abs(cDMSRealPartRange.second - _zoomCenter.x);
 	_distIMin = abs(cDMSImaginePartRange.first - _zoomCenter.y);
 	_distIMax = abs(cDMSImaginePartRange.second - _zoomCenter.y);
 
+	_display.clear();
+	_display.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
 
+	initShader();
+	
+}
+
+//-------------------------------------
+void DMandelbrotSet::stop()
+{
+	_isStart = false;
+
+}
+
+//-------------------------------------
+void DMandelbrotSet::init()
+{
 	double p = 1.0 / _zoomScale;
 	double rMin = _zoomCenter.x - _distRMin * p;
 	double rMax = _zoomCenter.x + _distRMax * p;
 	double iMin = _zoomCenter.y - _distIMin * p;
 	double iMax = _zoomCenter.y + _distIMax * p;
 
-	drawMandelbrotSmooth(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
+	drawMandelbrotSmooth(
+		_display.getPixelsRef()
+		,rMin
+		,rMax
+		,iMin
+		,iMax
+	);
 	//drawMandelbrotSmooth(
 	//	_display.getPixelsRef()
 	//	,cDMSRealPartRange.first
@@ -74,10 +110,31 @@ void DMandelbrotSet::start()
 }
 
 //-------------------------------------
-void DMandelbrotSet::stop()
+void DMandelbrotSet::initShader()
 {
-	_isStart = false;
+	if (!_mandelbrot.isLoaded())
+	{
+		ofLog(OF_LOG_ERROR, "[DMandelbrotSet::initShader]Load shader failed");
+		return;
+	}
 
+	
+	_canvas.allocate(cDMSCanvasWidth, cDMSCanvasHeight, GL_RGB);
+	_temp.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
+
+	double p = 1.0 / _zoomScale;
+	double rMin = _zoomCenter.x - _distRMin * p;
+	double rMax = _zoomCenter.x + _distRMax * p;
+	double iMin = _zoomCenter.y - _distIMin * p;
+	double iMax = _zoomCenter.y + _distIMax * p;
+	drawMandelbrotShader(
+		_display.getPixelsRef()
+		, rMin
+		, rMax
+		, iMin
+		, iMax
+	);
+	_display.update();
 }
 
 //-------------------------------------
@@ -226,4 +283,27 @@ void DMandelbrotSet::drawMandelbrotSmooth(ofPixelsRef pix, double rmin, double r
 		}
 	}
 
+}
+
+//-------------------------------------
+void DMandelbrotSet::drawMandelbrotShader(ofPixelsRef pix, double rmin, double rmax, double imin, double imax)
+{
+	_canvas.begin();
+	ofClear(0);
+	ofSetColor(255);
+	_mandelbrot.begin();
+	_mandelbrot.setUniform1f("width", cDMSCanvasWidth);
+	_mandelbrot.setUniform1f("height", cDMSCanvasHeight);
+	_mandelbrot.setUniform1f("rmin", rmin);
+	_mandelbrot.setUniform1f("rmax", rmax);
+	_mandelbrot.setUniform1f("imin", imin);
+	_mandelbrot.setUniform1f("imax", imax);
+	_mandelbrot.setUniform1i("iterMax", cDMSMaximunCheck);
+	{
+		_temp.draw(0, 0);
+	}
+	_mandelbrot.end();
+	_canvas.end();
+
+	_canvas.readToPixels(pix);
 }
