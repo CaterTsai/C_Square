@@ -16,11 +16,12 @@ public:
 private:
 	void init();
 	void initShader();
+	void initPattern();
 	void drawMandelbrotHistogram(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 	void drawMandelbrotSmooth(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 	void drawMandelbrotShader(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 private:
-	ofShader _mandelbrot;
+	
 	float _zoomTime;
 	ofImage _display;
 	ofVec2f _zoomCenter;
@@ -30,6 +31,10 @@ private:
 	int _iterMat[cDMSCanvasHeight][cDMSCanvasWidth];
 	float _pMat[cDMSCanvasHeight][cDMSCanvasWidth];
 
+
+	//Shader
+	ofShader _mandelbrot;
 	ofImage _temp;
+	ofImage _pattern;
 	ofFbo _canvas;
 };
