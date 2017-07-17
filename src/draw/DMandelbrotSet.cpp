@@ -20,23 +20,22 @@ void DMandelbrotSet::update(float delta)
 	CHECK_START();
 
 	_timer -= delta;
-	//if (_timer < 0.0)
-	//{
-		if (_zoomScale < 10000000.0)
-		{
-			//_zoomScale += _zoomVal * delta;
-			_zoomScale *= 1.05;
-			double p = 1.0 / _zoomScale;
-			double rMin = _zoomCenter.x - _distRMin * p;
-			double rMax = _zoomCenter.x + _distRMax * p;
-			double iMin = _zoomCenter.y - _distIMin * p;
-			double iMax = _zoomCenter.y + _distIMax * p;
 
-			drawMandelbrotShader(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
-			_display.update();
-		}
-		_timer = _zoomTime;
-	//}
+	if (_zoomScale < 10000.0)
+	{
+		//_zoomScale += _zoomVal * delta;
+		_zoomScale *= 1.05;
+		double p = 1.0 / _zoomScale;
+		double rMin = _zoomCenter.x - _distRMin * p;
+		double rMax = _zoomCenter.x + _distRMax * p;
+		double iMin = _zoomCenter.y - _distIMin * p;
+		double iMax = _zoomCenter.y + _distIMax * p;
+
+		drawMandelbrotShader(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
+		_display.update();
+	}
+	_timer = _zoomTime;
+
 }
 
 //-------------------------------------
@@ -47,6 +46,7 @@ void DMandelbrotSet::draw(int x, int y, int w, int h)
 	ofSetColor(255);
 	{
 		_display.draw(w * -0.5, h * -0.5, w, h);
+		//_pattern.draw(0, 0, 100, 100);
 	}
 	ofPopStyle();
 
@@ -100,13 +100,6 @@ void DMandelbrotSet::init()
 		,iMin
 		,iMax
 	);
-	//drawMandelbrotSmooth(
-	//	_display.getPixelsRef()
-	//	,cDMSRealPartRange.first
-	//	, cDMSRealPartRange.second
-	//	, cDMSImaginePartRange.first
-	//	, cDMSImaginePartRange.second
-	//);
 	_display.update();
 }
 
@@ -118,8 +111,9 @@ void DMandelbrotSet::initShader()
 		ofLog(OF_LOG_ERROR, "[DMandelbrotSet::initShader]Load shader failed");
 		return;
 	}
-
 	
+	initPattern();
+
 	_canvas.allocate(cDMSCanvasWidth, cDMSCanvasHeight, GL_RGB);
 	_temp.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
 
@@ -136,6 +130,51 @@ void DMandelbrotSet::initShader()
 		, iMax
 	);
 	_display.update();
+
+	
+}
+
+//-------------------------------------
+void DMandelbrotSet::initPattern()
+{
+	_pattern.clear();
+	_pattern.allocate(cDMSMaximunCheck, 1, ofImageType::OF_IMAGE_COLOR);
+	ofPixelsRef pix = _pattern.getPixelsRef();
+
+	vector<ofColor> colorSeed;
+	colorSeed.resize(cDMSColorPatternNum);
+	ofColor c(50, 200, 50);
+	float angle = c.getHueAngle();
+	angle += ofRandom(-180, 180);
+	c.setHueAngle(angle);
+	for (int i = 0; i < cDMSColorPatternNum; i++)
+	{	
+		colorSeed[i] = c;
+		angle += ofRandom(45, 90);
+		c.setHueAngle(angle);		
+	}
+
+	int diff = static_cast<int>((float)cDMSMaximunCheck / (cDMSColorPatternNum - 1));
+	for (int i = 1; i < cDMSColorPatternNum; i++)
+	{
+		int s = (i - 1) * diff;
+		int e = i * diff;
+		
+		for (int j = 0; j < diff; j++)
+		{
+			if (s + j >= e)
+			{
+				break;
+			}
+			auto color = colorSeed[i - 1].getLerped(colorSeed[i], (float)j / diff);
+
+			pix[(s + j) * 3] = color.r;
+			pix[(s + j) * 3 + 1] = color.g;
+			pix[(s + j) * 3 + 2] = color.b;
+		}
+	}
+
+	_pattern.update();
 }
 
 //-------------------------------------
@@ -293,6 +332,7 @@ void DMandelbrotSet::drawMandelbrotShader(ofPixelsRef pix, double rmin, double r
 	ofClear(0);
 	ofSetColor(255);
 	_mandelbrot.begin();
+	_mandelbrot.setUniformTexture("pattern", _pattern, 1);
 	_mandelbrot.setUniform1f("width", cDMSCanvasWidth);
 	_mandelbrot.setUniform1f("height", cDMSCanvasHeight);
 	_mandelbrot.setUniform1f("rmin", rmin);
