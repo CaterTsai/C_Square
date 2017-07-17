@@ -421,13 +421,13 @@
       <UniqueIdentifier>{3bd973bd-a509-4dd1-aedc-47fcae5bc0f3}</UniqueIdentifier>
     </Filter>
     <Filter Include="shader\mandelbrot">
-      <UniqueIdentifier>{9fca14cc-bfe3-48b9-8c9c-cf66487ba066}</UniqueIdentifier>
+      <UniqueIdentifier>{8c540f24-3403-479d-9891-b4cd2d5a511b}</UniqueIdentifier>
     </Filter>
     <Filter Include="shader\mandelbrot\GL2">
-      <UniqueIdentifier>{0741883f-34e5-4440-b1d0-8936a06d3f37}</UniqueIdentifier>
+      <UniqueIdentifier>{e11342a9-280a-4493-b147-9896d43e9b0f}</UniqueIdentifier>
     </Filter>
     <Filter Include="shader\mandelbrot\GL3">
-      <UniqueIdentifier>{e2b21f62-f217-436a-8aac-ce76c1d3ab0c}</UniqueIdentifier>
+      <UniqueIdentifier>{e123aff5-009a-4148-8cde-2eed5c94c060}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -811,16 +811,16 @@
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\data\MandelbrotSet\shadersGL2\mandelbrot.frag">
+    <None Include="shaderSrc\MandelbrotSet\shadersGL2\mandelbrot.frag">
       <Filter>shader\mandelbrot\GL2</Filter>
     </None>
-    <None Include="bin\data\MandelbrotSet\shadersGL2\mandelbrot.vert">
+    <None Include="shaderSrc\MandelbrotSet\shadersGL2\mandelbrot.vert">
       <Filter>shader\mandelbrot\GL2</Filter>
     </None>
-    <None Include="bin\data\MandelbrotSet\shadersGL3\mandelbrot.frag">
+    <None Include="shaderSrc\MandelbrotSet\shadersGL3\mandelbrot.frag">
       <Filter>shader\mandelbrot\GL3</Filter>
     </None>
-    <None Include="bin\data\MandelbrotSet\shadersGL3\mandelbrot.vert">
+    <None Include="shaderSrc\MandelbrotSet\shadersGL3\mandelbrot.vert">
       <Filter>shader\mandelbrot\GL3</Filter>
     </None>
   </ItemGroup>
