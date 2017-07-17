@@ -94,8 +94,7 @@ const int cDPPWireHodeHalf = 25;
 //DMandelbrotSet
 const int cDMSCanvasWidth = 800;
 const int cDMSCanvasHeight = 800;
-const int cDMSMaximunCheck = 150;
-const int cDMSColorPatternNum = 5;
+const int cDMSMaximunCheck = 100;
 const pair<double, double> cDMSRealPartRange(-1.5, 1.5);
 const pair<double, double> cDMSImaginePartRange(-1.5, 1.5);
 
