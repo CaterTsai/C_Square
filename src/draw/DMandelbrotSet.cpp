@@ -3,7 +3,7 @@
 //-------------------------------------
 DMandelbrotSet::DMandelbrotSet()
 	:DBase(eDMandelbrotSet)
-	, _zoomTime(1.0)
+	, _zoomV(1.02)
 {
 	if (ofIsGLProgrammableRenderer()) {
 		//string 
@@ -12,29 +12,36 @@ DMandelbrotSet::DMandelbrotSet()
 	else {
 		_mandelbrot.load("MandelbrotSet/shadersGL2/mandelbrot");
 	}
+
+	initCenter();
 }
 
 //-------------------------------------
 void DMandelbrotSet::update(float delta)
 {
 	CHECK_START();
-
 	_timer -= delta;
 
-	if (_zoomScale < 10000.0)
+	if (_zoomScale < cDMSZoomMax)
 	{
-		//_zoomScale += _zoomVal * delta;
-		_zoomScale *= 1.05;
-		double p = 1.0 / _zoomScale;
-		double rMin = _zoomCenter.x - _distRMin * p;
-		double rMax = _zoomCenter.x + _distRMax * p;
-		double iMin = _zoomCenter.y - _distIMin * p;
-		double iMax = _zoomCenter.y + _distIMax * p;
-
-		drawMandelbrotShader(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
-		_display.update();
+		_zoomScale *= _zoomV;
 	}
-	_timer = _zoomTime;
+	else
+	{
+		_centerId = (_centerId + 1) % cDMSColorPatternNum;
+		_zoomScale = 1.0f;
+		_zoomCenter = _zoomCenterSet[_centerId];
+		initPattern();
+	}
+
+	double p = 1.0 / _zoomScale;
+	double rMin = _zoomCenter.x - _distRMin * p;
+	double rMax = _zoomCenter.x + _distRMax * p;
+	double iMin = _zoomCenter.y - _distIMin * p;
+	double iMax = _zoomCenter.y + _distIMax * p;
+
+	drawMandelbrotShader(_display.getPixelsRef(), rMin, rMax, iMin, iMax);
+	_display.update();
 
 }
 
@@ -57,13 +64,9 @@ void DMandelbrotSet::start()
 {
 	_isStart = true;
 
-	_timer = _zoomTime;
+	_centerId = 0;
 	_zoomScale = 1.0f;
-	_zoomVal = 100.0f;
-	//_zoomCenter.x = -0.1011;//ofRandom(cDMSRealPartRange.first, cDMSRealPartRange.second);
-	//_zoomCenter.y = 0.9563;
-	_zoomCenter.x = 0.28693186889504513;
-	_zoomCenter.y = 0.014286693904085048;
+	_zoomCenter = _zoomCenterSet[0];
 
 	_distRMin = abs(cDMSRealPartRange.first - _zoomCenter.x);
 	_distRMax = abs(cDMSRealPartRange.second - _zoomCenter.x);
@@ -74,7 +77,6 @@ void DMandelbrotSet::start()
 	_display.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
 
 	initShader();
-	
 }
 
 //-------------------------------------
@@ -113,7 +115,8 @@ void DMandelbrotSet::initShader()
 	}
 	
 	initPattern();
-
+	_canvas.clear();
+	_temp.clear();
 	_canvas.allocate(cDMSCanvasWidth, cDMSCanvasHeight, GL_RGB);
 	_temp.allocate(cDMSCanvasWidth, cDMSCanvasHeight, ofImageType::OF_IMAGE_COLOR);
 
@@ -175,6 +178,17 @@ void DMandelbrotSet::initPattern()
 	}
 
 	_pattern.update();
+}
+
+//-------------------------------------
+void DMandelbrotSet::initCenter()
+{
+	_zoomCenterSet[0].set(0.28693186889504513, 0.014286693904085048);
+	_zoomCenterSet[1].set(-1.156430e+0, 2.792948e-1);
+	_zoomCenterSet[2].set(-6.333014e-1, -3.884263e-1);
+	_zoomCenterSet[3].set(-2.292368e-1, 6.451673e-1);
+	_zoomCenterSet[4].set(-1.786491e+0, 8.185967e-10);
+	_zoomCenterSet[5].set(-4.170662e-1, -6.029591e-1);
 }
 
 //-------------------------------------

@@ -31,8 +31,20 @@ int main() {
 
 	ofRunMainLoop();
 #else //PROJECTION_MODE
+	//ofGLFWWindowSettings settings;
+	//settings.width = cViewWindowWidth;
+	//settings.height = cViewWindowHeight;
+	//settings.windowMode = OF_WINDOW;
+	//settings.setGLVersion(4,3);
+
+	//shared_ptr<ofAppBaseWindow> viewWindow = ofCreateWindow(settings);
+	//shared_ptr<ofViewApp> viewApp(new ofViewApp);
+	//ofRunApp(viewWindow, viewApp);
+	//ofRunMainLoop();
+
 	ofSetupOpenGL(cViewWindowWidth, cViewWindowHeight, OF_WINDOW);
 	ofRunApp(new ofViewApp());
+
 #endif //PROJECTION_MODE
 
 

@@ -129,6 +129,7 @@ void STest::setupPost()
 		//_post.createPass<BloomPass>()->setEnabled(true);
 		//_post.createPass<NoiseWarpPass>()->setEnabled(true);
 		//_post.createPass<ZoomBlurPass>()->setEnabled(true);
+		//_post.createPass<LimbDarkeningPass>()->setEnabled(true);
 	}
 
 }

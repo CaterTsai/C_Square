@@ -17,20 +17,20 @@ private:
 	void init();
 	void initShader();
 	void initPattern();
+	void initCenter();
 	void drawMandelbrotHistogram(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 	void drawMandelbrotSmooth(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 	void drawMandelbrotShader(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 private:
-	
-	float _zoomTime;
 	ofImage _display;
 	ofVec2f _zoomCenter;
+	ofVec2f _zoomCenterSet[cDMSCenterNum];
+	int _centerId = 0;
 	double _distRMin, _distRMax, _distIMin, _distIMax;
-	double _zoomScale, _zoomVal;
+	double _zoomScale, _zoomV;
 
 	int _iterMat[cDMSCanvasHeight][cDMSCanvasWidth];
 	float _pMat[cDMSCanvasHeight][cDMSCanvasWidth];
-
 
 	//Shader
 	ofShader _mandelbrot;

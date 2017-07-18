@@ -92,10 +92,12 @@ const int cDPPWireNode = 50;
 const int cDPPWireHodeHalf = 25;
 
 //DMandelbrotSet
-const int cDMSCanvasWidth = 800;
-const int cDMSCanvasHeight = 800;
-const int cDMSMaximunCheck = 150;
-const int cDMSColorPatternNum = 5;
+const int cDMSCanvasWidth = 600;
+const int cDMSCanvasHeight = 600;
+const int cDMSMaximunCheck = 500;
+const float cDMSZoomMax = 100000.0;
+const int cDMSColorPatternNum = 6;
+const int cDMSCenterNum = 15;
 const pair<double, double> cDMSRealPartRange(-1.5, 1.5);
 const pair<double, double> cDMSImaginePartRange(-1.5, 1.5);
 
