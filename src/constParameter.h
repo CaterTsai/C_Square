@@ -102,9 +102,10 @@ const pair<double, double> cDMSRealPartRange(-1.5, 1.5);
 const pair<double, double> cDMSImaginePartRange(-1.5, 1.5);
 
 //DJuliaSet
-const int cDJSCanvasWidth = 300;
-const int cDJSCanvasHeight = 300;
-const int cDJSMaximunCheck = 500;
+const int cDJSCanvasWidth = 600;
+const int cDJSCanvasHeight = 600;
+const int cDJSMaximunCheck = 100;
+const int cDJSColorPatternNum = 10;
 const pair<double, double> cDJSRealPartRange(-1.5, 1.5);
 const pair<double, double> cDJSImaginePartRange(-1.5, 1.5);
 #pragma endregion

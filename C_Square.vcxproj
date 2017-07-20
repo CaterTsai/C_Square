@@ -417,6 +417,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaderSrc\JuliaSet\shadersGL2\julia.frag" />
+    <None Include="shaderSrc\JuliaSet\shadersGL2\julia.vert" />
+    <None Include="shaderSrc\JuliaSet\shadersGL3\julia.frag" />
+    <None Include="shaderSrc\JuliaSet\shadersGL3\julia.vert" />
     <None Include="shaderSrc\MandelbrotSet\shadersGL2\mandelbrot.frag" />
     <None Include="shaderSrc\MandelbrotSet\shadersGL2\mandelbrot.vert" />
     <None Include="shaderSrc\MandelbrotSet\shadersGL3\mandelbrot.frag" />

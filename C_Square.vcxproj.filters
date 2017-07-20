@@ -429,6 +429,15 @@
     <Filter Include="shader\mandelbrot\GL3">
       <UniqueIdentifier>{e123aff5-009a-4148-8cde-2eed5c94c060}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shader\julia">
+      <UniqueIdentifier>{7ec94494-c19a-40a3-91e4-0606d045172d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\julia\GL2">
+      <UniqueIdentifier>{2d4fecbb-d52a-496e-a109-614a8f85fa03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader\julia\GL3">
+      <UniqueIdentifier>{e3e02347-6c0c-419c-a10e-e03b03f2b066}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h">
@@ -822,6 +831,18 @@
     </None>
     <None Include="shaderSrc\MandelbrotSet\shadersGL3\mandelbrot.vert">
       <Filter>shader\mandelbrot\GL3</Filter>
+    </None>
+    <None Include="shaderSrc\JuliaSet\shadersGL2\julia.frag">
+      <Filter>shader\julia\GL2</Filter>
+    </None>
+    <None Include="shaderSrc\JuliaSet\shadersGL2\julia.vert">
+      <Filter>shader\julia\GL2</Filter>
+    </None>
+    <None Include="shaderSrc\JuliaSet\shadersGL3\julia.frag">
+      <Filter>shader\julia\GL3</Filter>
+    </None>
+    <None Include="shaderSrc\JuliaSet\shadersGL3\julia.vert">
+      <Filter>shader\julia\GL3</Filter>
     </None>
   </ItemGroup>
 </Project>
