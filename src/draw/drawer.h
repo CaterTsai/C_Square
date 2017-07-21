@@ -13,3 +13,4 @@
 #include "DPingPong.h"
 #include "DMandelbrotSet.h"
 #include "DJuliaSet.h"
+#include "DTexturePrimitive.h"

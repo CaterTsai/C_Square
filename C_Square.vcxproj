@@ -209,6 +209,7 @@
     <ClCompile Include="src\draw\DPingPong.cpp" />
     <ClCompile Include="src\draw\DSphareParticle.cpp" />
     <ClCompile Include="src\draw\DStar.cpp" />
+    <ClCompile Include="src\draw\DTexturePrimitive.cpp" />
     <ClCompile Include="src\glitchFilter.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofProjectorApp.cpp" />
@@ -316,6 +317,7 @@
     <ClInclude Include="src\draw\DCylinderFlow.h" />
     <ClInclude Include="src\draw\DDepthRect.h" />
     <ClInclude Include="src\draw\DStar.h" />
+    <ClInclude Include="src\draw\DTexturePrimitive.h" />
     <ClInclude Include="src\glitchFilter.h" />
     <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubes.h" />
     <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubesTables.h" />

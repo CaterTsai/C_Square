@@ -14,7 +14,9 @@ enum eDType
 	,eDPingPong
 	,eDMandelbrotSet
 	,eDJuliaSet
+	,eTexturePrimitive
 	//Not Yet
+	,eMoveRect
 	,eDAudioMesh
 	,eDGrowShape
 	,eDTypeNum

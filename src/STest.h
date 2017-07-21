@@ -11,6 +11,7 @@ public:
 		:SBase(eSTest)
 		,_autoRotate(false)
 	{
+		_img.loadImage("giraffe.jpg");
 		setupPost();
 	}
 
@@ -34,11 +35,14 @@ private:
 	DPingPong _dpp;
 	DMandelbrotSet _dms;
 	DJuliaSet _djs;
-
+	DTexturePrimitive _dtp;
 
 	//Camera
 	bool _autoRotate;
 	ofEasyCam	_cam;
+
+private:
+	ofImage _img;
 
 //PostProcessing
 private:

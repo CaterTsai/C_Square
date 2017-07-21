@@ -18,7 +18,9 @@ void STest::update(float delta)
 	//_dm.update(delta);
 	//_dpp.update(delta);
 	//_dms.update(delta);
-	_djs.update(delta);
+	//_djs.update(delta);
+	_dtp.update(delta);
+	
 	if (_autoRotate)
 	{
 		_cam.rotateAround(delta * 30, ofVec3f(0, -1, 0), ofVec3f(0, 0, 0));
@@ -40,6 +42,7 @@ void STest::draw()
 		squareMgr::GetInstance()->updateOnUnitBegin(0, true);
 		
 		ofEnableDepthTest();
+		
 		_post.begin(_cam);
 		{
 			//_life.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -51,9 +54,13 @@ void STest::draw()
 			//_dm.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dms.draw(0, 0, _drawRect.width, _drawRect.height);
-			_djs.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_djs.draw(0, 0, _drawRect.width, _drawRect.height);
+			_img.getTexture().bind();
+			_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
+			_img.getTexture().unbind();
 		}	
 		_post.end();
+		
 		ofDisableDepthTest();
 
 		
@@ -88,7 +95,11 @@ void STest::start()
 	//_dm.start();
 	//_dpp.start();
 	//_dms.start();
-	_djs.start();
+	//_djs.start();
+
+	_dtp.setBaseSize(_drawRect.width);
+	_dtp.setTextrue(_img.getTexture());
+	_dtp.start();
 
 	setupPost();
 
@@ -115,6 +126,7 @@ void STest::trigger()
 	//_dp.trigger();
 	//_dr.trigger();
 	//_dm.trigger();
+	_dtp.trigger();
 }
 
 //-------------------------------------
