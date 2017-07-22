@@ -14,3 +14,4 @@
 #include "DMandelbrotSet.h"
 #include "DJuliaSet.h"
 #include "DTexturePrimitive.h"
+#include "DAudioMesh.h"

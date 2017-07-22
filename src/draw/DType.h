@@ -14,10 +14,10 @@ enum eDType
 	,eDPingPong
 	,eDMandelbrotSet
 	,eDJuliaSet
-	,eTexturePrimitive
+	,eDTexturePrimitive
+	,eDAudioMesh
 	//Not Yet
 	,eMoveRect
-	,eDAudioMesh
 	,eDGrowShape
 	,eDTypeNum
 };

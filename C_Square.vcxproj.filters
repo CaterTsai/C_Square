@@ -319,6 +319,9 @@
     <ClCompile Include="src\draw\DTexturePrimitive.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DAudioMesh.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -819,6 +822,9 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\draw\DTexturePrimitive.h">
+      <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DAudioMesh.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>

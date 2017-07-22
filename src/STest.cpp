@@ -19,8 +19,9 @@ void STest::update(float delta)
 	//_dpp.update(delta);
 	//_dms.update(delta);
 	//_djs.update(delta);
-	_dtp.update(delta);
-	
+	//_dtp.update(delta);
+	_dam.update(delta);
+
 	if (_autoRotate)
 	{
 		_cam.rotateAround(delta * 30, ofVec3f(0, -1, 0), ofVec3f(0, 0, 0));
@@ -55,9 +56,12 @@ void STest::draw()
 			//_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dms.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_djs.draw(0, 0, _drawRect.width, _drawRect.height);
-			_img.getTexture().bind();
-			_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
-			_img.getTexture().unbind();
+			_dam.draw(0, 0, _drawRect.width, _drawRect.height);
+
+			//Texture
+			//_img.getTexture().bind();
+			//_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
+			//_img.getTexture().unbind();
 		}	
 		_post.end();
 		
@@ -97,9 +101,11 @@ void STest::start()
 	//_dms.start();
 	//_djs.start();
 
-	_dtp.setBaseSize(_drawRect.width);
-	_dtp.setTextrue(_img.getTexture());
-	_dtp.start();
+	//_dtp.setBaseSize(_drawRect.width * 0.5);
+	//_dtp.setTextrue(_img.getTexture());
+	//_dtp.start();
+
+	_dam.start();
 
 	setupPost();
 

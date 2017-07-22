@@ -197,6 +197,7 @@
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.cpp" />
+    <ClCompile Include="src\draw\DAudioMesh.cpp" />
     <ClCompile Include="src\draw\DCircleLine.cpp" />
     <ClCompile Include="src\draw\DCylinderFlow.cpp" />
     <ClCompile Include="src\draw\DDepthRect.cpp" />
@@ -306,6 +307,7 @@
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.h" />
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.h" />
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h" />
+    <ClInclude Include="src\draw\DAudioMesh.h" />
     <ClInclude Include="src\draw\DCircleLine.h" />
     <ClInclude Include="src\draw\DECA.h" />
     <ClInclude Include="src\draw\DJuliaSet.h" />

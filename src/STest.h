@@ -36,6 +36,7 @@ private:
 	DMandelbrotSet _dms;
 	DJuliaSet _djs;
 	DTexturePrimitive _dtp;
+	DAudioMesh	_dam;
 
 	//Camera
 	bool _autoRotate;

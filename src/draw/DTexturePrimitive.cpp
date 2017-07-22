@@ -1,7 +1,7 @@
 #include "DTexturePrimitive.h"
 
 DTexturePrimitive::DTexturePrimitive()
-	:DBase(eTexturePrimitive)
+	:DBase(eDTexturePrimitive)
 	, _primitive(nullptr)
 {
 	//Sphere
@@ -40,7 +40,7 @@ void DTexturePrimitive::draw(int x, int y, int w, int h)
 	ofSetColor(255);
 	{
 		_primitive->draw();
-		//_primitive->drawWireframe();
+		_primitive->drawWireframe();
 	}
 	ofPopStyle();
 }
@@ -103,7 +103,7 @@ void DTexturePrimitive::updatePrimitive(float delta)
 	_triangles = _primitive->getMesh().getUniqueFaces();
 	ofVec3f faceNormal;
 	for (size_t i = 0; i < _triangles.size(); i++) {
-		float angle = (ofGetElapsedTimef() * 1.4);
+		float angle = (delta * 1.4);
 		float frc = ofSignedNoise(angle* (float)i * .1, angle*.05) * 10;
 		faceNormal = _triangles[i].getFaceNormal();
 		for (int j = 0; j < 3; j++) {
