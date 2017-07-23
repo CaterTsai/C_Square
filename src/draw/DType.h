@@ -16,8 +16,8 @@ enum eDType
 	,eDJuliaSet
 	,eDTexturePrimitive
 	,eDAudioMesh
+	,eDMoveRect
 	//Not Yet
-	,eMoveRect
 	,eDGrowShape
 	,eDTypeNum
 };

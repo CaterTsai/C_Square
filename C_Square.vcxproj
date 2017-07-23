@@ -207,6 +207,7 @@
     <ClCompile Include="src\draw\DLife.cpp" />
     <ClCompile Include="src\draw\DMandelbrotSet.cpp" />
     <ClCompile Include="src\draw\DMetaball3D.cpp" />
+    <ClCompile Include="src\draw\DMoveRect.cpp" />
     <ClCompile Include="src\draw\DPingPong.cpp" />
     <ClCompile Include="src\draw\DSphareParticle.cpp" />
     <ClCompile Include="src\draw\DStar.cpp" />
@@ -314,6 +315,7 @@
     <ClInclude Include="src\draw\DLife.h" />
     <ClInclude Include="src\draw\DMandelbrotSet.h" />
     <ClInclude Include="src\draw\DMetaball3D.h" />
+    <ClInclude Include="src\draw\DMoveRect.h" />
     <ClInclude Include="src\draw\DPingPong.h" />
     <ClInclude Include="src\draw\DSphareParticle.h" />
     <ClInclude Include="src\draw\DCylinderFlow.h" />
