@@ -12,14 +12,15 @@ private:
 		,eEnterDown
 		,eEnterLeft
 		,eEnterRight
-	};
+	}_eEnterD;
 	enum eExitDirection : int
 	{
 		eExitDown = 0
 		, eExitUp
 		, eExitRight
 		, eExitLeft
-	};
+	}_eExitD;
+
 public:
 	DMoveRect()
 		:DBase(eDMoveRect)
@@ -34,6 +35,10 @@ public:
 
 	void trigger() override;
 	void setGroupNum(int num);
+
+private:
+	void move(int target);
+	ofVec2f getMoveCenter(bool isEnter);
 
 private:
 	int _groupNum;

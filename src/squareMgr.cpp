@@ -119,19 +119,19 @@ void squareMgr::init(string configName)
 	param.ctrlPos[1] = ofVec2f(200, 0);
 	param.ctrlPos[2] = ofVec2f(200, 200);
 	param.ctrlPos[3] = ofVec2f(0, 200);
-	newUnit.square.setup(1024, param);
+	newUnit.square.setup(500, param);
 	_squareList.push_back(newUnit);
 
 	stSquareInfo newUnit2;
-	newUnit2.type = eSquareDrawType::eSquareGroup;
+	newUnit2.type = eSquareDrawType::eSquareIndependent;
 	newUnit2.cropRange.set(0, 0, 200, 200);
 
 	param.ctrlPos[0] = ofVec2f(200, 200);
 	param.ctrlPos[1] = ofVec2f(400, 200);
 	param.ctrlPos[2] = ofVec2f(400, 400);
 	param.ctrlPos[3] = ofVec2f(200, 400);
-	newUnit2.square.setup(200, param);
-	//_squareList.push_back(newUnit2);
+	newUnit2.square.setup(500, param);
+	_squareList.push_back(newUnit2);
 	
 }
 #pragma endregion

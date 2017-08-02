@@ -15,3 +15,4 @@
 #include "DJuliaSet.h"
 #include "DTexturePrimitive.h"
 #include "DAudioMesh.h"
+#include "DMoveRect.h"

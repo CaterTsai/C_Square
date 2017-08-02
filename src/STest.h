@@ -37,10 +37,11 @@ private:
 	DJuliaSet _djs;
 	DTexturePrimitive _dtp;
 	DAudioMesh	_dam;
+	DMoveRect _dmr;
 
 	//Camera
 	bool _autoRotate;
-	ofEasyCam	_cam;
+	ofEasyCam	_cam, _cam2;
 
 private:
 	ofImage _img;
