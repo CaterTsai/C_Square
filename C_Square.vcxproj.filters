@@ -325,6 +325,9 @@
     <ClCompile Include="src\draw\DMoveRect.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\videoMgr.cpp">
+      <Filter>src\videoMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -446,6 +449,12 @@
     </Filter>
     <Filter Include="shader\julia\GL3">
       <UniqueIdentifier>{e3e02347-6c0c-419c-a10e-e03b03f2b066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\camera">
+      <UniqueIdentifier>{937f6d56-57d0-4242-8d8c-c959927d532e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\videoMgr">
+      <UniqueIdentifier>{fff6c8c6-3d13-46cb-8cd8-707305fb9cf2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -832,6 +841,9 @@
     </ClInclude>
     <ClInclude Include="src\draw\DMoveRect.h">
       <Filter>src\drawer\DElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\videoMgr.h">
+      <Filter>src\videoMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

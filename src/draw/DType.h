@@ -3,6 +3,7 @@
 enum eDType
 {
 	eDFlash = 0
+	,eDCanvas
 	,eDLife
 	,eDECA
 	,eDCircleLine

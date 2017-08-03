@@ -113,7 +113,7 @@ void STest::start()
 	//_dpp.start();
 	//_dms.start();
 	//_djs.start();
-
+	
 	//_dtp.setBaseSize(_drawRect.width * 0.5);
 	//_dtp.setTextrue(_img.getTexture());
 	//_dtp.start();

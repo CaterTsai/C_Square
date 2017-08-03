@@ -279,6 +279,7 @@
     <ClCompile Include="src\squareMgr.cpp" />
     <ClCompile Include="src\squareUnit.cpp" />
     <ClCompile Include="src\STest.cpp" />
+    <ClCompile Include="src\videoMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxPostGlitch\src\ofxPostGlitch.h" />
@@ -409,6 +410,7 @@
     <ClInclude Include="src\squareUnit.h" />
     <ClInclude Include="src\STest.h" />
     <ClInclude Include="src\SType.h" />
+    <ClInclude Include="src\videoMgr.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
