@@ -182,10 +182,10 @@
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClCompile>
     <ClCompile Include="src\squareUnit.cpp">
-      <Filter>src\square</Filter>
+      <Filter>src\singleton\square</Filter>
     </ClCompile>
     <ClCompile Include="src\squareMgr.cpp">
-      <Filter>src\square</Filter>
+      <Filter>src\singleton\square</Filter>
     </ClCompile>
     <ClCompile Include="src\ofProjectorApp.cpp">
       <Filter>src</Filter>
@@ -326,13 +326,16 @@
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
     <ClCompile Include="src\videoMgr.cpp">
-      <Filter>src\videoMgr</Filter>
+      <Filter>src\singleton\videoMgr</Filter>
     </ClCompile>
     <ClCompile Include="src\camCtrl.cpp">
-      <Filter>src\camera</Filter>
+      <Filter>src\singleton\camera</Filter>
     </ClCompile>
     <ClCompile Include="src\camUnit.cpp">
-      <Filter>src\camera</Filter>
+      <Filter>src\singleton\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\postFilter.cpp">
+      <Filter>src\singleton\postFilter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -396,9 +399,6 @@
     <Filter Include="addons\ofxXmlSettings\libs">
       <UniqueIdentifier>{687714A8-1662-FA1C-261F-50F0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\square">
-      <UniqueIdentifier>{e9507896-4bb2-444c-9155-e83508482bea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\drawer">
       <UniqueIdentifier>{536b52a4-8346-4fd4-b4be-6787c41d8f90}</UniqueIdentifier>
     </Filter>
@@ -456,11 +456,20 @@
     <Filter Include="shader\julia\GL3">
       <UniqueIdentifier>{e3e02347-6c0c-419c-a10e-e03b03f2b066}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\camera">
+    <Filter Include="src\singleton">
+      <UniqueIdentifier>{f3444a95-acbf-4f54-8ebd-9c6fd00777c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\camera">
       <UniqueIdentifier>{937f6d56-57d0-4242-8d8c-c959927d532e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\videoMgr">
+    <Filter Include="src\singleton\videoMgr">
       <UniqueIdentifier>{fff6c8c6-3d13-46cb-8cd8-707305fb9cf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\square">
+      <UniqueIdentifier>{e9507896-4bb2-444c-9155-e83508482bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\postFilter">
+      <UniqueIdentifier>{ff60fa9a-48d2-4d1b-b35b-11a3d4a7008e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -681,10 +690,10 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\squareUnit.h">
-      <Filter>src\square</Filter>
+      <Filter>src\singleton\square</Filter>
     </ClInclude>
     <ClInclude Include="src\squareMgr.h">
-      <Filter>src\square</Filter>
+      <Filter>src\singleton\square</Filter>
     </ClInclude>
     <ClInclude Include="src\ofProjectorApp.h">
       <Filter>src</Filter>
@@ -849,13 +858,16 @@
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
     <ClInclude Include="src\videoMgr.h">
-      <Filter>src\videoMgr</Filter>
+      <Filter>src\singleton\videoMgr</Filter>
     </ClInclude>
     <ClInclude Include="src\camCtrl.h">
-      <Filter>src\camera</Filter>
+      <Filter>src\singleton\camera</Filter>
     </ClInclude>
     <ClInclude Include="src\camUnit.h">
-      <Filter>src\camera</Filter>
+      <Filter>src\singleton\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\postFilter.h">
+      <Filter>src\singleton\postFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

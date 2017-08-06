@@ -7,8 +7,14 @@ void ofViewApp::setup()
 	ofSetCircleResolution(60);
 	//ofEnableSmoothing();
 	//ofDisableArbTex();
+	
+	//Singleton
 	squareMgr::GetInstance()->setup();
+	postFilter::GetInstance()->init(500, 500, 1280, 720);
+
 	ofSetFrameRate(60);
+	
+	
 	_mainTimer = ofGetElapsedTimef();
 }
 

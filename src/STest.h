@@ -2,8 +2,7 @@
 
 #include "SBase.h"
 #include "camCtrl.h"
-#include "glitchFilter.h"
-#include "ofxPostProcessing.h"
+#include "postFilter.h"
 
 class STest : public SBase
 {
@@ -12,7 +11,6 @@ public:
 		:SBase(eSTest)
 	{
 		_img.loadImage("giraffe.jpg");
-		setupPost();
 	}
 
 	void update(float delta) override;
@@ -41,13 +39,6 @@ private:
 
 private:
 	ofImage _img;
-
-//PostProcessing
-private:
-	void setupPost();
-
-private:
-	ofxPostProcessing _post;
 
 
 };

@@ -39,7 +39,8 @@ void STest::draw()
 		
 		ofEnableDepthTest();
 		
-		_post.begin(camCtrl::GetInstance()->getSquareCam(0));
+		postFilter::GetInstance()->squareEnable(ePostNoiseWarp, true);
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(0));
 		{
 			//_life.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dp.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -59,8 +60,8 @@ void STest::draw()
 			//_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_img.getTexture().unbind();
 		}	
-		_post.end();
-		
+		postFilter::GetInstance()->_squarePost.end();
+		postFilter::GetInstance()->squareEnable(ePostNoiseWarp, false);
 		ofDisableDepthTest();
 
 		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -70,12 +71,14 @@ void STest::draw()
 
 		squareMgr::GetInstance()->updateOnUnitBegin(1);
 		ofEnableDepthTest();
-		_post.begin(camCtrl::GetInstance()->getSquareCam(1));
+		postFilter::GetInstance()->squareEnable(ePostKaleidoscope, true);
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(1));
 		{
 			_dmr.draw(1, 0, 0, _drawRect.width, _drawRect.height);
 		}
-		_post.end();
+		postFilter::GetInstance()->_squarePost.end();
 		squareMgr::GetInstance()->updateOnUnitEnd(1);
+		postFilter::GetInstance()->squareEnable(ePostKaleidoscope, false);
 	}
 	
 	ofPopStyle();
@@ -115,7 +118,8 @@ void STest::start()
 
 	//_dam.start();
 	_dmr.start();
-	setupPost();
+
+	postFilter::GetInstance()->squareEnable(ePostNoiseWarp, true);
 
 }
 
@@ -141,19 +145,3 @@ void STest::trigger()
 	_dmr.trigger();
 }
 
-//-------------------------------------
-void STest::setupPost()
-{
-	if (_post.getNumProcessedPasses() == 0)
-	{
-		_post.init(_drawRect.getWidth(), _drawRect.getHeight());
-
-		//_post.createPass<FxaaPass>()->setEnabled(true);
-		//_post.createPass<BloomPass>()->setEnabled(true);
-		//_post.createPass<BloomPass>()->setEnabled(true);
-		//_post.createPass<NoiseWarpPass>()->setEnabled(true);
-		//_post.createPass<ZoomBlurPass>()->setEnabled(true);
-		//_post.createPass<LimbDarkeningPass>()->setEnabled(true);
-	}
-
-}

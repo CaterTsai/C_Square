@@ -3,6 +3,7 @@
 #include "constParameter.h"
 #include "scence.h"
 #include "camCtrl.h"
+#include "postFilter.h"
 
 class ofViewApp : public ofBaseApp
 {
@@ -27,5 +28,6 @@ public:
 private:
 	ofSoundStream	_soundStream;
 	array<float, cBufferSize>	_soundValue;
+
 
 };

@@ -278,6 +278,7 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
     <ClCompile Include="src\ofViewApp.cpp" />
     <ClCompile Include="src\ofxKMarchingCubes\ofxKMarchingCubes.cpp" />
+    <ClCompile Include="src\postFilter.cpp" />
     <ClCompile Include="src\squareMgr.cpp" />
     <ClCompile Include="src\squareUnit.cpp" />
     <ClCompile Include="src\STest.cpp" />
@@ -330,6 +331,7 @@
     <ClInclude Include="src\glitchFilter.h" />
     <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubes.h" />
     <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubesTables.h" />
+    <ClInclude Include="src\postFilter.h" />
     <ClInclude Include="src\SBase.h" />
     <ClInclude Include="src\constParameter.h" />
     <ClInclude Include="src\draw\DBase.h" />

@@ -72,6 +72,7 @@ void squareMgr::drawToProjection()
 	}
 	ofPopStyle();
 
+	//Display Ctrl point
 	if (_ctrlID != -1)
 	{
 		_squareList.at(_ctrlID).square.drawCtrlPos();
