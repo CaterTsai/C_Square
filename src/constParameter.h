@@ -23,6 +23,10 @@ const int cViewWindowWidth = 1024;
 const int cViewWindowHeight = 1024;
 
 //--------------
+//Sound Stream
+const int cBufferSize = 256;
+
+//--------------
 //SquareUnit
 const int cCtrlPointNum = 4;
 

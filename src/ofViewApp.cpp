@@ -37,23 +37,32 @@ void ofViewApp::keyPressed(int key)
 {
 	switch (key)
 	{
-	case 's':
-	{
-		_testScence.start();
-		break;
+		case 's':
+		{
+			_testScence.start();
+			break;
+		}
+		case 't':
+		{
+			_testScence.trigger();
+			break;
+		}
 	}
-	case 't':
-	{
-		_testScence.trigger();
-		break;
-	}
-	}
-
-	
 }
 
 //--------------------------------------------------------------
 void ofViewApp::mouseDragged(int x, int y, int button)
 {
 	squareMgr::GetInstance()->mouseDraggedFromView(x, y);
+}
+
+//--------------------------------------------------------------
+void ofViewApp::setupSoundStream()
+{
+	_soundStream.setup(this, 0, 2, 44100, cBufferSize, 4);
+}
+
+//--------------------------------------------------------------
+void ofViewApp::audioIn(float * input, int bufferSize, int nChannels)
+{
 }

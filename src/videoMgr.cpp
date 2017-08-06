@@ -41,25 +41,60 @@ void videoMgr::draw(int id, int w, int h)
 }
 
 //------------------------------------------------
-void videoMgr::add(string file)
+int videoMgr::add(string file)
 {
-
+	ofxDSHapVideoPlayer	newVideo;
+	if (newVideo.load(file))
+	{
+		_videos.push_back(newVideo);
+		return _videos.size() - 1;
+	}
+	else
+	{
+		ofLog(OF_LOG_ERROR, "[videoMgr::add]Load video failed : " + file);
+		return -1;
+	}
 }
 
 //------------------------------------------------
 void videoMgr::play(int id)
 {
+	if (id < 0 || id >= _videos.size())
+	{
+		return;
+	}
+
+	_videos[id].play();
 }
 
 //------------------------------------------------
 void videoMgr::stop(int id)
 {
+	if (id < 0 || id >= _videos.size())
+	{
+		return;
+	}
+
+	_videos[id].stop();
 }
 
 //------------------------------------------------
-bool videoMgr::getTexture(int id, ofTexture & texture)
+bool videoMgr::getTexture(int id, ofTexture* texture)
 {
-	return false;
+	if (id < 0 || id >= _videos.size())
+	{
+		return false;
+	}
+
+	if (_videos[id].isPlaying())
+	{
+		texture = _videos[id].getTexture();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 //--------------------------------------------------------------

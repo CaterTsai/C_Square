@@ -9,10 +9,10 @@ public:
 	void update();
 	void draw(int id);
 	void draw(int id, int w, int h);
-	void add(string file);
+	int add(string file);
 	void play(int id);
 	void stop(int id);
-	bool getTexture(int id, ofTexture& texture);
+	bool getTexture(int id, ofTexture* texture);
 private:
 
 	vector<ofxDSHapVideoPlayer> _videos;

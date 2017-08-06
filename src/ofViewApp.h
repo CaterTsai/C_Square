@@ -15,9 +15,16 @@ public:
 private:
 	float _mainTimer;
 
-
 //Scence
 private:
 	STest	_testScence;
+
+//SoundStream
+public:
+	void setupSoundStream();
+	void audioIn(float * input, int bufferSize, int nChannels);
+private:
+	ofSoundStream	_soundStream;
+	array<float, cBufferSize>	_soundValue;
 
 };
