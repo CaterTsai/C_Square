@@ -18,6 +18,7 @@ void ofViewApp::update()
 	float delta = ofGetElapsedTimef() - _mainTimer;
 	_mainTimer += delta;
 
+	camCtrl::GetInstance()->update(delta);
 	_testScence.update(delta);
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));

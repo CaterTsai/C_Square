@@ -197,6 +197,8 @@
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.cpp" />
     <ClCompile Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.cpp" />
+    <ClCompile Include="src\camCtrl.cpp" />
+    <ClCompile Include="src\camUnit.cpp" />
     <ClCompile Include="src\draw\DAudioMesh.cpp" />
     <ClCompile Include="src\draw\DCircleLine.cpp" />
     <ClCompile Include="src\draw\DCylinderFlow.cpp" />
@@ -309,6 +311,8 @@
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ToonPass.h" />
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\VerticalTiltShifPass.h" />
     <ClInclude Include="..\..\..\addons\ofxPostProcessing\src\ZoomBlurPass.h" />
+    <ClInclude Include="src\camCtrl.h" />
+    <ClInclude Include="src\camUnit.h" />
     <ClInclude Include="src\draw\DAudioMesh.h" />
     <ClInclude Include="src\draw\DCircleLine.h" />
     <ClInclude Include="src\draw\DECA.h" />

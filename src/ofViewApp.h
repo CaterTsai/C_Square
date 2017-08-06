@@ -2,6 +2,7 @@
 
 #include "constParameter.h"
 #include "scence.h"
+#include "camCtrl.h"
 
 class ofViewApp : public ofBaseApp
 {

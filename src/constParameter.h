@@ -32,7 +32,7 @@ const int cCtrlPointNum = 4;
 
 const int cCtrlPointCircleRadius = cProjectionWindowHeight * 0.02;
 const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
-
+const int cSquareNum = 7;
 //--------------
 //Canvas
 //const int cCanvasWidth = 1920;

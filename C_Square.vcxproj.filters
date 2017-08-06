@@ -328,6 +328,12 @@
     <ClCompile Include="src\videoMgr.cpp">
       <Filter>src\videoMgr</Filter>
     </ClCompile>
+    <ClCompile Include="src\camCtrl.cpp">
+      <Filter>src\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\camUnit.cpp">
+      <Filter>src\camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -844,6 +850,12 @@
     </ClInclude>
     <ClInclude Include="src\videoMgr.h">
       <Filter>src\videoMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\camCtrl.h">
+      <Filter>src\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\camUnit.h">
+      <Filter>src\camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

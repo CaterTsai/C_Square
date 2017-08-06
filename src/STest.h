@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SBase.h"
+#include "camCtrl.h"
 #include "glitchFilter.h"
 #include "ofxPostProcessing.h"
 
@@ -9,7 +10,6 @@ class STest : public SBase
 public:
 	STest()
 		:SBase(eSTest)
-		,_autoRotate(false)
 	{
 		_img.loadImage("giraffe.jpg");
 		setupPost();
@@ -38,10 +38,6 @@ private:
 	DTexturePrimitive _dtp;
 	DAudioMesh	_dam;
 	DMoveRect _dmr;
-
-	//Camera
-	bool _autoRotate;
-	ofEasyCam	_cam, _cam2;
 
 private:
 	ofImage _img;

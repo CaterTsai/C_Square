@@ -22,12 +22,7 @@ void STest::update(float delta)
 	//_dtp.update(delta);
 	//_dam.update(delta);
 	_dmr.update(delta);
-	if (_autoRotate)
-	{
-		_cam.rotateAround(delta * 30, ofVec3f(0, -1, 0), ofVec3f(0, 0, 0));
-		_cam.lookAt(ofVec3f(0, 0, 0));
-	}
-		
+
 }
 
 //-------------------------------------
@@ -44,7 +39,7 @@ void STest::draw()
 		
 		ofEnableDepthTest();
 		
-		_post.begin(_cam);
+		_post.begin(camCtrl::GetInstance()->getSquareCam(0));
 		{
 			//_life.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dp.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -58,6 +53,7 @@ void STest::draw()
 			//_djs.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dam.draw(0, 0, _drawRect.width, _drawRect.height);
 			_dmr.draw(0, 0, 0, _drawRect.width, _drawRect.height);
+			
 			//Texture
 			//_img.getTexture().bind();
 			//_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -67,7 +63,6 @@ void STest::draw()
 		
 		ofDisableDepthTest();
 
-		
 		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
 		//_cl.draw(0, 0, _drawRect.width, _drawRect.height);
 		
@@ -75,7 +70,7 @@ void STest::draw()
 
 		squareMgr::GetInstance()->updateOnUnitBegin(1);
 		ofEnableDepthTest();
-		_post.begin(_cam2);
+		_post.begin(camCtrl::GetInstance()->getSquareCam(1));
 		{
 			_dmr.draw(1, 0, 0, _drawRect.width, _drawRect.height);
 		}
@@ -120,12 +115,7 @@ void STest::start()
 
 	//_dam.start();
 	_dmr.start();
-
-
 	setupPost();
-
-	//_cam.setDistance(1800);
-	//_cam.setTarget(ofVec3f(0, 0, 0));
 
 }
 
