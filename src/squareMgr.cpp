@@ -1,4 +1,5 @@
 #include "squareMgr.h"
+#include "ofxXmlSettings.h"
 
 #pragma region Basic
 //------------------------------
@@ -107,33 +108,50 @@ ofRectangle squareMgr::getUnitRect(int unitID)
 }
 
 //------------------------------
+void squareMgr::saveConfig(string configName)
+{
+}
+
+//------------------------------
 void squareMgr::init(string configName)
 {
+	ofxXmlSettings xml;
+	if (!xml.loadFile(configName))
+	{
+		ofLog(OF_LOG_ERROR, "[squareMgr::init]Load config failed :" + configName);
+		return;
+	}
+
 	//TODO - change to config xml file
 	stSquareParam param;
 	
-	stSquareInfo newUnit;
-	newUnit.type = eSquareDrawType::eSquareIndependent;
-	newUnit.cropRange.set(0, 0, 200, 200);
-	
-	param.ctrlPos[0] = ofVec2f(0, 0);
-	param.ctrlPos[1] = ofVec2f(200, 0);
-	param.ctrlPos[2] = ofVec2f(200, 200);
-	param.ctrlPos[3] = ofVec2f(0, 200);
-	newUnit.square.setup(500, param);
-	_squareList.push_back(newUnit);
+	if (xml.getNumTags("square") != cSquareNum)
+	{
+		ofLog(OF_LOG_ERROR, "[squareMgr::init]wrong square number");
+		return;
+	}
 
-	stSquareInfo newUnit2;
-	newUnit2.type = eSquareDrawType::eSquareIndependent;
-	newUnit2.cropRange.set(0, 0, 200, 200);
+	for (int i = 0; i < cSquareNum; i++)
+	{	
+		xml.pushTag("square", i);
+		stSquareInfo newUnit;
+		int squareSize = xml.getValue("UnitSize", 100, 0);
 
-	param.ctrlPos[0] = ofVec2f(200, 200);
-	param.ctrlPos[1] = ofVec2f(400, 200);
-	param.ctrlPos[2] = ofVec2f(400, 400);
-	param.ctrlPos[3] = ofVec2f(200, 400);
-	newUnit2.square.setup(500, param);
-	_squareList.push_back(newUnit2);
-	
+		newUnit.type = eSquareDrawType::eSquareIndependent;
+		newUnit.cropRange.set(0, 0, squareSize, squareSize);
+				
+		for (int j = 0; j < 4; j++)
+		{
+			int x = xml.getValue("ctrlPos_" + ofToString(j + 1) + ":x", 0, 0);
+			int y = xml.getValue("ctrlPos_" + ofToString(j + 1) + ":y", 0, 0);
+			param.ctrlPos[j].set(x, y);
+		}
+		
+		newUnit.square.setup(squareSize, param);
+		_squareList.push_back(newUnit);
+		xml.popTag();
+	}
+
 }
 #pragma endregion
 
@@ -170,7 +188,31 @@ void squareMgr::updateByGroup(ofImage & groupCanvas)
 }
 
 //------------------------------
-void squareMgr::moveUnitRect(int unitID, int x, int y)
+void squareMgr::setUnitRect(int unitID, ofRectangle& rect)
+{
+	ofRectangle newRect = rect;
+	if (newRect.getMinX() < 0)
+	{
+		newRect.setX(0);
+	}
+	if (newRect.getMaxX() > _groupWidth)
+	{
+		newRect.setX(_groupWidth - newRect.width);
+	}
+	if (newRect.getMinY() < 0)
+	{
+		newRect.setY(0);
+	}
+	if (newRect.getMaxY() > _groupHeight)
+	{
+		newRect.setY(_groupHeight - newRect.height);
+	}
+
+	_squareList.at(_ctrlID).cropRange = newRect;
+}
+
+//------------------------------
+void squareMgr::moveCropRect(int unitID, int x, int y)
 {
 	ofRectangle newRect;
 	newRect.setFromCenter(x, y, _squareList.at(_ctrlID).cropRange.width, _squareList.at(_ctrlID).cropRange.height);
@@ -231,7 +273,7 @@ void squareMgr::mouseDraggedFromView(int x, int y)
 {
 	if (_ctrlID != -1)
 	{
-		moveUnitRect(_ctrlID, x, y);
+		moveCropRect(_ctrlID, x, y);
 	}
 }
 

@@ -156,9 +156,11 @@ void squareUnit::setupPlane()
 	_plane.addTriangle(0, 1, 3);
 	_plane.addTriangle(1, 2, 3);
 	_plane.addTexCoord(ofVec2f(0.0, 0.0));
-	_plane.addTexCoord(ofVec2f(1.0, 0.0));
-	_plane.addTexCoord(ofVec2f(1.0, 1.0));
-	_plane.addTexCoord(ofVec2f(0.0, 1.0));
+	_plane.addTexCoord(ofVec2f(200.0, 0.0));
+	_plane.addTexCoord(ofVec2f(200.0, 200.0));
+	_plane.addTexCoord(ofVec2f(0.0, 200.0));
+
+	
 }
 #pragma endregion
 

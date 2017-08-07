@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+#define PROJECTION_MODE
+
 //---------------------------
 #pragma region Enum
 

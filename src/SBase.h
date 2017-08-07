@@ -4,6 +4,7 @@
 #include "squareMgr.h"
 #include "drawer.h"
 #include "SType.h"
+#include "ctrlMap.h"
 
 class SBase
 {
@@ -19,7 +20,7 @@ public:
 	virtual void start() {};
 	virtual void stop() {};
 	virtual void reset() {};
-
+	virtual void control(eCtrlType ctrl, int value = 0) {};
 	inline bool getStart()
 	{
 		return _isStart;

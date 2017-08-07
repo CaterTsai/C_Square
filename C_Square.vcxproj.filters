@@ -337,6 +337,9 @@
     <ClCompile Include="src\postFilter.cpp">
       <Filter>src\singleton\postFilter</Filter>
     </ClCompile>
+    <ClCompile Include="src\ctrlMap.cpp">
+      <Filter>src\singleton\ctrlMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -470,6 +473,9 @@
     </Filter>
     <Filter Include="src\singleton\postFilter">
       <UniqueIdentifier>{ff60fa9a-48d2-4d1b-b35b-11a3d4a7008e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\singleton\ctrlMap">
+      <UniqueIdentifier>{50d724b5-e40a-4fd0-9067-a51f66c4ec6d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -868,6 +874,12 @@
     </ClInclude>
     <ClInclude Include="src\postFilter.h">
       <Filter>src\singleton\postFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view.h">
+      <Filter>src\scence\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ctrlMap.h">
+      <Filter>src\singleton\ctrlMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

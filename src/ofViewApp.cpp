@@ -9,8 +9,8 @@ void ofViewApp::setup()
 	//ofDisableArbTex();
 	
 	//Singleton
-	squareMgr::GetInstance()->setup();
-	postFilter::GetInstance()->init(500, 500, 1280, 720);
+	squareMgr::GetInstance()->setup("config/_squareConfig.xml");
+	postFilter::GetInstance()->init(200, 200, 1280, 720);
 
 	ofSetFrameRate(60);
 	
@@ -51,7 +51,7 @@ void ofViewApp::keyPressed(int key)
 		}
 		case 't':
 		{
-			_testScence.trigger();
+			_testScence.control(ctrlMap::GetInstance()->key2Ctrl[0]);
 			break;
 		}
 	}

@@ -8,6 +8,7 @@ camUnit::camUnit()
 {	
 	//_cam.disableMouseInput();
 	//_cam.setAutoDistance(false);
+	
 }
 
 //--------------------------------------------------------------

@@ -36,10 +36,7 @@ void STest::draw()
 	ofPushStyle();
 	{
 		squareMgr::GetInstance()->updateOnUnitBegin(0);
-		
-		ofEnableDepthTest();
-		
-		postFilter::GetInstance()->squareEnable(ePostNoiseWarp, true);
+		ofEnableDepthTest();		
 		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(0));
 		{
 			//_life.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -54,14 +51,13 @@ void STest::draw()
 			//_djs.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_dam.draw(0, 0, _drawRect.width, _drawRect.height);
 			_dmr.draw(0, 0, 0, _drawRect.width, _drawRect.height);
-			
+
 			//Texture
 			//_img.getTexture().bind();
 			//_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
 			//_img.getTexture().unbind();
 		}	
 		postFilter::GetInstance()->_squarePost.end();
-		postFilter::GetInstance()->squareEnable(ePostNoiseWarp, false);
 		ofDisableDepthTest();
 
 		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
@@ -71,14 +67,15 @@ void STest::draw()
 
 		squareMgr::GetInstance()->updateOnUnitBegin(1);
 		ofEnableDepthTest();
-		postFilter::GetInstance()->squareEnable(ePostKaleidoscope, true);
+		
 		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(1));
 		{
 			_dmr.draw(1, 0, 0, _drawRect.width, _drawRect.height);
+			
 		}
 		postFilter::GetInstance()->_squarePost.end();
+		
 		squareMgr::GetInstance()->updateOnUnitEnd(1);
-		postFilter::GetInstance()->squareEnable(ePostKaleidoscope, false);
 	}
 	
 	ofPopStyle();
@@ -117,10 +114,10 @@ void STest::start()
 	//_dtp.start();
 
 	//_dam.start();
+	_dmr.setGroupNum(2);
 	_dmr.start();
-
-	postFilter::GetInstance()->squareEnable(ePostNoiseWarp, true);
-
+	//camCtrl::GetInstance()->_squareCams[0].setRevolution(ofVec3f(0, -1, 0), PI);
+	//camCtrl::GetInstance()->_squareCams[1].setRevolution(ofVec3f(0, -1, 0), -PI);
 }
 
 //-------------------------------------
@@ -136,7 +133,7 @@ void STest::stop()
 }
 
 //-------------------------------------
-void STest::trigger()
+void STest::control(eCtrlType ctrl, int value)
 {
 	//_dp.trigger();
 	//_dr.trigger();

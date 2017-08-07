@@ -2,6 +2,7 @@
 
 #include "squareUnit.h"
 
+
 enum eSquareDrawType
 {
 	eSquareGroup = 0
@@ -35,18 +36,21 @@ public:
 	
 	ofRectangle getUnitRect(int unitID);
 
+	void saveConfig(string configName);
 private:
 	void init(string configName);
 private:
 	bool _isSetup;
 	int _ctrlID;
+
 	vector<stSquareInfo>	_squareList;
 
 //Draw On Group
 public:
 	void setGroupSize(int width, int height);
 	void updateByGroup(ofImage& groupCanvas);
-	void moveUnitRect(int unitID, int x, int y);
+	void setUnitRect(int unitID, ofRectangle& rect);
+	void moveCropRect(int unitID, int x, int y);
 private:
 	int _groupWidth, _groupHeight;
 

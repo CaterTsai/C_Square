@@ -18,7 +18,7 @@ public:
 	void start() override;
 	void stop() override;
 
-	void trigger();
+	void control(eCtrlType ctrl, int value = 0) override;
 
 private:
 	ofRectangle _drawRect;
@@ -39,6 +39,5 @@ private:
 
 private:
 	ofImage _img;
-
 
 };
