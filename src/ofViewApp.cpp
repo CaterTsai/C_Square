@@ -51,9 +51,15 @@ void ofViewApp::keyPressed(int key)
 		}
 		case 't':
 		{
-			_testScence.control(ctrlMap::GetInstance()->key2Ctrl[0]);
+			_testScence.control(eCtrl_ViewTrigger1);
 			break;
 		}
+		case 'v':
+		{
+			_testScence.control(eCtrl_ViewNext);
+			break;
+		}
+
 	}
 }
 

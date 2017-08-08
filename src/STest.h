@@ -7,11 +7,7 @@
 class STest : public SBase
 {
 public:
-	STest()
-		:SBase(eSTest)
-	{
-		_img.loadImage("giraffe.jpg");
-	}
+	STest();
 
 	void update(float delta) override;
 	void draw() override;
@@ -20,6 +16,19 @@ public:
 
 	void control(eCtrlType ctrl, int value = 0) override;
 
+#pragma region View
+//View
+private:
+	void initView() override;
+	void setView(int id) override;
+
+private:
+	void view1Draw();
+	void view2Draw();
+
+#pragma endregion
+
+//Draw Element
 private:
 	ofRectangle _drawRect;
 	DLife _life;

@@ -5,8 +5,6 @@ void ofProjectorApp::setup()
 {
 	ofBackground(0);
 	ofDisableArbTex();
-
-	
 }
 
 //--------------------------------------------------------------
@@ -27,19 +25,26 @@ void ofProjectorApp::keyPressed(int key)
 {
 	switch (key)
 	{
-	case 'q':
+	case '1':
+	case '2':
+	case '3':
+	case '4':
+	case '5':
+	case '6':
+	case '7':
 	{
-		squareMgr::GetInstance()->enableSquareControl(0);
+		int id = key - '1';
+		squareMgr::GetInstance()->enableSquareControl(id);
 		break;
 	}
-	case 'w':
-	{
-		squareMgr::GetInstance()->enableSquareControl(1);
-		break;
-	}
-	case 'e':
+	case '0':
 	{
 		squareMgr::GetInstance()->disableSquareControl();
+		break;
+	}
+	case 'z':
+	{
+		squareMgr::GetInstance()->saveConfig("config/_squareConfig.xml");
 		break;
 	}
 	}

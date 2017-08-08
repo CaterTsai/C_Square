@@ -1,5 +1,12 @@
 #include "STest.h"
 
+STest::STest()
+	:SBase(eSTest)
+{
+	initView();
+	_img.loadImage("giraffe.jpg");
+}
+
 //-------------------------------------
 void STest::update(float delta)
 {
@@ -21,7 +28,7 @@ void STest::update(float delta)
 	//_djs.update(delta);
 	//_dtp.update(delta);
 	//_dam.update(delta);
-	_dmr.update(delta);
+	//_dmr.update(delta);
 
 }
 
@@ -33,65 +40,25 @@ void STest::draw()
 		return;
 	}
 
-	ofPushStyle();
+	switch (_viewID)
 	{
-		squareMgr::GetInstance()->updateOnUnitBegin(0);
-		ofEnableDepthTest();		
-		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(0));
+		case 0:
 		{
-			//_life.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_dp.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_cf.draw(0, 0, _drawRect.width, _drawRect.height * 0.2);
-			//_eca.draw(0, 0, _drawRect.width * 2, _drawRect.height * 2);
-			//_dr.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_ds.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_dm.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_dpp.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_dms.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_djs.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_dam.draw(0, 0, _drawRect.width, _drawRect.height);
-			_dmr.draw(0, 0, 0, _drawRect.width, _drawRect.height);
-
-			//Texture
-			//_img.getTexture().bind();
-			//_dtp.draw(0, 0, _drawRect.width, _drawRect.height);
-			//_img.getTexture().unbind();
-		}	
-		postFilter::GetInstance()->_squarePost.end();
-		ofDisableDepthTest();
-
-		//_eca.draw(0, 0, _drawRect.width, _drawRect.height);
-		//_cl.draw(0, 0, _drawRect.width, _drawRect.height);
-		
-		squareMgr::GetInstance()->updateOnUnitEnd(0);
-
-		squareMgr::GetInstance()->updateOnUnitBegin(1);
-		ofEnableDepthTest();
-		
-		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(1));
-		{
-			_dmr.draw(1, 0, 0, _drawRect.width, _drawRect.height);
-			
+			view1Draw();
+			break;
 		}
-		postFilter::GetInstance()->_squarePost.end();
-		
-		squareMgr::GetInstance()->updateOnUnitEnd(1);
+		case 1:
+		{
+			view2Draw();
+			break;
+		}
 	}
-	
-	ofPopStyle();
 }
 
 //-------------------------------------
 void STest::start()
 {
 	_drawRect = squareMgr::GetInstance()->getUnitRect(0);
-	squareMgr::GetInstance()->updateOnUnitBegin(0);
-	ofClear(0);
-	squareMgr::GetInstance()->updateOnUnitEnd(0);
-	
-	squareMgr::GetInstance()->updateOnUnitBegin(1);
-	ofClear(0);
-	squareMgr::GetInstance()->updateOnUnitEnd(1);
 
 	_isStart = true;
 	//_life.start();
@@ -114,8 +81,8 @@ void STest::start()
 	//_dtp.start();
 
 	//_dam.start();
-	_dmr.setGroupNum(2);
-	_dmr.start();
+	//_dmr.setGroupNum(2);
+	//_dmr.start();
 	//camCtrl::GetInstance()->_squareCams[0].setRevolution(ofVec3f(0, -1, 0), PI);
 	//camCtrl::GetInstance()->_squareCams[1].setRevolution(ofVec3f(0, -1, 0), -PI);
 }
@@ -135,10 +102,74 @@ void STest::stop()
 //-------------------------------------
 void STest::control(eCtrlType ctrl, int value)
 {
-	//_dp.trigger();
-	//_dr.trigger();
-	//_dm.trigger();
-	//_dtp.trigger();
-	_dmr.trigger();
+	if (ctrl == eCtrl_ViewNext)
+	{
+		setView( (_viewID + 1) % _viewList.size());
+	}
+	else
+	{
+
+	}
 }
+
+#pragma region View
+//-------------------------------------
+void STest::initView()
+{
+	_viewList.resize(2);
+	_viewList[0].load("view/sTest/1.xml");
+	_viewList[1].load("view/sTest/2.xml");
+}
+
+//-------------------------------------
+void STest::setView(int id)
+{
+	if (id < 0 || id >= _viewList.size())
+	{
+		ofLog(OF_LOG_ERROR, "[STest::setView]id out of range");
+		return;
+	}
+
+	_viewList[id].set();
+	_viewID = id;
+}
+
+//-------------------------------------
+void STest::view1Draw()
+{
+	ofColor color(255, 0, 0);
+
+	ofPushStyle();
+	{
+		for (int i = 0; i < cSquareNum; i++)
+		{
+			squareMgr::GetInstance()->updateOnUnitBegin(i);
+			ofEnableDepthTest();
+			postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(i));
+			{
+				color.setHueAngle(i * 30);
+				ofSetColor(color);
+				ofDrawBox(100);
+			}
+			postFilter::GetInstance()->_squarePost.end();
+			ofDisableDepthTest();
+			squareMgr::GetInstance()->updateOnUnitEnd(i);
+		}
+	}
+	ofPopStyle();
+}
+
+//-------------------------------------
+void STest::view2Draw()
+{
+	ofPushStyle();
+	ofEnableDepthTest();
+	{
+		squareMgr::GetInstance()->updateByGroup(_img);
+	}
+	ofPopStyle();
+}
+#pragma endregion
+
+
 

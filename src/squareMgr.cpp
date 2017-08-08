@@ -101,15 +101,44 @@ void squareMgr::disableSquareControl()
 //------------------------------
 ofRectangle squareMgr::getUnitRect(int unitID)
 {
-	ofRectangle rect;
-	rect.setWidth(_squareList.at(unitID).square.getWidth());
-	rect.setHeight(_squareList.at(unitID).square.getHeight());
+	int size = _squareList.at(unitID).square.getSize();
+	ofRectangle rect(0, 0, size, size);
 	return rect;
 }
 
 //------------------------------
 void squareMgr::saveConfig(string configName)
 {
+	ofxXmlSettings xml;
+
+	for (int i = 0; i < cSquareNum; i++)
+	{
+		int squareSize = _squareList.at(i).square.getSize();
+		xml.addTag("square");
+		xml.pushTag("square", i);
+		xml.addValue("UnitSize", squareSize);
+
+		for (int j = 0; j < 4; j++)
+		{
+			auto ctrlPos = _squareList.at(i).square.getCtrlPos(j);
+			xml.addTag("ctrlPos_" + ofToString(j + 1));
+			xml.pushTag("ctrlPos_" + ofToString(j + 1));
+
+			xml.addValue("x", ctrlPos.x);
+			xml.addValue("y", ctrlPos.y);
+
+			xml.popTag();
+		}
+		xml.popTag();
+	}
+	if (xml.saveFile(configName))
+	{
+		ofLog(OF_LOG_NOTICE, "[squareMgr::saveConfig]Save config success");
+	}
+	else
+	{
+		ofLog(OF_LOG_NOTICE, "[squareMgr::saveConfig]Save config failed");
+	}
 }
 
 //------------------------------
@@ -122,9 +151,7 @@ void squareMgr::init(string configName)
 		return;
 	}
 
-	//TODO - change to config xml file
 	stSquareParam param;
-	
 	if (xml.getNumTags("square") != cSquareNum)
 	{
 		ofLog(OF_LOG_ERROR, "[squareMgr::init]wrong square number");
@@ -178,7 +205,7 @@ void squareMgr::updateByGroup(ofImage & groupCanvas)
 			unit.square.drawBegin();
 			{
 				groupCanvas.drawSubsection(
-					0, 0, unit.square.getWidth(), unit.square.getHeight(),
+					0, 0, unit.square.getSize(), unit.square.getSize(),
 					unit.cropRange.x, unit.cropRange.y, unit.cropRange.width, unit.cropRange.height
 				);
 			}
@@ -208,14 +235,14 @@ void squareMgr::setUnitRect(int unitID, ofRectangle& rect)
 		newRect.setY(_groupHeight - newRect.height);
 	}
 
-	_squareList.at(_ctrlID).cropRange = newRect;
+	_squareList.at(unitID).cropRange = newRect;
 }
 
 //------------------------------
 void squareMgr::moveCropRect(int unitID, int x, int y)
 {
 	ofRectangle newRect;
-	newRect.setFromCenter(x, y, _squareList.at(_ctrlID).cropRange.width, _squareList.at(_ctrlID).cropRange.height);
+	newRect.setFromCenter(x, y, _squareList.at(unitID).cropRange.width, _squareList.at(unitID).cropRange.height);
 		
 	if (newRect.getMinX() < 0)
 	{
@@ -234,7 +261,7 @@ void squareMgr::moveCropRect(int unitID, int x, int y)
 		newRect.setY(_groupHeight - newRect.height);
 	}
 
-	_squareList.at(_ctrlID).cropRange = newRect;
+	_squareList.at(unitID).cropRange = newRect;
 }
 #pragma endregion
 
@@ -249,6 +276,7 @@ void squareMgr::updateOnUnitBegin(int unitID, bool needClear)
 	if (_squareList.at(unitID).type == eSquareDrawType::eSquareIndependent)
 	{
 		_squareList.at(unitID).square.drawBegin(needClear);
+
 	}
 }
 

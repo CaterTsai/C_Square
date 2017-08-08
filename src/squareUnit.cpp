@@ -55,16 +55,17 @@ void squareUnit::drawCanvas(int x, int y, int size)
 }
 
 //------------------------------
-int squareUnit::getWidth()
+int squareUnit::getSize()
 {
 	return _canvas.getWidth();
 }
 
 //------------------------------
-int squareUnit::getHeight()
+ofVec2f squareUnit::getCtrlPos(int id)
 {
-	return _canvas.getHeight();
+	return _ctrlPos[id];
 }
+
 
 #pragma endregion
 

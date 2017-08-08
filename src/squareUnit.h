@@ -19,8 +19,8 @@ public:
 	void drawEnd();
 	void drawCanvas(int x, int y, int size);
 
-	int getWidth();
-	int getHeight();
+	int getSize();
+	ofVec2f getCtrlPos(int id);
 
 private:
 	bool _isSetup, _startDraw;
