@@ -477,6 +477,15 @@
     <Filter Include="src\singleton\ctrlMap">
       <UniqueIdentifier>{50d724b5-e40a-4fd0-9067-a51f66c4ec6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\view">
+      <UniqueIdentifier>{42acb4ab-7b4e-433e-b15e-73c79b8a3b4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\view\VElement">
+      <UniqueIdentifier>{0f69800a-d7b7-4c3c-b164-6c3905284423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\view\base">
+      <UniqueIdentifier>{c1abcfb4-3c73-452f-a1cc-5e6653b1f472}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h">
@@ -875,11 +884,20 @@
     <ClInclude Include="src\postFilter.h">
       <Filter>src\singleton\postFilter</Filter>
     </ClInclude>
-    <ClInclude Include="src\view.h">
-      <Filter>src\scence\base</Filter>
-    </ClInclude>
     <ClInclude Include="src\ctrlMap.h">
       <Filter>src\singleton\ctrlMap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VSTest01.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\view.h">
+      <Filter>src\view</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\baseView.h">
+      <Filter>src\view\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VSTest02.h">
+      <Filter>src\view\VElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

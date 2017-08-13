@@ -5,6 +5,8 @@
 #include "drawer.h"
 #include "SType.h"
 #include "ctrlMap.h"
+#include "camCtrl.h"
+#include "postFilter.h"
 #include "view.h"
 
 class SBase
@@ -44,5 +46,5 @@ public:
 	eSType _eType;
 
 	int _viewID;
-	vector<view> _viewList;
+	vector<ofPtr<baseView>> _viewList;
 };

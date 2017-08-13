@@ -3,10 +3,24 @@
 #include "constParameter.h"
 #include "squareMgr.h"
 #include "ofxXmlSettings.h"
+#include "ctrlMap.h"
+#include "drawer.h"
+#include "camCtrl.h"
+#include "postFilter.h"
 
-class view
+class baseView
 {
 public:
+	baseView(string path)
+	{
+		load(path);
+	}
+	virtual void update(float delta) {};
+	virtual void draw(int width, int height) {};
+	virtual void control(eCtrlType type, int value) {};
+	virtual void start() {};
+	virtual void stop() {};
+	//View Setting
 	void load(string path)
 	{
 		ofxXmlSettings xml;
@@ -33,7 +47,6 @@ public:
 			xml.popTag();
 		}
 	}
-
 	void set()
 	{
 		for (int i = 0; i < cSquareNum; i++)
@@ -43,7 +56,7 @@ public:
 		}
 	}
 
-private:
+protected:
 	array<eSquareDrawType, cSquareNum> _squareType;
 	array<ofRectangle, cSquareNum> _squareCropRect;
 };
