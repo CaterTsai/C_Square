@@ -196,9 +196,6 @@
     <ClCompile Include="src\draw\DFlash.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
-    <ClCompile Include="src\STest.cpp">
-      <Filter>src\scence\SElement</Filter>
-    </ClCompile>
     <ClCompile Include="src\draw\DLife.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
@@ -339,6 +336,9 @@
     </ClCompile>
     <ClCompile Include="src\ctrlMap.cpp">
       <Filter>src\singleton\ctrlMap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\STest.cpp">
+      <Filter>src\scence\SElement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -728,18 +728,6 @@
     <ClInclude Include="src\draw\DType.h">
       <Filter>src\drawer\base</Filter>
     </ClInclude>
-    <ClInclude Include="src\SBase.h">
-      <Filter>src\scence\base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SType.h">
-      <Filter>src\scence\base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\STest.h">
-      <Filter>src\scence\SElement</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scence.h">
-      <Filter>src\scence</Filter>
-    </ClInclude>
     <ClInclude Include="src\draw\DLife.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
@@ -898,6 +886,18 @@
     </ClInclude>
     <ClInclude Include="src\view\VSTest02.h">
       <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\scence.h">
+      <Filter>src\scence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\STest.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\SBase.h">
+      <Filter>src\scence\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\SType.h">
+      <Filter>src\scence\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

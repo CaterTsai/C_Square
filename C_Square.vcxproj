@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxLayerMask\src\shader;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\draw;.\src\filter;.\src\view;..\..\..\addons\ofxPostProcessing\src\;..\..\..\addons\ofxPostGlitch\src\;.\src\ofxKMarchingCubes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxLayerMask\src\shader;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\draw;.\src\filter;.\src\scence;.\src\;.\src\view;..\..\..\addons\ofxPostProcessing\src\;..\..\..\addons\ofxPostGlitch\src\;.\src\ofxKMarchingCubes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxLayerMask\src\shader;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\draw;.\src\filter;.\src\view;..\..\..\addons\ofxPostProcessing\src\;..\..\..\addons\ofxPostGlitch\src\;.\src\ofxKMarchingCubes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxDSHapVideoPlayer\libs;..\..\..\addons\ofxDSHapVideoPlayer\libs\External;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\DirectShow\BaseClasses;..\..\..\addons\ofxDSHapVideoPlayer\libs\External\snappy;..\..\..\addons\ofxDSHapVideoPlayer\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayerMask\src;..\..\..\addons\ofxLayerMask\src\shader;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;.\src\draw;.\src\filter;.\src\scence;.\src\;.\src\view;..\..\..\addons\ofxPostProcessing\src\;..\..\..\addons\ofxPostGlitch\src\;.\src\ofxKMarchingCubes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -280,9 +280,9 @@
     <ClCompile Include="src\ofViewApp.cpp" />
     <ClCompile Include="src\ofxKMarchingCubes\ofxKMarchingCubes.cpp" />
     <ClCompile Include="src\postFilter.cpp" />
+    <ClCompile Include="src\scence\STest.cpp" />
     <ClCompile Include="src\squareMgr.cpp" />
     <ClCompile Include="src\squareUnit.cpp" />
-    <ClCompile Include="src\STest.cpp" />
     <ClCompile Include="src\videoMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -334,7 +334,6 @@
     <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubes.h" />
     <ClInclude Include="src\ofxKMarchingCubes\ofxKMarchingCubesTables.h" />
     <ClInclude Include="src\postFilter.h" />
-    <ClInclude Include="src\SBase.h" />
     <ClInclude Include="src\constParameter.h" />
     <ClInclude Include="src\draw\DBase.h" />
     <ClInclude Include="src\draw\DFlash.h" />
@@ -413,11 +412,12 @@
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
     <ClInclude Include="src\ofViewApp.h" />
-    <ClInclude Include="src\scence.h" />
+    <ClInclude Include="src\scence\SBase.h" />
+    <ClInclude Include="src\scence\scence.h" />
+    <ClInclude Include="src\scence\STest.h" />
+    <ClInclude Include="src\scence\SType.h" />
     <ClInclude Include="src\squareMgr.h" />
     <ClInclude Include="src\squareUnit.h" />
-    <ClInclude Include="src\STest.h" />
-    <ClInclude Include="src\SType.h" />
     <ClInclude Include="src\videoMgr.h" />
     <ClInclude Include="src\view\baseView.h" />
     <ClInclude Include="src\view\view.h" />
