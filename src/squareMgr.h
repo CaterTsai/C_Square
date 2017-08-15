@@ -34,6 +34,8 @@ public:
 	void enableSquareControl(int unitID);
 	void disableSquareControl();
 	
+	void clearSquare(int unitID);
+
 	ofRectangle getUnitRect(int unitID);
 
 	void saveConfig(string configName);

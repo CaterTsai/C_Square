@@ -1,5 +1,5 @@
 #include "DECA.h"
-
+int DECA::_cCodeList[] = {};
 //-------------------------------------
 void DECA::update(float delta)
 {
@@ -29,17 +29,14 @@ void DECA::draw(int x, int y, int w, int h)
 			int tx = w * -0.5;
 			for (int i = 0; i < cCASize; i++)
 			{
-				ofColor green(0, 255, 0);
+				ofColor color = _baseColor;
 				
 				if (iter._state[i])
 				{	
-					green.setBrightness(green.limit() * (iter._fromCode[i] / (float)cCACodeSize));
-					ofSetColor(green);
+					color.setBrightness(color.limit() * (iter._fromCode[i] / (float)cCACodeSize));
+					ofSetColor(color);
 					ofDrawBox(tx + halfS, ty + halfS, 0, size);
-					//ofDrawSphere(tx + halfS, ty + halfS, 0, size);
 				}
-
-				
 				tx += size;
 			}
 			ty += size;
@@ -53,8 +50,7 @@ void DECA::start()
 {
 	_isStart = true;
 	_timer = _generationT;
-	//setCode(rand() % 256);
-	setCode(30);
+	setCode(_cCodeList[rand() % cCATypeNum]);
 	
 	createWorld();
 }
@@ -63,6 +59,24 @@ void DECA::start()
 void DECA::stop()
 {
 	_isStart = false;
+}
+
+//-------------------------------------
+void DECA::trigger()
+{
+	setCode(_cCodeList[rand() % cCATypeNum]);
+}
+
+//-------------------------------------
+void DECA::setT(float time)
+{
+	_generationT = time;
+}
+
+//-------------------------------------
+void DECA::setColor(ofColor c)
+{
+	_baseColor = c;
 }
 
 //-------------------------------------

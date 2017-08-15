@@ -25,7 +25,7 @@ void ofViewApp::update()
 	_mainTimer += delta;
 
 	camCtrl::GetInstance()->update(delta);
-	_testScence.update(delta);
+	_scence04.update(delta);
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
@@ -34,33 +34,15 @@ void ofViewApp::update()
 void ofViewApp::draw()
 {
 	ofSetBackgroundColor(0);
-	_testScence.draw();
+	_scence04.draw();
 
 	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
 }
 
 //--------------------------------------------------------------
 void ofViewApp::keyPressed(int key)
-{
-	switch (key)
-	{
-		case 's':
-		{
-			_testScence.start();
-			break;
-		}
-		case 't':
-		{
-			_testScence.control(eCtrl_ViewTrigger1);
-			break;
-		}
-		case 'v':
-		{
-			_testScence.control(eCtrl_ViewNext);
-			break;
-		}
-
-	}
+{	
+	_scence04.control(ctrlMap::GetInstance()->key2Ctrl[key]);
 }
 
 //--------------------------------------------------------------

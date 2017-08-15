@@ -20,7 +20,7 @@ private:
 //Scence
 private:
 	STest	_testScence;
-
+	S04		_scence04;
 //SoundStream
 public:
 	void setupSoundStream();

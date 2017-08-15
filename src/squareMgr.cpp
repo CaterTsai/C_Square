@@ -99,6 +99,14 @@ void squareMgr::disableSquareControl()
 }
 
 //------------------------------
+void squareMgr::clearSquare(int unitID)
+{
+	updateOnUnitBegin(unitID);
+	ofClear(0);
+	updateOnUnitEnd(unitID);
+}
+
+//------------------------------
 ofRectangle squareMgr::getUnitRect(int unitID)
 {
 	int size = _squareList.at(unitID).square.getSize();
@@ -276,7 +284,6 @@ void squareMgr::updateOnUnitBegin(int unitID, bool needClear)
 	if (_squareList.at(unitID).type == eSquareDrawType::eSquareIndependent)
 	{
 		_squareList.at(unitID).square.drawBegin(needClear);
-
 	}
 }
 

@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-//#define PROJECTION_MODE
+#define PROJECTION_MODE
 
 //---------------------------
 #pragma region Enum
@@ -35,6 +35,18 @@ const int cCtrlPointNum = 4;
 const int cCtrlPointCircleRadius = cProjectionWindowHeight * 0.02;
 const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
 const int cSquareNum = 7;
+
+enum eSquareType : int
+{
+	eFrontLeftS = 0
+	, eFrontRightS
+	, eBackLeftS
+	, eBackRightS
+	, eMiddleLeftM
+	, eMiddleRightM
+	, eBackCenerL
+	
+};
 //--------------
 //Canvas
 //const int cCanvasWidth = 1920;
@@ -47,9 +59,10 @@ const int cWorldWidth = 150;
 const int cWorldHeight = 150;
 
 //DECA
-const int cCASize = 50;
+const int cCASize = 30;
 const int cCACodeSize = 8;
 const int cCAMaxGeneration = 30;
+const int cCATypeNum = 18;
 
 //DCircleLine
 

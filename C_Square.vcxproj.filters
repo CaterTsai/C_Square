@@ -340,6 +340,39 @@
     <ClCompile Include="src\scence\STest.cpp">
       <Filter>src\scence\SElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\scence\S01.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S02.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S03.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S04.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S05.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S06.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S07.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S08.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S09.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S10.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S11.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -898,6 +931,48 @@
     </ClInclude>
     <ClInclude Include="src\scence\SType.h">
       <Filter>src\scence\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S01.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S02.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S03.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S04.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S05.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S06.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S07.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S08.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S09.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S10.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S11.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\VS01_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\VS01_2.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\VS04_1.h">
+      <Filter>src\view\VElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
