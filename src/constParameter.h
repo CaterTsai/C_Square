@@ -137,7 +137,8 @@ const int cDAudioMeshCols = 50;
 #pragma endregion
 
 //---------------------------
-#pragma region Static Method
+#pragma region Static Variable
+static int sCoverAlpha = 0;
 
 #pragma endregion
 

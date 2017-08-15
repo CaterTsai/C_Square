@@ -373,6 +373,9 @@
     <ClCompile Include="src\scence\S11.cpp">
       <Filter>src\scence\SElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\scence\SIdle.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -965,13 +968,16 @@
     <ClInclude Include="src\scence\S11.h">
       <Filter>src\scence\SElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\scence\VS01_1.h">
+    <ClInclude Include="src\scence\SIdle.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS01_1.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\scence\VS01_2.h">
+    <ClInclude Include="src\view\VS01_2.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\scence\VS04_1.h">
+    <ClInclude Include="src\view\VS04_1.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
   </ItemGroup>

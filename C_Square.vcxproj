@@ -291,6 +291,7 @@
     <ClCompile Include="src\scence\S09.cpp" />
     <ClCompile Include="src\scence\S10.cpp" />
     <ClCompile Include="src\scence\S11.cpp" />
+    <ClCompile Include="src\scence\SIdle.cpp" />
     <ClCompile Include="src\scence\STest.cpp" />
     <ClCompile Include="src\squareMgr.cpp" />
     <ClCompile Include="src\squareUnit.cpp" />
@@ -436,16 +437,17 @@
     <ClInclude Include="src\scence\S11.h" />
     <ClInclude Include="src\scence\SBase.h" />
     <ClInclude Include="src\scence\scence.h" />
+    <ClInclude Include="src\scence\SIdle.h" />
     <ClInclude Include="src\scence\STest.h" />
     <ClInclude Include="src\scence\SType.h" />
-    <ClInclude Include="src\scence\VS01_1.h" />
-    <ClInclude Include="src\scence\VS01_2.h" />
-    <ClInclude Include="src\scence\VS04_1.h" />
     <ClInclude Include="src\squareMgr.h" />
     <ClInclude Include="src\squareUnit.h" />
     <ClInclude Include="src\videoMgr.h" />
     <ClInclude Include="src\view\baseView.h" />
     <ClInclude Include="src\view\view.h" />
+    <ClInclude Include="src\view\VS01_1.h" />
+    <ClInclude Include="src\view\VS01_2.h" />
+    <ClInclude Include="src\view\VS04_1.h" />
     <ClInclude Include="src\view\VSTest01.h" />
     <ClInclude Include="src\view\VSTest02.h" />
   </ItemGroup>

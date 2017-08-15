@@ -8,6 +8,8 @@ void ofViewApp::setup()
 	//ofEnableSmoothing();
 	//ofDisableArbTex();
 	
+	initScence();
+
 	//Singleton
 	squareMgr::GetInstance()->setup("config/_squareConfig.xml");
 	postFilter::GetInstance()->init(200, 200, 1280, 720);
@@ -25,7 +27,7 @@ void ofViewApp::update()
 	_mainTimer += delta;
 
 	camCtrl::GetInstance()->update(delta);
-	_scence04.update(delta);
+	_scenceMgr[_nowScence]->update(delta);
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
@@ -34,7 +36,7 @@ void ofViewApp::update()
 void ofViewApp::draw()
 {
 	ofSetBackgroundColor(0);
-	_scence04.draw();
+	_scenceMgr[_nowScence]->draw();
 
 	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
 }
@@ -42,13 +44,32 @@ void ofViewApp::draw()
 //--------------------------------------------------------------
 void ofViewApp::keyPressed(int key)
 {	
-	_scence04.control(ctrlMap::GetInstance()->key2Ctrl[key]);
+	_scenceMgr[_nowScence]->control(ctrlMap::GetInstance()->key2Ctrl[key]);
 }
 
 //--------------------------------------------------------------
 void ofViewApp::mouseDragged(int x, int y, int button)
 {
 	squareMgr::GetInstance()->mouseDraggedFromView(x, y);
+}
+
+//--------------------------------------------------------------
+void ofViewApp::initScence()
+{
+	_scenceMgr.push_back(ofPtr<SIdle>(new SIdle()));
+	_scenceMgr.push_back(ofPtr<S01>(new S01()));
+	_scenceMgr.push_back(ofPtr<S02>(new S02()));
+	_scenceMgr.push_back(ofPtr<S03>(new S03()));
+	_scenceMgr.push_back(ofPtr<S04>(new S04()));
+	_scenceMgr.push_back(ofPtr<S05>(new S05()));
+	_scenceMgr.push_back(ofPtr<S06>(new S06()));
+	_scenceMgr.push_back(ofPtr<S07>(new S07()));
+	_scenceMgr.push_back(ofPtr<S08>(new S08()));
+	_scenceMgr.push_back(ofPtr<S09>(new S09()));
+	_scenceMgr.push_back(ofPtr<S10>(new S10()));
+	_scenceMgr.push_back(ofPtr<S11>(new S11()));
+
+	_nowScence = eS04;
 }
 
 //--------------------------------------------------------------

@@ -17,6 +17,12 @@ void ofProjectorApp::update()
 void ofProjectorApp::draw()
 {	
 	squareMgr::GetInstance()->drawToProjection();
+	
+	ofPushStyle();
+	ofSetColor(0, sCoverAlpha);
+	ofFill();
+	ofDrawRectangle(0, 0, cProjectionWindowWidth, cProjectionWindowHeight);
+	ofPopStyle();
 }
 
 

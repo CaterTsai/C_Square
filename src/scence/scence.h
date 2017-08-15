@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SIdle.h"
 #include "STest.h"
 #include "S01.h"
 #include "S02.h"

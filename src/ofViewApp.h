@@ -19,8 +19,10 @@ private:
 
 //Scence
 private:
-	STest	_testScence;
-	S04		_scence04;
+	void initScence();
+private:
+	vector<ofPtr<SBase>> _scenceMgr;
+	eSType	_nowScence;
 //SoundStream
 public:
 	void setupSoundStream();

@@ -92,6 +92,11 @@ void DECA::createWorld()
 		}
 	}
 	_world.push_back(firstGen);
+
+	for (int i = 0; i < cCAMaxGeneration; i++)
+	{
+		nextGeneration();
+	}
 }
 
 //-------------------------------------
