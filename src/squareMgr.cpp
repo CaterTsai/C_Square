@@ -107,6 +107,15 @@ void squareMgr::clearSquare(int unitID)
 }
 
 //------------------------------
+void squareMgr::clearAllSquare()
+{
+	for (int i = 0; i < cSquareNum; i++)
+	{
+		clearSquare(i);
+	}
+}
+
+//------------------------------
 ofRectangle squareMgr::getUnitRect(int unitID)
 {
 	int size = _squareList.at(unitID).square.getSize();

@@ -18,27 +18,26 @@ public:
 	//-------------------------------
 	void draw(int width, int height) override
 	{
+		ofPushStyle();
 		switch (_eState)
 		{
-		case eSingleCenter:
-		{
-			ofPushStyle();
+			case eSingleCenter:
 			{
 				drawSingleCenter();
+				break;
 			}
-			ofPopStyle();
-			break;
-		}
-		case eDoubleMiddle:
-		{
-			ofPushStyle();
+			case eDoubleMiddle:
 			{
 				drawDoubleMiddle();
+				break;
 			}
-			ofPopStyle();
+			case eRandomSmall:
+			{
+				drawRandomSmall();
+				break;
+			}
 		}
-		}
-
+		ofPopStyle();
 	};
 
 	//-------------------------------
@@ -54,14 +53,20 @@ public:
 		case eCtrl_ViewTrigger2:
 		{
 			_eState = eSingleCenter;
-			squareMgr::GetInstance()->clearSquare(eSquareType::eMiddleLeftM);
-			squareMgr::GetInstance()->clearSquare(eSquareType::eMiddleRightM);
+			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
 			_eState = eDoubleMiddle;
-			squareMgr::GetInstance()->clearSquare(eSquareType::eBackCenerL);
+			squareMgr::GetInstance()->clearAllSquare();
+			break;
+		}
+		case eCtrl_ViewTrigger4:
+		{
+			_eState = eRandomSmall;
+			setRandomSmall();
+			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
 		}
@@ -74,10 +79,8 @@ public:
 		_eca.setT(0.2);
 		_eca.start();
 
-		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleLeftM].setPlayType(eCamMovePlayType::eMoveRepeatBack);
-		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleLeftM].setRevolution(ofVec3f(0, -1, 0), PI * -0.5, PI * 0.5, 10.0);
-		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleRightM].setPlayType(eCamMovePlayType::eMoveRepeatBack);
-		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleRightM].setRevolution(ofVec3f(0, -1, 0), PI * 0.5, PI * -0.5, 10.0);
+		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleLeftM].setRevolution(ofVec3f(0, -1, 0), PI * 0.2);
+		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleRightM].setRevolution(ofVec3f(0, -1, 0), PI * -0.2);
 
 		_eState = eSingleCenter;
 	}
@@ -89,6 +92,7 @@ public:
 	}
 
 private:
+	//-------------------------------
 	void drawSingleCenter() {
 		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eBackCenerL);
 		ofEnableDepthTest();
@@ -100,6 +104,8 @@ private:
 		ofDisableDepthTest();
 		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eBackCenerL);
 	}
+
+	//-------------------------------
 	void drawDoubleMiddle()
 	{
 		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleLeftM);
@@ -123,12 +129,44 @@ private:
 		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleRightM);
 	}
 
+	//-------------------------------
+	void drawRandomSmall()
+	{
+		for (int i = 0; i < cSquareSmallNum; i++)
+		{
+			if (_smallDisplay[i])
+			{
+				squareMgr::GetInstance()->updateOnUnitBegin(i);
+				ofEnableDepthTest();
+				postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(i));
+				{
+					_eca.draw(0, 0, _rect.width, _rect.height);
+				}
+				postFilter::GetInstance()->_squarePost.end();
+				ofDisableDepthTest();
+				squareMgr::GetInstance()->updateOnUnitEnd(i);
+			}
+		}
+	}
+
+	//-------------------------------
+	void setRandomSmall()
+	{
+		ZeroMemory(_smallDisplay, sizeof(bool) * cSquareSmallNum);
+		for (int i = 0; i < cSquareSmallNum; i++)
+		{
+			_smallDisplay[i] = ((rand() % 2) == 1);
+		}
+	}
 private:
 	enum eState
 	{
 		eSingleCenter	=	0
 		,eDoubleMiddle
+		,eRandomSmall
 	}_eState;
+
+	bool _smallDisplay[cSquareSmallNum];
 	ofRectangle _rect;
-	DECA	_eca, _eca2;
+	DECA	_eca;
 };

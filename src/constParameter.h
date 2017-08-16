@@ -35,7 +35,7 @@ const int cCtrlPointNum = 4;
 const int cCtrlPointCircleRadius = cProjectionWindowHeight * 0.02;
 const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
 const int cSquareNum = 7;
-
+const int cSquareSmallNum = 4;
 enum eSquareType : int
 {
 	eFrontLeftS = 0
@@ -138,7 +138,7 @@ const int cDAudioMeshCols = 50;
 
 //---------------------------
 #pragma region Static Variable
-static int sCoverAlpha = 0;
+
 
 #pragma endregion
 

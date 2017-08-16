@@ -35,6 +35,7 @@ public:
 	void disableSquareControl();
 	
 	void clearSquare(int unitID);
+	void clearAllSquare();
 
 	ofRectangle getUnitRect(int unitID);
 

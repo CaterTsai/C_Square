@@ -16,5 +16,5 @@ public:
 	void mouseReleased(int x, int y, int button);
 
 private:
-
+	int _coverAlpha;
 };

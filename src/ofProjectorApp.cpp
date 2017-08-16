@@ -5,6 +5,7 @@ void ofProjectorApp::setup()
 {
 	ofBackground(0);
 	ofDisableArbTex();
+	_coverAlpha = 0;
 }
 
 //--------------------------------------------------------------
@@ -19,7 +20,7 @@ void ofProjectorApp::draw()
 	squareMgr::GetInstance()->drawToProjection();
 	
 	ofPushStyle();
-	ofSetColor(0, sCoverAlpha);
+	ofSetColor(0, _coverAlpha);
 	ofFill();
 	ofDrawRectangle(0, 0, cProjectionWindowWidth, cProjectionWindowHeight);
 	ofPopStyle();
