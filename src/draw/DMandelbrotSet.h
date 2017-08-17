@@ -14,12 +14,12 @@ public:
 	void stop() override;
 
 private:
-	void init();
+	//void init();
 	void initShader();
 	void initPattern();
 	void initCenter();
-	void drawMandelbrotHistogram(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
-	void drawMandelbrotSmooth(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
+	//void drawMandelbrotHistogram(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
+	//void drawMandelbrotSmooth(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 	void drawMandelbrotShader(ofPixelsRef pix, double rmin, double rmax, double imin, double imax);
 private:
 	ofImage _display;
@@ -29,8 +29,8 @@ private:
 	double _distRMin, _distRMax, _distIMin, _distIMax;
 	double _zoomScale, _zoomV;
 
-	int _iterMat[cDMSCanvasHeight][cDMSCanvasWidth];
-	float _pMat[cDMSCanvasHeight][cDMSCanvasWidth];
+	//int _iterMat[cDMSCanvasHeight][cDMSCanvasWidth];
+	//float _pMat[cDMSCanvasHeight][cDMSCanvasWidth];
 
 	//Shader
 	ofShader _mandelbrot;

@@ -8,6 +8,9 @@
 class ofViewApp : public ofBaseApp
 {
 public:
+	ofViewApp()
+		:_eDisplayType(eDisplayEach)
+	{}
 	void setup();
 	void update();
 	void draw();
@@ -16,6 +19,12 @@ public:
 
 private:
 	float _mainTimer;
+	enum eDisplayType
+	{
+		eDisplayEach = 0
+		,eDisplayGroup
+	}_eDisplayType;
+
 
 //Scence
 private:

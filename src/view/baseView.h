@@ -17,6 +17,7 @@ public:
 	}
 	virtual void update(float delta) {};
 	virtual void draw(int width, int height) {};
+	virtual void drawCanvas(int x, int y, int width, int height) {};
 	virtual void control(eCtrlType type, int value) {};
 	virtual void start() {};
 	virtual void stop() {};

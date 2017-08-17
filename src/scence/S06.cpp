@@ -1,67 +1,16 @@
 #include "S06.h"
-
+#include "view.h"
 S06::S06()
 	:SBase(eS06)
 {
 	initView();
 }
 
-//-------------------------------------
-void S06::update(float delta)
-{
-	if (!_isStart)
-	{
-		return;
-	}
-
-	for (auto& iter : _viewList)
-	{
-		iter->update(delta);
-	}
-
-}
-
-//-------------------------------------
-void S06::draw()
-{
-	if (!_isStart)
-	{
-		return;
-	}
-
-	_viewList[_viewID]->draw(0, 0);
-}
-
-//-------------------------------------
-void S06::start()
-{
-
-	_isStart = true;
-}
-
-//-------------------------------------
-void S06::stop()
-{
-	_isStart = false;
-}
-
-//-------------------------------------
-void S06::control(eCtrlType ctrl, int value)
-{
-	if (ctrl == eCtrl_ViewNext)
-	{
-		setView( (_viewID + 1) % _viewList.size());
-	}
-	else
-	{
-
-	}
-}
-
 #pragma region View
 //-------------------------------------
 void S06::initView()
 {
+	_viewList.push_back(ofPtr<VS06_1>(new VS06_1("view/s6/1.xml")));
 }
 
 //-------------------------------------

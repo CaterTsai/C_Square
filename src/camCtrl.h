@@ -9,6 +9,7 @@ public:
 	void update(float delta);
 	void stopAll();
 	ofEasyCam& getSquareCam(int id);
+	ofEasyCam& getCanvasCam();
 public:
 	camUnit _canvasCam;
 	array<camUnit, cSquareNum> _squareCams;

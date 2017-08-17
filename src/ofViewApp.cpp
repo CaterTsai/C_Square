@@ -38,13 +38,40 @@ void ofViewApp::draw()
 	ofSetBackgroundColor(0);
 	_scenceMgr[_nowScence]->draw();
 
-	squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
+	switch (_eDisplayType)
+	{
+	case eDisplayEach:
+	{
+		squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
+		break;
+	}
+	case eDisplayGroup:
+	{
+		_scenceMgr[_nowScence]->drawCanvas(0, 0, 1024, 1024);
+		squareMgr::GetInstance()->displayUnitOnGroup(ofVec2f(0, 0));
+		break;
+	}
+	}
+	
 }
 
 //--------------------------------------------------------------
 void ofViewApp::keyPressed(int key)
 {	
 	_scenceMgr[_nowScence]->control(ctrlMap::GetInstance()->key2Ctrl[key]);
+
+	switch (key) {
+		case '[':
+		{
+			_eDisplayType = eDisplayEach;
+			break; 
+		}
+		case ']':
+		{
+			_eDisplayType = eDisplayGroup;
+			break;
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -69,7 +96,7 @@ void ofViewApp::initScence()
 	_scenceMgr.push_back(ofPtr<S10>(new S10()));
 	_scenceMgr.push_back(ofPtr<S11>(new S11()));
 
-	_nowScence = eS04;
+	_nowScence = eS06;
 }
 
 //--------------------------------------------------------------

@@ -4,7 +4,6 @@
 void ofProjectorApp::setup()
 {
 	ofBackground(0);
-	ofDisableArbTex();
 	_coverAlpha = 0;
 }
 

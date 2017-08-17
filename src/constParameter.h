@@ -21,6 +21,9 @@
 const int cProjectionWindowWidth = 1920;
 const int cProjectionWindowHeight = 1080;
 
+const int cViewCanvasWidth = 1024;
+const int cViewCanvasHeight = 1024;
+
 const int cViewWindowWidth = 1024;
 const int cViewWindowHeight = 1024;
 
@@ -111,8 +114,8 @@ const int cDPPWireNode = 50;
 const int cDPPWireHodeHalf = 25;
 
 //DMandelbrotSet
-const int cDMSCanvasWidth = 600;
-const int cDMSCanvasHeight = 600;
+const int cDMSCanvasWidth = 1024;
+const int cDMSCanvasHeight = 1024;
 const int cDMSMaximunCheck = 500;
 const float cDMSZoomMax = 100000.0;
 const int cDMSColorPatternNum = 6;

@@ -1,5 +1,5 @@
 #include "STest.h"
-
+#include "view.h"
 STest::STest()
 	:SBase(eSTest)
 {

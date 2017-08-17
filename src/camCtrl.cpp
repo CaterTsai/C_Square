@@ -27,6 +27,12 @@ ofEasyCam & camCtrl::getSquareCam(int id)
 }
 
 //--------------------------------------------------------------
+ofEasyCam & camCtrl::getCanvasCam()
+{
+	return _canvasCam._cam;
+}
+
+//--------------------------------------------------------------
 camCtrl* camCtrl::pInstance = 0;
 camCtrl* camCtrl::GetInstance()
 {
