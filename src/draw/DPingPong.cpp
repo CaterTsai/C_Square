@@ -520,6 +520,27 @@ void DPingPong::stop()
 }
 
 //-----------------------------------------
+void DPingPong::triggerBall()
+{
+	addBall(1);
+}
+
+//-----------------------------------------
+void DPingPong::triggerRipple()
+{
+
+	ofColor c(255, 100, 100);
+	c.setHueAngle(ofRandom(0, 360));
+	addRipple(ofVec2f(0, 0), c);
+}
+
+//-----------------------------------------
+void DPingPong::clearBall()
+{
+	_ballList.clear();
+}
+
+//-----------------------------------------
 void DPingPong::initBoard()
 {
 	_bels.clear();
@@ -527,7 +548,6 @@ void DPingPong::initBoard()
 	_ballList.clear();
 
 	//Add ball
-	addBall(10);
 
 	_bels.push_back(bet(DPingPong::eBetType::eBetTop, 0.2));
 	_bels.push_back(bet(DPingPong::eBetType::eBetLeft, 0.2));

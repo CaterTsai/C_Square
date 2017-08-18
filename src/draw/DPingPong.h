@@ -84,7 +84,7 @@ private:
 
 public:
 	DPingPong()
-		:DBase(eDFlash)
+		:DBase(eDPingPong)
 	{}
 
 	void update(float delta) override;
@@ -93,6 +93,9 @@ public:
 	void start() override;
 	void stop() override;
 
+	void triggerBall();
+	void triggerRipple();
+	void clearBall();
 private:
 	void initBoard();
 	void addBall(int num);
