@@ -983,6 +983,9 @@
     <ClInclude Include="src\view\VS06_1.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
+    <ClInclude Include="src\view\VS07_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

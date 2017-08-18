@@ -449,6 +449,7 @@
     <ClInclude Include="src\view\VS01_2.h" />
     <ClInclude Include="src\view\VS04_1.h" />
     <ClInclude Include="src\view\VS06_1.h" />
+    <ClInclude Include="src\view\VS07_1.h" />
     <ClInclude Include="src\view\VSTest01.h" />
     <ClInclude Include="src\view\VSTest02.h" />
   </ItemGroup>

@@ -8,13 +8,6 @@ class S07 : public SBase
 public:
 	S07();
 
-	void update(float delta) override;
-	void draw() override;
-	void start() override;
-	void stop() override;
-	
-	void control(eCtrlType ctrl, int value = 0) override;
-
 #pragma region View
 //View
 private:
