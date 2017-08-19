@@ -98,7 +98,7 @@ const float cDDRotateDiffMax = 30 * DEG_TO_RAD;
 const int cDDepthMax = 800;
 
 //DStar
-const int cDStarMaxNum = 200;
+const int cDStarMaxNum = 500;
 const float cDStarAddMinT = 0.1;
 const float cDStarAddMaxT = 1.0;
 const float cDStarMinV = 0.2;
@@ -132,7 +132,7 @@ const pair<double, double> cDJSRealPartRange(-1.5, 1.5);
 const pair<double, double> cDJSImaginePartRange(-1.5, 1.5);
 
 //DAudioMesh
-const int cDAudioMeshRows = 10;
+const int cDAudioMeshRows = 11;
 const int cDAudioMeshCols = 50;
 #pragma endregion
 

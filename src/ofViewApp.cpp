@@ -15,7 +15,7 @@ void ofViewApp::setup()
 	postFilter::GetInstance()->init(200, 200, 1280, 720);
 
 	ofSetFrameRate(60);
-	
+	setupSoundStream();
 	
 	_mainTimer = ofGetElapsedTimef();
 }
@@ -28,6 +28,11 @@ void ofViewApp::update()
 
 	camCtrl::GetInstance()->update(delta);
 	_scenceMgr[_nowScence]->update(delta);
+
+	if (_soundSetup)
+	{
+		_scenceMgr[_nowScence]->setSoundValue(_soundValue);
+	}
 
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
@@ -52,32 +57,139 @@ void ofViewApp::draw()
 		break;
 	}
 	}
-	
+
+	string filterMsg = (_targetSquare ? "Square" : "Canvas");
+	ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getScenceName(), ofVec2f(0, 15));
+	ofDrawBitmapStringHighlight("Filter Target :" + filterMsg, ofVec2f(0, 30));
+
+	//Debug
+	//camCtrl::GetInstance()->displayPos();
 }
 
 //--------------------------------------------------------------
 void ofViewApp::keyPressed(int key)
 {	
-	_scenceMgr[_nowScence]->control(ctrlMap::GetInstance()->key2Ctrl[key]);
-
-	switch (key) {
-		case '[':
-		{
-			_eDisplayType = eDisplayEach;
-			break; 
-		}
-		case ']':
-		{
-			_eDisplayType = eDisplayGroup;
-			break;
-		}
+	eCtrlType type = ctrlMap::GetInstance()->key2Ctrl[key];
+	if (type >= 0 && type < eCtrl_GlobalNum)
+	{
+		control(type);
 	}
+	else
+	{
+		_scenceMgr[_nowScence]->control(type);
+	}
+	
 }
 
 //--------------------------------------------------------------
 void ofViewApp::mouseDragged(int x, int y, int button)
 {
 	squareMgr::GetInstance()->mouseDraggedFromView(x, y);
+}
+
+//--------------------------------------------------------------
+void ofViewApp::control(eCtrlType ctrl, int value)
+{
+	switch (ctrl)
+	{
+	case eCtrl_Start:
+	{
+		_scenceMgr[_nowScence]->start();
+		_isStart = true;
+		break;
+	}
+	case eCtrl_NextScence:
+	{
+		auto nextScence = (eSType)((_nowScence + 1) % eSTypeNum);
+		if (_isStart)
+		{
+			_scenceMgr[_nowScence]->stop();
+			_scenceMgr[nextScence]->start();
+		}
+		_nowScence = nextScence;
+		break;
+	}
+	case eCtrl_PrevScence:
+	{
+		auto nextScence = (eSType)((_nowScence - 1) % eSTypeNum);
+		if (_isStart)
+		{
+			_scenceMgr[_nowScence]->stop();
+			_scenceMgr[nextScence]->start();
+		}
+		_nowScence = nextScence;
+		break;
+	}
+	case eCtrl_DisplayEach:
+	{
+		_eDisplayType = eDisplayEach;
+		break;
+	}
+	case eCtrl_DisplayGroup:
+	{
+		_eDisplayType = eDisplayGroup;
+		break;
+	}
+#pragma region Filter
+	case eCtrl_ChangeFilterTarget:
+	{
+		_targetSquare ^= true;
+		break;
+	}
+	case eCtrl_DisableAllFilter:
+	{
+		postFilter::GetInstance()->disableAll();
+		break;
+	}
+	case eCtrl_Filter1:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostBloom);
+		break;
+	}
+	case eCtrl_Filter2:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostBloomTwo);
+		break;
+	}
+	case eCtrl_Filter3:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostEdge);
+		break;
+	}
+	case eCtrl_Filter4:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostKaleidoscope);
+		break;
+	}
+	case eCtrl_Filter5:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostNoiseWarp);
+		break;
+	}
+	case eCtrl_Filter6:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostPixel);
+		break;
+	}
+	case eCtrl_Filter7:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostRGBShift);
+		break;
+	}
+	case eCtrl_Filter8:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostToon);
+		break;
+	}
+	case eCtrl_Filter9:
+	{
+		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostZoomBlur);
+		break;
+	}
+	}
+#pragma endregion
+
+	
 }
 
 //--------------------------------------------------------------
@@ -96,16 +208,23 @@ void ofViewApp::initScence()
 	_scenceMgr.push_back(ofPtr<S10>(new S10()));
 	_scenceMgr.push_back(ofPtr<S11>(new S11()));
 
-	_nowScence = eS07;
+	_nowScence = eS08;
 }
 
 //--------------------------------------------------------------
 void ofViewApp::setupSoundStream()
-{
-	_soundStream.setup(this, 0, 2, 44100, cBufferSize, 4);
+{	
+	_soundStream.setDeviceID(1);
+	_soundSetup = _soundStream.setup(this, 0, 2, 44100, cBufferSize, 4);
+	
 }
 
 //--------------------------------------------------------------
 void ofViewApp::audioIn(float * input, int bufferSize, int nChannels)
 {
+	for (int i = 0; i < cBufferSize; i++)
+	{
+		_soundValue[i] = (input[i * 2] + input[i * 2 + 1]) * 0.5;
+	}
 }
+

@@ -75,6 +75,13 @@ void camUnit::stop()
 }
 
 //--------------------------------------------------------------
+void camUnit::reset()
+{
+	_target.set(0, 0, 0);
+	setFixed(_target);
+}
+
+//--------------------------------------------------------------
 void camUnit::setFixed()
 {
 	_type = eCamFixed;
@@ -84,6 +91,7 @@ void camUnit::setFixed()
 void camUnit::setFixed(ofVec3f& pos)
 {
 	_type = eCamFixed;
+	_cam.setDistance(pos.distance(_target));
 	_cam.setGlobalPosition(pos);
 	_cam.lookAt(_target);
 }

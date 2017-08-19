@@ -20,14 +20,18 @@ enum eCtrlType : int
 	, eCtrl_Filter7
 	, eCtrl_Filter8
 	, eCtrl_Filter9
-
+	, eCtrl_ChangeFilterTarget
+	, eCtrl_DisableAllFilter
+	, eCtrl_NextScence
+	, eCtrl_PrevScence
+	, eCtrl_DisplayEach
+	, eCtrl_DisplayGroup
 	, eCtrl_GlobalNum
 
 	//scence
 	, eCtrl_Scence = 30
 	, eCtrl_Trigger
-	, eCtrl_NextScence
-	, eCtrl_PrevScence
+	
 	, eCtrl_ViewSpeed
 	, eCtrl_ViewNext
 	, eCtrl_ViewPrev

@@ -1,61 +1,9 @@
 #include "S05.h"
-
+#include "view.h"
 S05::S05()
 	:SBase(eS05)
 {
 	initView();
-}
-
-//-------------------------------------
-void S05::update(float delta)
-{
-	if (!_isStart)
-	{
-		return;
-	}
-
-	for (auto& iter : _viewList)
-	{
-		iter->update(delta);
-	}
-
-}
-
-//-------------------------------------
-void S05::draw()
-{
-	if (!_isStart)
-	{
-		return;
-	}
-
-	_viewList[_viewID]->draw(0, 0);
-}
-
-//-------------------------------------
-void S05::start()
-{
-
-	_isStart = true;
-}
-
-//-------------------------------------
-void S05::stop()
-{
-	_isStart = false;
-}
-
-//-------------------------------------
-void S05::control(eCtrlType ctrl, int value)
-{
-	if (ctrl == eCtrl_ViewNext)
-	{
-		setView( (_viewID + 1) % _viewList.size());
-	}
-	else
-	{
-
-	}
 }
 
 #pragma region View

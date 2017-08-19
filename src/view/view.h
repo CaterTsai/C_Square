@@ -6,3 +6,5 @@
 #include "VS04_1.h"
 #include "VS06_1.h"
 #include "VS07_1.h"
+#include "VS08_1.h"
+#include "VS08_2.h"

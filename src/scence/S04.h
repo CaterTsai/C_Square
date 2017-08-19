@@ -8,6 +8,7 @@ class S04 : public SBase
 public:
 	S04();
 
+	inline string getScenceName() override { return "S04"; };
 #pragma region View
 //View
 private:

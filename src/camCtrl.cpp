@@ -11,6 +11,24 @@ void camCtrl::update(float delta)
 }
 
 //--------------------------------------------------------------
+void camCtrl::displayPos(ofVec2f pos)
+{
+	ostringstream ss;
+	for (int i = 0; i < cSquareNum; i++)
+	{
+		ofVec3f pos = _squareCams[i]._cam.getGlobalPosition();
+		
+		ss << "cam " + ofToString(i);
+		ss << " = (" + ofToString(pos.x);
+		ss << "," + ofToString(pos.y);
+		ss << "," + ofToString(pos.z);
+		ss << ")\n";
+		
+	}
+	ofDrawBitmapStringHighlight(ss.str(), pos);
+}
+
+//--------------------------------------------------------------
 void camCtrl::stopAll()
 {
 	for (auto& iter : _squareCams)
@@ -18,6 +36,16 @@ void camCtrl::stopAll()
 		iter.stop();
 	}
 	_canvasCam.stop();
+}
+
+//--------------------------------------------------------------
+void camCtrl::reset()
+{
+	for (auto& iter : _squareCams)
+	{
+		iter.reset();
+	}
+	_canvasCam.reset();
 }
 
 //--------------------------------------------------------------

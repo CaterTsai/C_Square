@@ -1,6 +1,6 @@
 #pragma once
 
-enum eSType
+enum eSType : int
 {
 	eSIdle = 0
 	, eS01
@@ -14,6 +14,7 @@ enum eSType
 	, eS09
 	, eS10
 	, eS11
-	,eSTest
 	, eSTypeNum
+	, eSTest
+
 };

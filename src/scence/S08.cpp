@@ -1,4 +1,5 @@
 #include "S08.h"
+#include "view.h"
 
 S08::S08()
 	:SBase(eS08)
@@ -6,62 +7,12 @@ S08::S08()
 	initView();
 }
 
-//-------------------------------------
-void S08::update(float delta)
-{
-	if (!_isStart)
-	{
-		return;
-	}
-
-	for (auto& iter : _viewList)
-	{
-		iter->update(delta);
-	}
-
-}
-
-//-------------------------------------
-void S08::draw()
-{
-	if (!_isStart)
-	{
-		return;
-	}
-
-	_viewList[_viewID]->draw(0, 0);
-}
-
-//-------------------------------------
-void S08::start()
-{
-
-	_isStart = true;
-}
-
-//-------------------------------------
-void S08::stop()
-{
-	_isStart = false;
-}
-
-//-------------------------------------
-void S08::control(eCtrlType ctrl, int value)
-{
-	if (ctrl == eCtrl_ViewNext)
-	{
-		setView( (_viewID + 1) % _viewList.size());
-	}
-	else
-	{
-
-	}
-}
-
 #pragma region View
 //-------------------------------------
 void S08::initView()
 {
+	_viewList.push_back(ofPtr<VS08_1>(new VS08_1("view/s8/1.xml")));
+	_viewList.push_back(ofPtr<VS08_2>(new VS08_2("view/s8/2.xml")));
 }
 
 //-------------------------------------

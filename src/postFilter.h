@@ -20,10 +20,9 @@ class postFilter
 {
 public:
 	void init(int sw, int sh, int cw, int ch);
-	void squareEnable(ePostFilterType type, bool isEnable);
-	void squareDisableAll();
-	void canvasEnable(ePostFilterType type, bool isEnable);
-	void canvasDisableAll();
+	void filterEnable(bool isSquare, ePostFilterType type);
+	void filterEnable(bool isSquare, ePostFilterType type, bool isEnable);
+	void disableAll();
 private:
 	bool _isInit;
 

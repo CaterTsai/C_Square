@@ -10,7 +10,7 @@ void DStar::update(float delta)
 	_timer -= delta;
 	if (_timer <= 0.0f)
 	{
-		addStar((rand() % 20 + 5));
+		addStar((rand() % 40 + 10));
 		_timer = ofRandom(cDStarAddMinT, cDStarAddMaxT);;
 	}
 }
@@ -23,7 +23,7 @@ void DStar::draw(int x, int y, int w, int h)
 	ofSetColor(255);
 	for (auto& iter : _starList)
 	{
-		ofDrawSphere(iter.pos.x * w, iter.pos.y * w, iter.pos.z * h * 5, 5);
+		ofDrawSphere(iter.pos.x * w, iter.pos.y * w, iter.pos.z * h * 5, 10);
 	}
 }
 

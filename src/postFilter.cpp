@@ -34,34 +34,48 @@ void postFilter::init(int sw, int sh, int cw, int ch)
 }
 
 //-------------------------------------
-void postFilter::squareEnable(ePostFilterType type, bool isEnable)
+void postFilter::filterEnable(bool isSquare, ePostFilterType type)
 {
-	_squarePost[(int)type]->setEnabled(isEnable);
+	if (isSquare)
+	{
+		auto isEnable = !_squarePost[(int)type]->getEnabled();
+		_squarePost[(int)type]->setEnabled(isEnable);
+	}
+	else
+	{
+		auto isEnable = !_canvasPost[(int)type]->getEnabled();
+		_canvasPost[(int)type]->setEnabled(isEnable);
+	}
+	
 }
 
 //-------------------------------------
-void postFilter::squareDisableAll()
+void postFilter::filterEnable(bool isSquare, ePostFilterType type, bool isEnable)
+{
+	if (isSquare)
+	{
+		_squarePost[(int)type]->setEnabled(isEnable);
+	}
+	else
+	{
+		_canvasPost[(int)type]->setEnabled(isEnable);
+	}
+}
+
+//-------------------------------------
+void postFilter::disableAll()
 {
 	for (int i = 0; i < _squarePost.getNumProcessedPasses(); i++)
 	{
 		_squarePost[i]->disable();
 	}
-}
 
-//-------------------------------------
-void postFilter::canvasEnable(ePostFilterType type, bool isEnable)
-{
-	_canvasPost[(int)type]->setEnabled(isEnable);
-}
-
-//-------------------------------------
-void postFilter::canvasDisableAll()
-{
 	for (int i = 0; i < _squarePost.getNumProcessedPasses(); i++)
 	{
 		_canvasPost[i]->disable();
 	}
 }
+
 
 #pragma region Singleton
 //--------------------------------------------------------------

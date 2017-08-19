@@ -28,6 +28,7 @@ public:
 	void drawCam(); //Debug
 	void setPlayType(eCamMovePlayType type);
 	void stop();
+	void reset();
 
 
 	void setFixed();

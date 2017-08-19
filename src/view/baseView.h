@@ -21,6 +21,7 @@ public:
 	virtual void control(eCtrlType type, int value) {};
 	virtual void start() {};
 	virtual void stop() {};
+	virtual void setSoundValue(array<float, cBufferSize>& soundValue) {};
 	//View Setting
 	void load(string path)
 	{

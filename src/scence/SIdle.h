@@ -8,12 +8,7 @@ class SIdle : public SBase
 public:
 	SIdle();
 
-	void update(float delta) override;
-	void draw() override;
-	void start() override;
-	void stop() override;
-	
-	void control(eCtrlType ctrl, int value = 0) override;
+	inline string getScenceName() override { return "SIdle"; };
 
 #pragma region View
 //View

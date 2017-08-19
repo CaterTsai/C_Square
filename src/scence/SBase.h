@@ -45,21 +45,21 @@ public:
 	virtual void start() {
 		_isStart = true;
 		_viewID = 0;
-		_viewList[_viewID]->set();
-		_viewList[_viewID]->start();
+		if (_viewList.size() > _viewID)
+		{
+			_viewList[_viewID]->set();
+			_viewList[_viewID]->start();
+		}
 	};
 	virtual void stop() {
 		_isStart = false;
 	};
 	virtual void reset() {};
 	virtual void control(eCtrlType ctrl, int value = 0) {
-		if (ctrl == eCtrl_Start)
-		{
-			start();
-		}
-		else if (ctrl == eCtrl_ViewNext)
+		if (ctrl == eCtrl_ViewNext)
 		{
 			setView((_viewID + 1) % _viewList.size());
+			_viewList[_viewID]->start();
 		}
 		else
 		{
@@ -69,7 +69,14 @@ public:
 			}
 		}
 	};
-
+	virtual void setSoundValue(array<float, cBufferSize>& soundValue) 
+	{
+		if (_viewList.size() > _viewID)
+		{
+			_viewList[_viewID]->setSoundValue(soundValue);
+		}
+	};
+	virtual inline string getScenceName() { return "SBase"; };
 	//View
 	virtual void initView() {};
 	virtual void setView(int id) {};
