@@ -17,6 +17,7 @@ enum eDType
 	,eDJuliaSet
 	,eDTexturePrimitive
 	,eDAudioMesh
+	,eDAudioSphere
 	,eDMoveRect
 	//Not Yet
 	,eDGrowShape

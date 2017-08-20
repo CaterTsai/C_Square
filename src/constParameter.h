@@ -28,6 +28,22 @@ const int cViewWindowWidth = 1024;
 const int cViewWindowHeight = 1024;
 
 //--------------
+//Video Mgr
+enum eVideoType : int
+{
+	eVideoDrum_1 = 0
+	,eVideoDrum_2
+	,eVideoDrum_3
+	,eVideoBass_1
+	,eVideoBass_2
+	,eVideoBass_3
+	,eVideoBongo_1
+	, eVideoBongo_2
+	, eVideoBongo_3
+	,eVideoNum
+};
+
+//--------------
 //Sound Stream
 const int cBufferSize = 256;
 

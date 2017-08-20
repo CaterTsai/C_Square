@@ -376,6 +376,9 @@
     <ClCompile Include="src\scence\SIdle.cpp">
       <Filter>src\scence\SElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DAudioSphere.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -974,9 +977,6 @@
     <ClInclude Include="src\view\VS01_1.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\view\VS01_2.h">
-      <Filter>src\view\VElement</Filter>
-    </ClInclude>
     <ClInclude Include="src\view\VS04_1.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
@@ -991,6 +991,12 @@
     </ClInclude>
     <ClInclude Include="src\view\VS08_2.h">
       <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS02_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DAudioSphere.h">
+      <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

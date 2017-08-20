@@ -200,6 +200,7 @@
     <ClCompile Include="src\camCtrl.cpp" />
     <ClCompile Include="src\camUnit.cpp" />
     <ClCompile Include="src\ctrlMap.cpp" />
+    <ClCompile Include="src\draw\DAudioSphere.cpp" />
     <ClCompile Include="src\draw\DAudioMesh.cpp" />
     <ClCompile Include="src\draw\DCircleLine.cpp" />
     <ClCompile Include="src\draw\DCylinderFlow.cpp" />
@@ -328,6 +329,7 @@
     <ClInclude Include="src\camCtrl.h" />
     <ClInclude Include="src\camUnit.h" />
     <ClInclude Include="src\ctrlMap.h" />
+    <ClInclude Include="src\draw\DAudioSphere.h" />
     <ClInclude Include="src\draw\DAudioMesh.h" />
     <ClInclude Include="src\draw\DCircleLine.h" />
     <ClInclude Include="src\draw\DECA.h" />
@@ -446,7 +448,7 @@
     <ClInclude Include="src\view\baseView.h" />
     <ClInclude Include="src\view\view.h" />
     <ClInclude Include="src\view\VS01_1.h" />
-    <ClInclude Include="src\view\VS01_2.h" />
+    <ClInclude Include="src\view\VS02_1.h" />
     <ClInclude Include="src\view\VS04_1.h" />
     <ClInclude Include="src\view\VS06_1.h" />
     <ClInclude Include="src\view\VS07_1.h" />

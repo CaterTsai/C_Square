@@ -78,7 +78,7 @@ void camUnit::stop()
 void camUnit::reset()
 {
 	_target.set(0, 0, 0);
-	setFixed(_target);
+	setFixed(ofVec3f(0,0, 173));
 }
 
 //--------------------------------------------------------------

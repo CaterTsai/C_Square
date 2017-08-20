@@ -41,18 +41,16 @@ void videoMgr::draw(int id, int w, int h)
 }
 
 //------------------------------------------------
-int videoMgr::add(string file)
+void videoMgr::add(eVideoType type, string file)
 {
-	ofxDSHapVideoPlayer	newVideo;
-	if (newVideo.load(file))
+
+	if (_videos[type].load(file))
 	{
-		_videos.push_back(newVideo);
-		return _videos.size() - 1;
+		_videos[type].setLoopState(ofLoopType::OF_LOOP_NORMAL);
 	}
 	else
 	{
 		ofLog(OF_LOG_ERROR, "[videoMgr::add]Load video failed : " + file);
-		return -1;
 	}
 }
 
@@ -64,7 +62,9 @@ void videoMgr::play(int id)
 		return;
 	}
 
+	_videos[id].setFrame(0);
 	_videos[id].play();
+	_videos[id].update();
 }
 
 //------------------------------------------------
@@ -76,6 +76,15 @@ void videoMgr::stop(int id)
 	}
 
 	_videos[id].stop();
+}
+
+//------------------------------------------------
+void videoMgr::stopAll()
+{
+	for (auto& iter : _videos)
+	{
+		iter.stop();
+	}
 }
 
 //------------------------------------------------

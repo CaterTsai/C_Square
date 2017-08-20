@@ -65,12 +65,12 @@ void postFilter::filterEnable(bool isSquare, ePostFilterType type, bool isEnable
 //-------------------------------------
 void postFilter::disableAll()
 {
-	for (int i = 0; i < _squarePost.getNumProcessedPasses(); i++)
+	for (int i = 0; i < _squarePost.size(); i++)
 	{
 		_squarePost[i]->disable();
 	}
 
-	for (int i = 0; i < _squarePost.getNumProcessedPasses(); i++)
+	for (int i = 0; i < _canvasPost.size(); i++)
 	{
 		_canvasPost[i]->disable();
 	}

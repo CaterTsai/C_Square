@@ -118,12 +118,12 @@ public:
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_needMove = true;
+			_needMove ^= true;
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_needMove = false;
+
 			break;
 		}
 		case eCtrl_ViewTrigger3:

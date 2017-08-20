@@ -8,12 +8,13 @@ void ofViewApp::setup()
 	//ofEnableSmoothing();
 	//ofDisableArbTex();
 	
+	initVideo();
 	initScence();
 
 	//Singleton
 	squareMgr::GetInstance()->setup("config/_squareConfig.xml");
 	postFilter::GetInstance()->init(200, 200, 1280, 720);
-
+	postFilter::GetInstance()->_squarePost.setFlip(false);
 	ofSetFrameRate(60);
 	setupSoundStream();
 	
@@ -26,6 +27,7 @@ void ofViewApp::update()
 	float delta = ofGetElapsedTimef() - _mainTimer;
 	_mainTimer += delta;
 
+	
 	camCtrl::GetInstance()->update(delta);
 	_scenceMgr[_nowScence]->update(delta);
 
@@ -34,6 +36,7 @@ void ofViewApp::update()
 		_scenceMgr[_nowScence]->setSoundValue(_soundValue);
 	}
 
+	
 	ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
@@ -63,7 +66,7 @@ void ofViewApp::draw()
 	ofDrawBitmapStringHighlight("Filter Target :" + filterMsg, ofVec2f(0, 30));
 
 	//Debug
-	//camCtrl::GetInstance()->displayPos();
+	camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
 }
 
 //--------------------------------------------------------------
@@ -107,6 +110,8 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 			_scenceMgr[nextScence]->start();
 		}
 		_nowScence = nextScence;
+		squareMgr::GetInstance()->clearAllSquare();
+		camCtrl::GetInstance()->reset();
 		break;
 	}
 	case eCtrl_PrevScence:
@@ -118,6 +123,8 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 			_scenceMgr[nextScence]->start();
 		}
 		_nowScence = nextScence;
+		squareMgr::GetInstance()->clearAllSquare();
+		camCtrl::GetInstance()->reset();
 		break;
 	}
 	case eCtrl_DisplayEach:
@@ -208,7 +215,21 @@ void ofViewApp::initScence()
 	_scenceMgr.push_back(ofPtr<S10>(new S10()));
 	_scenceMgr.push_back(ofPtr<S11>(new S11()));
 
-	_nowScence = eS08;
+	_nowScence = eS01;
+}
+
+//--------------------------------------------------------------
+void ofViewApp::initVideo()
+{
+	videoMgr::GetInstance()->add(eVideoDrum_1, "videos/dm_1.avi");
+	videoMgr::GetInstance()->add(eVideoDrum_2, "videos/dm_2.avi");
+	videoMgr::GetInstance()->add(eVideoDrum_3, "videos/dm_3.avi");
+	videoMgr::GetInstance()->add(eVideoBass_1, "videos/bass_1.avi");
+	videoMgr::GetInstance()->add(eVideoBass_2, "videos/bass_2.avi");
+	videoMgr::GetInstance()->add(eVideoBass_3, "videos/bass_3.avi");
+	videoMgr::GetInstance()->add(eVideoBongo_1, "videos/bg_1.avi");
+	videoMgr::GetInstance()->add(eVideoBongo_2, "videos/bg_2.avi");
+	videoMgr::GetInstance()->add(eVideoBongo_3, "videos/bg_3.avi");
 }
 
 //--------------------------------------------------------------

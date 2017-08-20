@@ -9,9 +9,10 @@ public:
 	void update();
 	void draw(int id);
 	void draw(int id, int w, int h);
-	int add(string file);
+	void add(eVideoType type, string file);
 	void play(int id);
 	void stop(int id);
+	void stopAll();
 	bool getTexture(int id, ofTexture* texture);
 private:
 
@@ -21,7 +22,10 @@ private:
 //Singleton
 //-------------------
 private:
-	videoMgr() {};
+	videoMgr() 
+	{
+		_videos.resize(eVideoNum);
+	};
 	~videoMgr()
 	{
 		videoMgr::Destroy();

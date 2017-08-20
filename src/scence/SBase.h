@@ -21,7 +21,7 @@ public:
 	}
 
 	virtual void update(float delta) {
-		if (!_isStart)
+		if (!_isStart || _viewList.size() == 0)
 		{
 			return;
 		}
@@ -32,7 +32,7 @@ public:
 		}
 	};
 	virtual void draw() {
-		if (!_isStart)
+		if (!_isStart || _viewList.size() == 0)
 		{
 			return;
 		}

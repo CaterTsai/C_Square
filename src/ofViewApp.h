@@ -4,6 +4,7 @@
 #include "scence.h"
 #include "camCtrl.h"
 #include "postFilter.h"
+#include "videoMgr.h"
 
 class ofViewApp : public ofBaseApp
 {
@@ -41,6 +42,11 @@ private:
 
 	//PostFilter
 	bool _targetSquare;
+
+//Video
+public:
+	void initVideo();
+
 
 //SoundStream
 public:
