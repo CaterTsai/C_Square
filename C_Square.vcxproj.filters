@@ -998,6 +998,9 @@
     <ClInclude Include="src\draw\DAudioSphere.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
+    <ClInclude Include="src\view\VS10_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

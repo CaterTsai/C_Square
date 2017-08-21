@@ -1,6 +1,7 @@
 #pragma once
 
 #include "baseView.h"
+#include "VideoMgr.h"
 
 class VS07_1 : public baseView
 {
@@ -14,8 +15,9 @@ public:
 	//-------------------------------
 	void update(float delta) override
 	{
-		_dpp.update(delta);
+		videoMgr::GetInstance()->update();
 
+		_dpp.update(delta);
 		if (_autoAddRipper)
 		{
 			_timer -= delta;
@@ -41,6 +43,17 @@ public:
 		case eCenterAndSmallPingPong:
 		{
 			drawCenterAndSmallPingPong();
+			break;
+		}
+		case eCenterRotateAndMiddlePingPong:
+		{
+			drawCenterRotateAndMiddlePingPong();
+			break;
+		}
+		case eCenterAndSmallPingPongAndMiddleRotate:
+		{
+			drawCenterAndSmallPingPongAndMiddleRotate();
+			break;
 		}
 		}
 		ofPopStyle();
@@ -65,23 +78,29 @@ public:
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_dpp.triggerBall();
+			_eState = eCenterRotateAndMiddlePingPong;
+			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_dpp.triggerRipple();
+			_eState = eCenterAndSmallPingPongAndMiddleRotate;
+			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
 		case eCtrl_ViewTrigger5:
 		{
-			_dpp.clearBall();
+			_dpp.triggerBall();
 			break;
 		}
 		case eCtrl_ViewTrigger6:
 		{
-			_autoAddRipper ^= true;
-			_timer = 0.0;
+			_dpp.triggerRipple();
+			break;
+		}
+		case eCtrl_ViewTrigger7:
+		{
+			_dpp.clearBall();
 			break;
 		}
 		}
@@ -93,13 +112,14 @@ public:
 		_rect = squareMgr::GetInstance()->getUnitRect(eSquareType::eBackCenerL);
 		_eState = eCenterPingPong;
 		_dpp.start();
+		videoMgr::GetInstance()->play(eVideoRotate);
 
 	}
 
 	//-------------------------------
 	void stop()
 	{
-
+		videoMgr::GetInstance()->stopAll();
 	}
 
 private:
@@ -134,11 +154,102 @@ private:
 			}
 		}
 	}
+
+	void drawCenterRotateAndMiddlePingPong()
+	{
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eBackCenerL);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eBackCenerL));
+		{
+			videoMgr::GetInstance()->draw(eVideoRotate, _rect.width, _rect.height);
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eBackCenerL);
+
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleLeftM);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eMiddleLeftM));
+		{
+			ofPushMatrix();
+			ofScale(-1, 1);
+			_dpp.draw(0, 0, _rect.width, _rect.height);
+			ofPopMatrix();
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleLeftM);
+
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleRightM);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eMiddleRightM));
+		{
+			_dpp.draw(0, 0, _rect.width, _rect.height);
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleRightM);
+	}
+
+	void drawCenterAndSmallPingPongAndMiddleRotate()
+	{
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eBackCenerL);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eBackCenerL));
+		{
+			_dpp.draw(0, 0, _rect.width, _rect.height);
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eBackCenerL);
+
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleLeftM);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eMiddleLeftM));
+		{
+			ofPushMatrix();
+			ofScale(-1, 1);
+			videoMgr::GetInstance()->draw(eVideoRotate, _rect.width, _rect.height);
+			ofPopMatrix();
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleLeftM);
+
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleRightM);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eMiddleRightM));
+		{
+			videoMgr::GetInstance()->draw(eVideoRotate, _rect.width, _rect.height);
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleRightM);
+
+		for (int i = 0; i < cSquareNum; i++)
+		{
+			if (i != eSquareType::eMiddleLeftM && i != eSquareType::eMiddleRightM)
+			{
+				squareMgr::GetInstance()->updateOnUnitBegin(i);
+				ofEnableDepthTest();
+				postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(i));
+				{
+					_dpp.draw(0, 0, _rect.width, _rect.height);
+				}
+				postFilter::GetInstance()->_squarePost.end();
+				ofDisableDepthTest();
+				squareMgr::GetInstance()->updateOnUnitEnd(i);
+			}
+		}
+	}
 private:
 	enum eState
 	{
 		eCenterPingPong = 0
 		, eCenterAndSmallPingPong
+		, eCenterRotateAndMiddlePingPong
+		, eCenterAndSmallPingPongAndMiddleRotate
+		
 	}_eState;
 
 	bool _autoAddRipper;

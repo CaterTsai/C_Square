@@ -13,7 +13,7 @@ void ofViewApp::setup()
 
 	//Singleton
 	squareMgr::GetInstance()->setup("config/_squareConfig.xml");
-	postFilter::GetInstance()->init(200, 200, 1280, 720);
+	postFilter::GetInstance()->init(200, 200, cViewCanvasWidth, cViewCanvasWidth);
 	postFilter::GetInstance()->_squarePost.setFlip(false);
 	ofSetFrameRate(60);
 	setupSoundStream();
@@ -99,6 +99,12 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	{
 		_scenceMgr[_nowScence]->start();
 		_isStart = true;
+		break;
+	}
+	case eCtrl_Stop:
+	{
+		_scenceMgr[_nowScence]->stop();
+		_isStart = false;
 		break;
 	}
 	case eCtrl_NextScence:
@@ -215,7 +221,7 @@ void ofViewApp::initScence()
 	_scenceMgr.push_back(ofPtr<S10>(new S10()));
 	_scenceMgr.push_back(ofPtr<S11>(new S11()));
 
-	_nowScence = eS01;
+	_nowScence = eS03;
 }
 
 //--------------------------------------------------------------
@@ -230,6 +236,7 @@ void ofViewApp::initVideo()
 	videoMgr::GetInstance()->add(eVideoBongo_1, "videos/bg_1.avi");
 	videoMgr::GetInstance()->add(eVideoBongo_2, "videos/bg_2.avi");
 	videoMgr::GetInstance()->add(eVideoBongo_3, "videos/bg_3.avi");
+	videoMgr::GetInstance()->add(eVideoRotate, "videos/rotate.avi");
 }
 
 //--------------------------------------------------------------

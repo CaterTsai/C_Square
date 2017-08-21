@@ -40,6 +40,7 @@ enum eVideoType : int
 	,eVideoBongo_1
 	, eVideoBongo_2
 	, eVideoBongo_3
+	,eVideoRotate
 	,eVideoNum
 };
 

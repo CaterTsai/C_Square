@@ -4,6 +4,7 @@
 void ctrlMap::initKey2Ctrl()
 {
 	key2Ctrl['s'] = eCtrl_Start;
+	key2Ctrl['d'] = eCtrl_Stop;
 	key2Ctrl['w'] = eCtrl_NextScence;
 	key2Ctrl['q'] = eCtrl_PrevScence;
 

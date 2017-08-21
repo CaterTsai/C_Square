@@ -32,6 +32,7 @@ public:
 
 
 	void setFixed();
+	
 	void setFixed(ofVec3f& pos);
 
 	void setRotate(float vec);
@@ -43,9 +44,11 @@ public:
 	void setMove(ofVec3f& to, float t);
 	void setMove(ofVec3f& from, ofVec3f& to, float t);
 
+	void setRandom();
 	void setRandom(int dist, float t);
 
 	void setTarget(ofVec3f& pos);
+
 
 private:
 	void updateRotate(float delta);

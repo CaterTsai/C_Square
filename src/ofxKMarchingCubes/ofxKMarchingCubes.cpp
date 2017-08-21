@@ -101,15 +101,12 @@ void ofxKMarchingCubes::addMetaBall(ofVec3f center, float charge, ofColor color)
         for(int y=0; y < cGridResolution; y++) {
             for(int z = 0; z < cGridResolution; z++) {
 				auto val = charge / gridPoints_[x][y][z].distance(center);
-				//if (val > 0.1)
-				//{
-					gridIsoValues_[x][y][z] += val;
-					if (gridIsoValuesAdd_[x][y][z] < val)
-					{
-						gridIsoValuesAdd_[x][y][z] = val;
-						gridColor_[x][y][z] = color;
-					}
-				//}
+				gridIsoValues_[x][y][z] += val;
+				if (gridIsoValuesAdd_[x][y][z] < val)
+				{
+					gridIsoValuesAdd_[x][y][z] = val;
+					gridColor_[x][y][z] = color;
+				}
             }
         }
     }    

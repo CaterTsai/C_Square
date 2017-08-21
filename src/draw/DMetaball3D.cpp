@@ -76,9 +76,20 @@ void DMetaBall3D::draw(int x, int y, int w, int h)
 	ofPushStyle();
 	{
 		ofEnableDepthTest();
-		_mcubes.drawGrid();
-		_mcubes.draw(true);
-		//drawBall();
+		
+		if (_drawGrid)
+		{
+			_mcubes.drawGrid();
+		}
+		if (_drawMetaball)
+		{
+			_mcubes.draw(_drawWireframe);
+		}
+		if (_drawBall)
+		{
+			drawBall();
+		}
+		
 		ofDisableDepthTest();
 	}
 	ofPopStyle();
@@ -118,7 +129,6 @@ void DMetaBall3D::initMetaBall()
 {
 	_ballList.clear();
 	_mcubes.setGrid(_baseSize);
-	addBallElement(5);
 }
 
 //-------------------------------------

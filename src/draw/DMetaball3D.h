@@ -24,6 +24,10 @@ public:
 		, _baseSize(1.0)
 		, _forceCenter(0)
 		, _forceValue(10.0)
+		, _drawGrid(false)
+		, _drawBall(true)
+		, _drawMetaball(false)
+		, _drawWireframe(true)
 	{}
 
 	void update(float delta) override;
@@ -34,6 +38,31 @@ public:
 	void trigger() override;
 	void setBaseSize(float baseSize);
 
+	inline void addBall(int num = 1)
+	{
+		addBallElement(num);
+	}
+	inline void clearBall()
+	{
+		_ballList.clear();
+	}
+	inline void toggleDrawMetaball()
+	{
+		_drawMetaball ^= true;
+	}
+	inline void toggleDrawWireframe()
+	{
+		_drawWireframe ^= true;
+	}
+	inline void toggleDrawBall()
+	{
+		_drawBall ^= true;
+	}
+	inline void toggleDrawGrid()
+	{
+		_drawGrid ^= true;
+	}
+
 private:
 	void initMetaBall();
 	void drawBall();
@@ -42,6 +71,7 @@ private:
 	void updateCenter(float delta);
 
 private:
+	bool _drawGrid, _drawBall, _drawMetaball, _drawWireframe;
 	float _baseSize;
 	list<ball> _ballList;
 

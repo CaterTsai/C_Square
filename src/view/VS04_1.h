@@ -47,26 +47,26 @@ public:
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eca.trigger();
-			break;
-		}
-		case eCtrl_ViewTrigger2:
-		{
 			_eState = eSingleCenter;
 			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
-		case eCtrl_ViewTrigger3:
+		case eCtrl_ViewTrigger2:
 		{
 			_eState = eDoubleMiddle;
 			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
-		case eCtrl_ViewTrigger4:
+		case eCtrl_ViewTrigger3:
 		{
 			_eState = eRandomSmall;
 			setRandomSmall();
 			squareMgr::GetInstance()->clearAllSquare();
+			break;
+		}
+		case eCtrl_ViewTrigger4:
+		{
+			_eca.trigger();
 			break;
 		}
 		}
@@ -153,9 +153,10 @@ private:
 	void setRandomSmall()
 	{
 		ZeroMemory(_smallDisplay, sizeof(bool) * cSquareSmallNum);
+		
 		for (int i = 0; i < cSquareSmallNum; i++)
 		{
-			_smallDisplay[i] = ((rand() % 2) == 1);
+			_smallDisplay[i] = true;
 		}
 	}
 private:

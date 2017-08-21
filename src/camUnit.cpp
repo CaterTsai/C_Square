@@ -8,7 +8,7 @@ camUnit::camUnit()
 {	
 	//_cam.disableMouseInput();
 	//_cam.setAutoDistance(false);
-	
+	_dist = _cam.getDistance();
 }
 
 //--------------------------------------------------------------
@@ -149,6 +149,13 @@ void camUnit::setMove(ofVec3f& from, ofVec3f& to, float t)
 }
 
 //--------------------------------------------------------------
+void camUnit::setRandom()
+{
+	ofVec3f randPos(_cam.getDistance(), ofRandom(0, PI), ofRandom(0, TWO_PI));
+	_cam.setGlobalPosition(Spherical2Cartesian(randPos));
+}
+
+//--------------------------------------------------------------
 void camUnit::setRandom(int dist, float t)
 {
 	_type = eCamRandomOnBall;
@@ -156,7 +163,7 @@ void camUnit::setRandom(int dist, float t)
 	_timer = _randTime = t;
 
 	ofVec3f randPos(dist, ofRandom(0, PI), ofRandom(0, TWO_PI));
-	_cam.setGlobalPosition(randPos);
+	_cam.setGlobalPosition(Spherical2Cartesian(randPos));
 }
 
 //--------------------------------------------------------------

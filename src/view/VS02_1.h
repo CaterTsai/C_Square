@@ -74,6 +74,10 @@ public:
 
 		_das.start();
 		
+		camCtrl::GetInstance()->_squareCams[eSquareType::eBackCenerL].setRevolution(ofVec3f(-1, -1, 0), PI * 0.2);
+		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleLeftM].setRevolution(ofVec3f(0, -1, 0), PI);
+		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleRightM].setRevolution(ofVec3f(0, -1, 0), -PI);
+
 		_eState = eCenter;
 	}
 
