@@ -16,4 +16,5 @@
 #include "DTexturePrimitive.h"
 #include "DAudioMesh.h"
 #include "DAudioSphere.h"
+#include "DAudioRect.h"
 #include "DMoveRect.h"

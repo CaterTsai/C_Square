@@ -379,6 +379,9 @@
     <ClCompile Include="src\draw\DAudioSphere.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\draw\DAudioRect.cpp">
+      <Filter>src\drawer\DElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -1000,6 +1003,15 @@
     </ClInclude>
     <ClInclude Include="src\view\VS10_1.h">
       <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS09_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS09_2.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw\DAudioRect.h">
+      <Filter>src\drawer\DElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

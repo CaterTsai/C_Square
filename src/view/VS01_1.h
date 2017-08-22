@@ -14,6 +14,7 @@ public:
 	{
 		videoMgr::GetInstance()->update();
 		_ddr.update(delta);
+		
 	}
 
 	//-------------------------------

@@ -16,9 +16,11 @@ enum eDType
 	,eDMandelbrotSet
 	,eDJuliaSet
 	,eDTexturePrimitive
+	,eDMoveRect
 	,eDAudioMesh
 	,eDAudioSphere
-	,eDMoveRect
+	,eDAudioRect
+	
 	//Not Yet
 	,eDGrowShape
 	,eDTypeNum
