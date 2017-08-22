@@ -185,7 +185,6 @@ private:
 			{
 				ofPushMatrix();
 				ofScale(-1, 1);
-				//ofTranslate(_rect.width, 0);
 				videoMgr::GetInstance()->draw(eVideoBongo_3, _rect.width, _rect.height);
 				ofPopMatrix();
 			}

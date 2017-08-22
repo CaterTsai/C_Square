@@ -99,9 +99,9 @@ void DCylinderFlow::generateFlowFields()
 		for (int j = 0; j < cDCFieldCols; j++)
 		{
 			//ofVec2f desired(ofMap(ofNoise(ofRandom(1.0)), 0, 1, -1, 1), ofMap(ofRandom(1.0), 0, 1, -1, 1));
-			//ofVec2f desired(0.5, 0.5);
-			float theta = ofMap(ofNoise(i * offset, j * offset), 0, 1, 0, TWO_PI);
-			ofVec2f desired(cos(theta), sin(theta));
+			ofVec2f desired(0.5, 0.5);
+			//float theta = ofMap(ofNoise(i * offset, j * offset), 0, 1, 0, TWO_PI);
+			//ofVec2f desired(cos(theta), sin(theta));
 			_flowFields[i][j].set(desired.normalized());
 		}
 	}

@@ -151,6 +151,13 @@ const pair<double, double> cDJSImaginePartRange(-1.5, 1.5);
 //DAudioMesh
 const int cDAudioMeshRows = 11;
 const int cDAudioMeshCols = 50;
+
+//DAudioSpere
+
+//DAudioRect
+const int cDAudioRectNum = MIN(64, cBufferSize);
+const int cDAudioRectCheckSize = floor(cBufferSize / cDAudioRectNum);
+const float cDAudioRectThreshold = .05;
 #pragma endregion
 
 

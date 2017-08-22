@@ -20,14 +20,19 @@ public:
 		ofPushStyle();
 		switch (_eState)
 		{
-		case eMoveRect:
+		case eCenter:
 		{
-			drawMoveRect();
+			drawCenter();
 			break;
 		}
-		case eMoveRectAddAudioMesh:
+		case eMiddle:
 		{
-			drawMoveRectAddAudioMesh();
+			drawMiddle();
+			break;
+		}
+		case eSmall:
+		{
+			drawSmall();
 			break;
 		}
 		}
@@ -41,25 +46,26 @@ public:
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eMoveRect;
+			_eState = eCenter;
 			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eMoveRectAddAudioMesh;
+			_eState = eMiddle;
+			_dar.setHorizon(false);
 			squareMgr::GetInstance()->clearAllSquare();
-			_dmr.trigger();
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-
+			_eState = eSmall;
+			squareMgr::GetInstance()->clearAllSquare();
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-
+			_dar.toggleHorizon();
 			break;
 		}
 		case eCtrl_ViewTrigger5:
@@ -76,38 +82,87 @@ public:
 	//-------------------------------
 	void setSoundValue(array<float, cBufferSize>& soundValue) override
 	{
-		_dam.setSoundValue(soundValue);
+		_dar.setSoundValue(soundValue);
 	}
 
 	//-------------------------------
 	void start()
 	{
 		_rect = squareMgr::GetInstance()->getUnitRect(eSquareType::eBackCenerL);
-		_dmr.setGroupNum(7);
-		_dmr.start();
-		_dam.start();
-		_eState = eMoveRect;
-
-
-		camCtrl::GetInstance()->_squareCams[eSquareType::eBackCenerL].setFixed(ofVec3f(0, -50, 55));
-
+		_dar.start();
+		_eState = eCenter;
 	}
 
 	//-------------------------------
 	void stop()
 	{
-
+		_dar.stop();
 	}
 
 private:
-	
+	void drawCenter()
+	{
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eBackCenerL);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eBackCenerL));
+		{
+			_dar.draw(0, 0, _rect.width, _rect.height);
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eBackCenerL);
+	}
+
+	void drawMiddle()
+	{
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleLeftM);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eMiddleLeftM));
+		{
+			_dar.draw(0, 0, _rect.width, _rect.height);
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleLeftM);
+
+		squareMgr::GetInstance()->updateOnUnitBegin(eSquareType::eMiddleRightM);
+		ofEnableDepthTest();
+		postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(eSquareType::eMiddleRightM));
+		{
+			ofPushMatrix();
+			ofScale(-1, 1);
+			_dar.draw(0, 0, _rect.width, _rect.height);
+			ofPopMatrix();
+		}
+		postFilter::GetInstance()->_squarePost.end();
+		ofDisableDepthTest();
+		squareMgr::GetInstance()->updateOnUnitEnd(eSquareType::eMiddleRightM);
+	}
+
+	void drawSmall()
+	{
+		for (int i = 0; i < cSquareSmallNum; i++)
+		{
+			squareMgr::GetInstance()->updateOnUnitBegin(i);
+			ofEnableDepthTest();
+			postFilter::GetInstance()->_squarePost.begin(camCtrl::GetInstance()->getSquareCam(i));
+			{
+				_dar.draw(0, 0, _rect.width, _rect.height);
+			}
+			postFilter::GetInstance()->_squarePost.end();
+			ofDisableDepthTest();
+			squareMgr::GetInstance()->updateOnUnitEnd(i);
+		}
+	}
 private:
 	enum eState
 	{
-		eMoveRect = 0
-		, eMoveRectAddAudioMesh
+		eCenter = 0
+		,eMiddle
+		,eSmall
 	}_eState;
 
+	DAudioRect _dar;
 	ofRectangle _rect;
 
 	

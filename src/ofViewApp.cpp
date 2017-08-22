@@ -221,7 +221,7 @@ void ofViewApp::initScence()
 	_scenceMgr.push_back(ofPtr<S10>(new S10()));
 	_scenceMgr.push_back(ofPtr<S11>(new S11()));
 
-	_nowScence = eS03;
+	_nowScence = eS09;
 }
 
 //--------------------------------------------------------------

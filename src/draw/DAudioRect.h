@@ -7,8 +7,9 @@ class DAudioRect : public DBase
 public:
 	DAudioRect()
 		:DBase(eDAudioRect)
+		, _isHorizon(true)
+		, _rectColor(255)
 	{
-
 	}
 
 	void update(float delta) override;
@@ -19,11 +20,22 @@ public:
 
 	void setSoundValue(array<float, cBufferSize>& soundValue);
 
-
+	inline void toggleHorizon()
+	{
+		_isHorizon ^= true;
+	}
+	inline void setHorizon(bool val)
+	{
+		_isHorizon = val;
+	}
+	inline void setColor(ofColor c)
+	{
+		_rectColor = c;
+	}
 private:
 
 private:
 	bool _isHorizon;
 	ofColor _rectColor;
-	vector<bool> _needToDraw;
+	array<bool, cDAudioRectNum> _needToDraw;
 };
