@@ -7,6 +7,8 @@
 #include "VS02_1.h"
 
 #include "VS04_1.h"
+#include "VS05_1.h"
+#include "VS05_2.h"
 #include "VS06_1.h"
 #include "VS07_1.h"
 #include "VS08_1.h"

@@ -4,7 +4,7 @@
 
 class DTexturePrimitive : public DBase
 {
-private:
+public:
 	enum ePrimitiveType : int
 	{
 		eSphere = 0
@@ -26,7 +26,9 @@ public:
 
 	void setBaseSize(float size);
 	void setTextrue(ofTexture& tex);
-	
+	void setSoundValue(array<float, cBufferSize>& soundValue);
+	void setType(ePrimitiveType type);
+
 private:
 	void updatePrimitive(float delta);
 

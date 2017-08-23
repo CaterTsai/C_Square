@@ -38,8 +38,13 @@ enum eVideoType : int
 	,eVideoBass_2
 	,eVideoBass_3
 	,eVideoBongo_1
-	, eVideoBongo_2
-	, eVideoBongo_3
+	,eVideoBongo_2
+	,eVideoBongo_3
+	,eVideoMeiosis_1
+	,eVideoMeiosis_2
+	,eVideoMeiosis_3
+	,eVideoMeiosis_4
+	,eVideoMeiosis_5
 	,eVideoRotate
 	,eVideoNum
 };

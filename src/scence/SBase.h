@@ -26,10 +26,11 @@ public:
 			return;
 		}
 
-		for (auto& iter : _viewList)
-		{
-			iter->update(delta);
-		}
+		//for (auto& iter : _viewList)
+		//{
+		//	iter->update(delta);
+		//}
+		_viewList[_viewID]->update(delta);
 	};
 	virtual void draw() {
 		if (!_isStart || _viewList.size() == 0)

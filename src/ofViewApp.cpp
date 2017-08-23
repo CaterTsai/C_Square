@@ -236,6 +236,11 @@ void ofViewApp::initVideo()
 	videoMgr::GetInstance()->add(eVideoBongo_1, "videos/bg_1.avi");
 	videoMgr::GetInstance()->add(eVideoBongo_2, "videos/bg_2.avi");
 	videoMgr::GetInstance()->add(eVideoBongo_3, "videos/bg_3.avi");
+	videoMgr::GetInstance()->add(eVideoMeiosis_1, "videos/meiosis_1.avi");
+	videoMgr::GetInstance()->add(eVideoMeiosis_2, "videos/meiosis_2.avi");
+	videoMgr::GetInstance()->add(eVideoMeiosis_3, "videos/meiosis_3.avi");
+	videoMgr::GetInstance()->add(eVideoMeiosis_4, "videos/meiosis_4.avi");
+	videoMgr::GetInstance()->add(eVideoMeiosis_5, "videos/meiosis_5.avi");
 	videoMgr::GetInstance()->add(eVideoRotate, "videos/rotate.avi");
 }
 

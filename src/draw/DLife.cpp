@@ -128,7 +128,8 @@ void DLife::draw(int x, int y, int w, int h)
 						}
 					}
 					ofSetColor(color);
-					ofDrawRectangle(-halfW + (tx * unitW) + x, -halfH + (ty * unitH) + y, unitW, unitH);
+					//ofDrawRectangle(-halfW + (tx * unitW) + x, -halfH + (ty * unitH) + y, unitW, unitH);
+					ofDrawRectangle((tx * unitW) + x, (ty * unitH) + y, unitW, unitH);
 				}
 			}
 		}

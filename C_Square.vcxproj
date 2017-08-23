@@ -451,6 +451,8 @@
     <ClInclude Include="src\view\view.h" />
     <ClInclude Include="src\view\VS01_1.h" />
     <ClInclude Include="src\view\VS02_1.h" />
+    <ClInclude Include="src\view\VS05_1.h" />
+    <ClInclude Include="src\view\VS05_2.h" />
     <ClInclude Include="src\view\VS09_1.h" />
     <ClInclude Include="src\view\VS09_2.h" />
     <ClInclude Include="src\view\VS10_1.h" />

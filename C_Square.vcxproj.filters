@@ -1013,6 +1013,12 @@
     <ClInclude Include="src\draw\DAudioRect.h">
       <Filter>src\drawer\DElement</Filter>
     </ClInclude>
+    <ClInclude Include="src\view\VS05_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS05_2.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

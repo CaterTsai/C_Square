@@ -88,22 +88,13 @@ void videoMgr::stopAll()
 }
 
 //------------------------------------------------
-bool videoMgr::getTexture(int id, ofTexture* texture)
+ofTexture* videoMgr::getTexture(int id)
 {
 	if (id < 0 || id >= _videos.size())
 	{
-		return false;
+		return nullptr;
 	}
-
-	if (_videos[id].isPlaying())
-	{
-		texture = _videos[id].getTexture();
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return _videos[id].getTexture();
 }
 
 //--------------------------------------------------------------

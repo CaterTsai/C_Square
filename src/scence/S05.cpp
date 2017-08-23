@@ -10,6 +10,8 @@ S05::S05()
 //-------------------------------------
 void S05::initView()
 {
+	_viewList.push_back(ofPtr<VS05_1>(new VS05_1("view/s5/1.xml")));
+	_viewList.push_back(ofPtr<VS05_2>(new VS05_2("view/s5/2.xml")));
 }
 
 //-------------------------------------

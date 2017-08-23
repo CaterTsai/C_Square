@@ -40,7 +40,7 @@ void DTexturePrimitive::draw(int x, int y, int w, int h)
 	ofSetColor(255);
 	{
 		_primitive->draw();
-		_primitive->drawWireframe();
+		//_primitive->drawWireframe();
 	}
 	ofPopStyle();
 }
@@ -98,16 +98,49 @@ void DTexturePrimitive::setTextrue(ofTexture & tex)
 }
 
 //---------------------------------------
+void DTexturePrimitive::setSoundValue(array<float, cBufferSize>& soundValue)
+{
+	
+}
+
+//---------------------------------------
+void DTexturePrimitive::setType(ePrimitiveType type)
+{
+	switch (_eType)
+	{
+		case eSphere:
+		{
+			_primitive = &_sphere;
+			break;
+		}
+		case eIcoSphere:
+		{
+			_primitive = &_icoSphere;
+			break;
+		}
+		case eBox:
+		{
+			_primitive = &_box;
+			break;
+		}
+	}
+}
+
+//---------------------------------------
 void DTexturePrimitive::updatePrimitive(float delta)
 {
 	_triangles = _primitive->getMesh().getUniqueFaces();
 	ofVec3f faceNormal;
+	//float angle = (ofGetElapsedTimef() * 1.4);
+	float angle = ofGetElapsedTimef()*3.2;
+	float strength = (sin(angle + .25)) * .5f * 5.f;
 	for (size_t i = 0; i < _triangles.size(); i++) {
-		float angle = (delta * 1.4);
-		float frc = ofSignedNoise(angle* (float)i * .1, angle*.05) * 10;
+		
+		//float frc = ofSignedNoise(angle* (float)i * .1, angle*.05) * 1.0;
 		faceNormal = _triangles[i].getFaceNormal();
 		for (int j = 0; j < 3; j++) {
-			_triangles[i].setVertex(j, _triangles[i].getVertex(j) + faceNormal * frc);
+			//_triangles[i].setVertex(j, _triangles[i].getVertex(j) + faceNormal * frc);
+			_triangles[i].setVertex(j, _triangles[i].getVertex(j) + faceNormal * strength);
 		}
 	}
 	_primitive->getMesh().setFromTriangles(_triangles);

@@ -57,9 +57,8 @@ public:
 		{
 			_eState = eBongo;
 			_level = 0;
-			squareMgr::GetInstance()->clearAllSquare();
 			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoBongo_1);
+			videoMgr::GetInstance()->play(eVideoMeiosis_1);
 			videoMgr::GetInstance()->play(eVideoBongo_2);
 			videoMgr::GetInstance()->play(eVideoBongo_3);
 			squareMgr::GetInstance()->clearAllSquare();
@@ -69,7 +68,6 @@ public:
 		{
 			_eState = eBass;
 			_level = 0;
-			squareMgr::GetInstance()->clearAllSquare();
 			videoMgr::GetInstance()->stopAll();
 			videoMgr::GetInstance()->play(eVideoBass_1);
 			videoMgr::GetInstance()->play(eVideoBass_2);
@@ -81,7 +79,6 @@ public:
 		{
 			_eState = eDrumAndBass;
 			_level = 0;
-			squareMgr::GetInstance()->clearAllSquare();
 			videoMgr::GetInstance()->stopAll();
 			videoMgr::GetInstance()->play(eVideoBass_1);
 			videoMgr::GetInstance()->play(eVideoBass_2);
@@ -97,7 +94,6 @@ public:
 			_eState = eDrumAndBassAndRect;
 			_level = 0;
 			_ddr.start();
-			squareMgr::GetInstance()->clearAllSquare();
 			videoMgr::GetInstance()->stopAll();
 			videoMgr::GetInstance()->play(eVideoBass_1);
 			videoMgr::GetInstance()->play(eVideoBass_2);

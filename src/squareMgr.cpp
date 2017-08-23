@@ -116,6 +116,22 @@ void squareMgr::clearAllSquare()
 }
 
 //------------------------------
+void squareMgr::clearGroup()
+{
+	for (auto& unit : _squareList)
+	{
+		if (unit.type == eSquareDrawType::eSquareGroup)
+		{
+			unit.square.drawBegin();
+			{
+				ofClear(0);
+			}
+			unit.square.drawEnd();
+		}
+	}
+}
+
+//------------------------------
 ofRectangle squareMgr::getUnitRect(int unitID)
 {
 	int size = _squareList.at(unitID).square.getSize();

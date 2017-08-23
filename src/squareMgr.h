@@ -36,6 +36,7 @@ public:
 	
 	void clearSquare(int unitID);
 	void clearAllSquare();
+	void clearGroup();
 
 	ofRectangle getUnitRect(int unitID);
 

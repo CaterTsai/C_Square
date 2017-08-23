@@ -55,6 +55,7 @@ public:
 		postFilter::GetInstance()->_canvasPost.begin(camCtrl::GetInstance()->getCanvasCam());
 		{
 			_dmb.draw(0, 0, _canvas.getWidth(), _canvas.getHeight());
+
 		}
 		postFilter::GetInstance()->_canvasPost.end();
 		_canvas.end();

@@ -13,7 +13,7 @@ public:
 	void play(int id);
 	void stop(int id);
 	void stopAll();
-	bool getTexture(int id, ofTexture* texture);
+	ofTexture* getTexture(int id);
 private:
 
 	vector<ofxDSHapVideoPlayer> _videos;
