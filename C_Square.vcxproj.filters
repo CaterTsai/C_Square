@@ -382,6 +382,12 @@
     <ClCompile Include="src\draw\DAudioRect.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
+    <ClCompile Include="src\lightCtrl\lightCtrl.cpp">
+      <Filter>src\lightCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lightCtrl\sender.cpp">
+      <Filter>src\lightCtrl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -527,6 +533,9 @@
     </Filter>
     <Filter Include="src\view\base">
       <UniqueIdentifier>{c1abcfb4-3c73-452f-a1cc-5e6653b1f472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\lightCtrl">
+      <UniqueIdentifier>{a7df5db2-c302-4b07-aced-a5af9e3463c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1018,6 +1027,15 @@
     </ClInclude>
     <ClInclude Include="src\view\VS05_2.h">
       <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lightCtrl\lightCtrl.h">
+      <Filter>src\lightCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lightCtrl\lightStruct.h">
+      <Filter>src\lightCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lightCtrl\sender.h">
+      <Filter>src\lightCtrl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -61,6 +61,7 @@ const int cCtrlPointCircleRadius = cProjectionWindowHeight * 0.02;
 const int cCtrlPointMaxDist = cCtrlPointCircleRadius;
 const int cSquareNum = 7;
 const int cSquareSmallNum = 4;
+
 enum eSquareType : int
 {
 	eFrontLeftS = 0
