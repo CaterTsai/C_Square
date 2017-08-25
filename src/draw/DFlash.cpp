@@ -6,12 +6,16 @@ void DFlash::update(float delta)
 {
 	CHECK_START();
 
-	_timer -= delta;
-	if (_timer <= 0.0f)
+	if (_autoFlash)
 	{
-		_timer = _flashT;
-		_flash = true;
+		_timer -= delta;
+		if (_timer <= 0.0f)
+		{
+			_timer = _flashT;
+			_flash = true;
+		}
 	}
+	
 }
 
 //-------------------------------------
@@ -24,7 +28,7 @@ void DFlash::draw(int x, int y, int w, int h)
 		ofFill();
 		ofSetColor(_flashColor);
 		{
-			ofDrawRectangle(x, y, w, h);
+			ofDrawRectangle(w * -0.5, h * -0.5, w, h);
 		}
 		ofPopStyle();
 		_flash = false;
@@ -34,7 +38,6 @@ void DFlash::draw(int x, int y, int w, int h)
 //-------------------------------------
 void DFlash::start()
 {
-	_timer = _flashT;
 	_isStart = true;
 }
 
@@ -45,7 +48,14 @@ void DFlash::stop()
 }
 
 //-------------------------------------
-void DFlash::setValue(DParam & value)
+void DFlash::trigger()
 {
-	_flashT = value.fValue;
+	_flash = true;
+}
+
+//-------------------------------------
+void DFlash::setAutoFlash(bool val, float time)
+{
+	_autoFlash = val;
+	_flashT = time;
 }

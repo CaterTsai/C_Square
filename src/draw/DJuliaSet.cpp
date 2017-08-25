@@ -67,7 +67,17 @@ void DJuliaSet::start()
 void DJuliaSet::stop()
 {
 	_isStart = false;
+	
+}
 
+//-------------------------------------
+void DJuliaSet::trigger()
+{
+	_radinDeltaI = ofRandom(0.2, 4);
+	_radinDeltaR = ofRandom(0.2, 4);
+	_deltaR = ofRandom(-1, 1);
+	_deltaI = ofRandom(-1, 1);
+	initPattern();
 }
 
 //-------------------------------------

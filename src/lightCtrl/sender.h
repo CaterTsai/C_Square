@@ -35,7 +35,7 @@ public:
 	template<typename T>
 	void sendAll(T data);
 
-	static char getCmd(eSquareType ctrl);
+	static char getCmd(eLightCtrl ctrl);
 	
 private:
 

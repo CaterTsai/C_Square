@@ -383,10 +383,10 @@
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
     <ClCompile Include="src\lightCtrl\lightCtrl.cpp">
-      <Filter>src\lightCtrl</Filter>
+      <Filter>src\singleton\lightCtrl</Filter>
     </ClCompile>
     <ClCompile Include="src\lightCtrl\sender.cpp">
-      <Filter>src\lightCtrl</Filter>
+      <Filter>src\singleton\lightCtrl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -534,7 +534,7 @@
     <Filter Include="src\view\base">
       <UniqueIdentifier>{c1abcfb4-3c73-452f-a1cc-5e6653b1f472}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\lightCtrl">
+    <Filter Include="src\singleton\lightCtrl">
       <UniqueIdentifier>{a7df5db2-c302-4b07-aced-a5af9e3463c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -1029,13 +1029,19 @@
       <Filter>src\view\VElement</Filter>
     </ClInclude>
     <ClInclude Include="src\lightCtrl\lightCtrl.h">
-      <Filter>src\lightCtrl</Filter>
+      <Filter>src\singleton\lightCtrl</Filter>
     </ClInclude>
     <ClInclude Include="src\lightCtrl\lightStruct.h">
-      <Filter>src\lightCtrl</Filter>
+      <Filter>src\singleton\lightCtrl</Filter>
     </ClInclude>
     <ClInclude Include="src\lightCtrl\sender.h">
-      <Filter>src\lightCtrl</Filter>
+      <Filter>src\singleton\lightCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS03_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS11_1.h">
+      <Filter>src\view\VElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,7 @@ public:
 	void update(float delta);
 	void drawCam(); //Debug
 	void setPlayType(eCamMovePlayType type);
+	void setCamDefaultZ(int initZ);
 	void stop();
 	void reset();
 
@@ -69,7 +70,7 @@ public:
 private:
 	eCamMoveType _type;
 	eCamMovePlayType _playType;
-
+	int _initZ;
 	ofVec3f _target;
 	
 	//Between

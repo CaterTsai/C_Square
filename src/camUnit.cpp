@@ -5,6 +5,7 @@ camUnit::camUnit()
 	:_type(eCamFixed)
 	, _playType(eMoveRepeat)
 	, _target(0)
+	,_initZ(173)
 {	
 	//_cam.disableMouseInput();
 	//_cam.setAutoDistance(false);
@@ -69,6 +70,12 @@ void camUnit::setPlayType(eCamMovePlayType type)
 }
 
 //--------------------------------------------------------------
+void camUnit::setCamDefaultZ(int initZ)
+{
+	_initZ = initZ;
+}
+
+//--------------------------------------------------------------
 void camUnit::stop()
 {
 	setFixed();
@@ -78,7 +85,7 @@ void camUnit::stop()
 void camUnit::reset()
 {
 	_target.set(0, 0, 0);
-	setFixed(ofVec3f(0,0, 173));
+	setFixed(ofVec3f(0,0, _initZ));
 }
 
 //--------------------------------------------------------------

@@ -10,7 +10,7 @@ S03::S03()
 //-------------------------------------
 void S03::initView()
 {
-	//_viewList.push_back(ofPtr<VS03_1>(new VS03_1("view/s3/1.xml")));
+	_viewList.push_back(ofPtr<VS03_1>(new VS03_1("view/s3/1.xml")));
 }
 
 //-------------------------------------

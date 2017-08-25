@@ -123,6 +123,10 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	case eCtrl_PrevScence:
 	{
 		auto nextScence = (eSType)((_nowScence - 1) % eSTypeNum);
+		if (nextScence < 0)
+		{
+			nextScence = (eSType)(eSTypeNum - 1);
+		}
 		if (_isStart)
 		{
 			_scenceMgr[_nowScence]->stop();

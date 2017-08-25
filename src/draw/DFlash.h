@@ -9,6 +9,7 @@ public:
 		:DBase(eDFlash)
 		,_flashT(1.0)
 		,_flash(false)
+		, _autoFlash(false)
 		,_flashColor(255)
 	{}
 
@@ -17,11 +18,11 @@ public:
 
 	void start() override;
 	void stop() override;
-
-	void setValue(DParam& value) override;
+	void trigger() override;
+	void setAutoFlash(bool val, float time = 0.0);
 
 private:
 	float _flashT;
-	bool _flash;
+	bool _flash, _autoFlash;
 	ofColor _flashColor;
 };

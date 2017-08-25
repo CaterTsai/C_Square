@@ -39,7 +39,7 @@ void sender::add(eSquareType type, string port, int baud)
 #endif //USE_NETWORK
 
 
-char sender::getCmd(eSquareType ctrl)
+char sender::getCmd(eLightCtrl ctrl)
 {
 	char r = 't';
 	switch (ctrl)

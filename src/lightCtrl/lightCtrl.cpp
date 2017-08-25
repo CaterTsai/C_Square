@@ -4,7 +4,6 @@
 void lightCtrl::setType(int type)
 {
 	_type = type;
-	ZeroMemory(_fxCheck, cFXNum);
 
 	LChangeColor cc;
 	if (type == 0)
@@ -89,10 +88,7 @@ void lightCtrl::idleLight()
 //-------------------------------------
 void lightCtrl::playEvent(int id)
 {
-	if (_fxCheck[id])
-	{
-		return;
-	}
+
 
 	if (_type == 0)
 	{
@@ -148,14 +144,10 @@ void lightCtrl::playEvent(int id)
 		}
 		}
 	}
-	_fxCheck[id] = true;
 }
 
 //-------------------------------------
 void lightCtrl::releaseEvent(int id)
 {
-	if (_fxCheck[id])
-	{
-		_fxCheck[id] = false;
-	}
+
 }

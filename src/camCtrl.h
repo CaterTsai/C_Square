@@ -20,7 +20,10 @@ public:
 //Singleton
 //-------------------
 private:
-	camCtrl() {};
+	camCtrl() 
+	{
+		_canvasCam.setCamDefaultZ(886);
+	};
 	~camCtrl()
 	{
 		camCtrl::Destroy();
