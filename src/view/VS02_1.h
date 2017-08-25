@@ -35,30 +35,37 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 2-1\n";
+		ss << "1 : Center\n";
+		ss << "2 : Middle & Center\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eCenter;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eCenter;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eMiddleAndCenter;
-			squareMgr::GetInstance()->clearAllSquare();
-			break;
-		}
-		case eCtrl_ViewTrigger3:
-		{
-
-			break;
-		}
-		case eCtrl_ViewTrigger4:
-		{
-
+			if (value == cMidiButtonPress)
+			{
+				_eState = eMiddleAndCenter;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		}

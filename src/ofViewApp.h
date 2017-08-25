@@ -5,13 +5,13 @@
 #include "camCtrl.h"
 #include "postFilter.h"
 #include "videoMgr.h"
+#include "midiCtrl.h"
 
-class ofViewApp : public ofBaseApp
+class ofViewApp : public ofBaseApp, public ofxMidiListener
 {
 public:
 	ofViewApp()
-		:_eDisplayType(eDisplayEach)
-		, _isStart(false)
+		:_isStart(false)
 		, _targetSquare(true)
 		, _soundSetup(false)
 	{}
@@ -21,15 +21,10 @@ public:
 	void keyPressed(int key);
 	void mouseDragged(int x, int y, int button);
 
-	void control(eCtrlType ctrl, int value = 0);
+	void control(eCtrlType ctrl, int value = cMidiButtonPress);
 
 private:
 	float _mainTimer;
-	enum eDisplayType
-	{
-		eDisplayEach = 0
-		,eDisplayGroup
-	}_eDisplayType;
 
 
 //Scence
@@ -47,6 +42,18 @@ private:
 public:
 	void initVideo();
 
+//Midi
+public:
+	void updateMidi();
+	void newMidiMessage(ofxMidiMessage& msg) override;
+
+private:
+	struct midiCtrlData
+	{
+		eCtrlType type;
+		int value;
+	};
+	list<midiCtrlData> _midiQueue;
 
 //SoundStream
 public:

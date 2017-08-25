@@ -41,32 +41,52 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 5-1\n";
+		ss << "1 : Center Video 1\n";
+		ss << "2 : Middle Video 2\n";
+		ss << "3 : Small Video 3\n";
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eCenter;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoMeiosis_1);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eCenter;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoMeiosis_1);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eMiddle;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoMeiosis_2);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eMiddle;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoMeiosis_2);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_eState = eSmall;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoMeiosis_3);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eSmall;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoMeiosis_3);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		}

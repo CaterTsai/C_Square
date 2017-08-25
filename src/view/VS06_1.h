@@ -112,26 +112,27 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 6-1\n";
+		ss << "1 : Move Rect\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_needMove ^= true;
-			break;
-		}
-		case eCtrl_ViewTrigger2:
-		{
-
-			break;
-		}
-		case eCtrl_ViewTrigger3:
-		{
-			break;
-		}
-		case eCtrl_ViewTrigger4:
-		{
+			if (value == cMidiButtonPress)
+			{
+				_needMove ^= true;
+			}
+			
 			break;
 		}
 		}

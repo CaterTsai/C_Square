@@ -43,6 +43,15 @@ public:
 	virtual void drawCanvas(int x, int y, int width, int height) {
 		_viewList[_viewID]->drawCanvas(x, y, width, height);
 	}
+	virtual void drawViewMsg(ofVec2f pos)
+	{
+		ofDrawBitmapStringHighlight("View Num : " + ofToString(_viewList.size()), pos);
+		if (_viewList.size() > _viewID)
+		{
+			_viewList[_viewID]->drawMsg(pos + ofVec2f(0, 15));
+		}
+		
+	}
 	virtual void start() {
 		_isStart = true;
 		_viewID = 0;
@@ -56,11 +65,14 @@ public:
 		_isStart = false;
 	};
 	virtual void reset() {};
-	virtual void control(eCtrlType ctrl, int value = 0) {
+	virtual void control(eCtrlType ctrl, int value = cMidiButtonPress) {
 		if (ctrl == eCtrl_ViewNext)
 		{
-			setView((_viewID + 1) % _viewList.size());
-			_viewList[_viewID]->start();
+			if (value == cMidiButtonPress)
+			{
+				setView((_viewID + 1) % _viewList.size());
+				_viewList[_viewID]->start();
+			}
 		}
 		else
 		{

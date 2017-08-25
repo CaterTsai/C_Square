@@ -58,38 +58,71 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 3-1\n";
+		ss << "1 : Audio Mesh 1\n";
+		ss << "2 : Julia Set\n";
+		ss << "3 : Audio Mesh 2\n";
+		ss << "4 : Toggle Ball\n";
+		ss << "5 : Toggle Line\n";
+		ss << "6 : Julia Trigger\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eAudioMesh1;
+			if (value == cMidiButtonPress)
+			{
+				_eState = eAudioMesh1;
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eJuliaSet;
+			if (value == cMidiButtonPress)
+			{
+				_eState = eJuliaSet;
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_eState = eAudioMesh2;
+			if (value == cMidiButtonPress)
+			{
+				_eState = eAudioMesh2;
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_dam.toggleBall();
+			if (value == cMidiButtonPress)
+			{
+				_dam.toggleBall();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger5:
 		{
-			_dam.toggleLine();
+			if (value == cMidiButtonPress)
+			{
+				_dam.toggleLine();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger6:
 		{
-			_djs.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_djs.trigger();
+			}
 			break;
 		}
 		}

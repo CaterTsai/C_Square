@@ -41,32 +41,57 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 4-1\n";
+		ss << "1 : Center\n";
+		ss << "2 : Middle\n";
+		ss << "3 : Small\n";
+		ss << "4 : ECA Trigger\n";;
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eSingleCenter;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eSingleCenter;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eDoubleMiddle;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eDoubleMiddle;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_eState = eRandomSmall;
-			setRandomSmall();
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eRandomSmall;
+				setRandomSmall();
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_eca.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_eca.trigger();
+			}
 			break;
 		}
 		}
@@ -88,7 +113,7 @@ public:
 	//-------------------------------
 	void stop()
 	{
-
+		_eca.stop();
 	}
 
 private:

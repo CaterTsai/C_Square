@@ -69,44 +69,69 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 11-1\n";
+		ss << "1 : Sphere Group\n";
+		ss << "2 : Texture Group\n";
+		ss << "3 : Flash\n";
+		ss << "4 : Texture Trigger\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eAudioSphereGroup;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoMeiosis_4);
-			_tex = videoMgr::GetInstance()->getTexture(eVideoMeiosis_4);
-			_dtp.setTextrue((*_tex));
+			if (value == cMidiButtonPress)
+			{
+				_eState = eAudioSphereGroup;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoMeiosis_4);
+				_tex = videoMgr::GetInstance()->getTexture(eVideoMeiosis_4);
+				_dtp.setTextrue((*_tex));
 
-			_dtp.setBaseSize(_rect.getWidth() * 0.5);
+				_dtp.setBaseSize(_rect.getWidth() * 0.5);
 
-			squareMgr::GetInstance()->clearAllSquare();
-			squareMgr::GetInstance()->clearGroup();
+				squareMgr::GetInstance()->clearAllSquare();
+				squareMgr::GetInstance()->clearGroup();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eTexturePrimitiveGroup;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoMeiosis_5);
-			_tex = videoMgr::GetInstance()->getTexture(eVideoMeiosis_5);
-			_dtp.setTextrue((*_tex));
-			_dtp.setBaseSize(_canvas.getWidth() * 0.5);
-			squareMgr::GetInstance()->clearAllSquare();
-			squareMgr::GetInstance()->clearGroup();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eTexturePrimitiveGroup;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoMeiosis_5);
+				_tex = videoMgr::GetInstance()->getTexture(eVideoMeiosis_5);
+				_dtp.setTextrue((*_tex));
+				_dtp.setBaseSize(_canvas.getWidth() * 0.5);
+				squareMgr::GetInstance()->clearAllSquare();
+				squareMgr::GetInstance()->clearGroup();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_df.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_df.trigger();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_dtp.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_dtp.trigger();
+			}
 			break;
 		}
 		}
@@ -132,6 +157,9 @@ public:
 	void stop()
 	{
 		videoMgr::GetInstance()->stopAll();
+		_df.stop();
+		_das.stop();
+		_dtp.stop();
 	}
 
 	//-------------------------------

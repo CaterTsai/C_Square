@@ -49,44 +49,77 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 8-2\n";
+		ss << "1 : Move Rect\n";
+		ss << "2 : Move Rect & Audio Mesh\n";
+		ss << "3 : Move Rect Trigger\n";
+		ss << "4 : Move Rect Auto Trigger\n";
+		ss << "5 : Audio Mesh Trigger Ball\n";
+		ss << "6 : Audio Mesh Trigger Line\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eMoveRect;
-			_dmr.setGroupNum(cSquareNum);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eMoveRect;
+				_dmr.setGroupNum(cSquareNum);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eMoveRectAddAudioMesh;
-			_dmr.setGroupNum(cSquareSmallNum);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eMoveRectAddAudioMesh;
+				_dmr.setGroupNum(cSquareSmallNum);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			_dmr.trigger();
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_dmr.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_dmr.trigger();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_autoTrigger ^= true;
-			_timer = 0.0;
+			if (value == cMidiButtonPress)
+			{
+				_autoTrigger ^= true;
+				_timer = 0.0;
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger5:
 		{
-			_dam.toggleBall();
+			if (value == cMidiButtonPress)
+			{
+				_dam.toggleBall();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger6:
 		{
-			_dam.toggleLine();
+			if (value == cMidiButtonPress)
+			{
+				_dam.toggleLine();
+			}
 			break;
 		}
 		}
@@ -105,9 +138,7 @@ public:
 		_dmr.setGroupNum(7);
 		_dmr.start();
 		_dam.start();
-		_eState = eMoveRect;
-
-		
+		_eState = eMoveRect;		
 		camCtrl::GetInstance()->_squareCams[eSquareType::eBackCenerL].setFixed(ofVec3f(0, -50, 55));
 		
 	}
@@ -115,7 +146,8 @@ public:
 	//-------------------------------
 	void stop()
 	{
-
+		_dmr.stop();
+		_dam.stop();
 	}
 
 private:

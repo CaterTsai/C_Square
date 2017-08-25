@@ -60,47 +60,84 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 7-1\n";
+		ss << "1 : Center Ping-Pong\n";
+		ss << "2 : Center & Small Ping-Pong\n";
+		ss << "3 : Center Video & Middle Ping-Pong\n";
+		ss << "4 : Center & Small Ping-Pong And Middle Video\n";
+		ss << "5 : Ping-Pong add Ball\n";
+		ss << "6 : Ping-Pong add Ripple\n";
+		ss << "7 : Ping-Pong clear Ball\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eCenterPingPong;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eCenterPingPong;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eCenterAndSmallPingPong;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eCenterAndSmallPingPong;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_eState = eCenterRotateAndMiddlePingPong;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eCenterRotateAndMiddlePingPong;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_eState = eCenterAndSmallPingPongAndMiddleRotate;
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eCenterAndSmallPingPongAndMiddleRotate;
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger5:
 		{
-			_dpp.triggerBall();
+			if (value == cMidiButtonPress)
+			{
+				_dpp.triggerBall();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger6:
 		{
-			_dpp.triggerRipple();
+			if (value == cMidiButtonPress)
+			{
+				_dpp.triggerRipple();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger7:
 		{
-			_dpp.clearBall();
+			if (value == cMidiButtonPress)
+			{
+				_dpp.clearBall();
+			}
 			break;
 		}
 		}
@@ -120,6 +157,7 @@ public:
 	void stop()
 	{
 		videoMgr::GetInstance()->stopAll();
+		_dpp.stop();
 	}
 
 private:

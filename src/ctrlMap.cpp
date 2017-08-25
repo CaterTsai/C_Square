@@ -1,4 +1,5 @@
 #include "ctrlMap.h"
+#include "midiCtrl.h"
 
 //--------------------------------------------------------------
 void ctrlMap::initKey2Ctrl()
@@ -37,8 +38,35 @@ void ctrlMap::initKey2Ctrl()
 //--------------------------------------------------------------
 void ctrlMap::initMidi2Ctrl()
 {
-	midi2Ctrl[0] = eCtrl_Start;
-	midi2Ctrl[1] = eCtrl_ViewTrigger1;
+	midi2Ctrl[eMidiPlayBtn] = eCtrl_Start;
+	midi2Ctrl[eMidiStopBtn] = eCtrl_Stop;
+	midi2Ctrl[eMidiNextBtn] = eCtrl_NextScence;
+	midi2Ctrl[eMidiPrevBtn] = eCtrl_PrevScence;
+
+	midi2Ctrl[eMidiTriggerS6] = eCtrl_Filter1;
+	midi2Ctrl[eMidiTriggerS7] = eCtrl_Filter2;
+	midi2Ctrl[eMidiTriggerS8] = eCtrl_Filter3;
+	midi2Ctrl[eMidiTriggerM6] = eCtrl_Filter4;
+	midi2Ctrl[eMidiTriggerM7] = eCtrl_Filter5;
+	midi2Ctrl[eMidiTriggerM8] = eCtrl_Filter6;
+	midi2Ctrl[eMidiTriggerR6] = eCtrl_Filter7;
+	midi2Ctrl[eMidiTriggerR7] = eCtrl_Filter8;
+	midi2Ctrl[eMidiTriggerR8] = eCtrl_Filter9;
+	midi2Ctrl[eMidiTrackPrev] = eCtrl_DisableAllFilter;
+	midi2Ctrl[eMidiTrackNext] = eCtrl_ChangeFilterTarget;
+
+	midi2Ctrl[eMidiForward] = eCtrl_DisplayEach;
+	midi2Ctrl[eMidiBackward] = eCtrl_DisplayGroup;
+	midi2Ctrl[eMidiSetBtn] = eCtrl_ViewNext;
+	midi2Ctrl[eMidiTriggerS1] = eCtrl_ViewTrigger1;
+	midi2Ctrl[eMidiTriggerS2] = eCtrl_ViewTrigger2;
+	midi2Ctrl[eMidiTriggerS3] = eCtrl_ViewTrigger3;
+	midi2Ctrl[eMidiTriggerM1] = eCtrl_ViewTrigger4;
+	midi2Ctrl[eMidiTriggerM2] = eCtrl_ViewTrigger5;
+	midi2Ctrl[eMidiTriggerM3] = eCtrl_ViewTrigger6;
+	midi2Ctrl[eMidiTriggerR1] = eCtrl_ViewTrigger7;
+	midi2Ctrl[eMidiTriggerR2] = eCtrl_ViewTrigger8;
+	midi2Ctrl[eMidiTriggerR3] = eCtrl_ViewTrigger9;
 }
 
 //--------------------------------------------------------------

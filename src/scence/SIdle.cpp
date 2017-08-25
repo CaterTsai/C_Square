@@ -11,6 +11,7 @@ SIdle::SIdle()
 //-------------------------------------
 void SIdle::initView()
 {
+	_viewList.push_back(ofPtr<VSIdle>(new VSIdle("view/sIdle/1.xml")));
 }
 
 //-------------------------------------

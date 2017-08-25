@@ -70,28 +70,56 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 1-1\n";
+		ss << "1 : Sphere\n";
+		ss << "2 : Flow\n";
+		ss << "3 : Both\n";
+		ss << "4 : Sphere Trigger\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eShowSP;
+			if (value == cMidiButtonPress)
+			{
+				_eState = eShowSP;
+				squareMgr::GetInstance()->clearGroup();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eShowCF;
+			if (value == cMidiButtonPress)
+			{
+				_eState = eShowCF;
+				squareMgr::GetInstance()->clearGroup();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_eState = eShowBoth;
+			if (value == cMidiButtonPress)
+			{
+				_eState = eShowBoth;
+				squareMgr::GetInstance()->clearGroup();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_dsp.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_dsp.trigger();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger5:

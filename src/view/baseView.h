@@ -7,7 +7,7 @@
 #include "drawer.h"
 #include "camCtrl.h"
 #include "postFilter.h"
-
+#include "midiCtrl.h"
 class baseView
 {
 public:
@@ -18,6 +18,7 @@ public:
 	virtual void update(float delta) {};
 	virtual void draw(int width, int height) {};
 	virtual void drawCanvas(int x, int y, int width, int height) {};
+	virtual void drawMsg(ofVec2f pos) {}; //Debug
 	virtual void control(eCtrlType type, int value) {};
 	virtual void start() {};
 	virtual void stop() {};

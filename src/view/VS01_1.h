@@ -49,78 +49,115 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 1-1\n";
+		ss << "1 : Bongo\n";
+		ss << "2 : Bass\n";
+		ss << "3 : Bass + Durm\n";
+		ss << "4 : Bass + Durm + Rect\n";
+		ss << "5 : Level Up\n";
+		ss << "6 : Level Down\n";
+		ss << "7 : Rect Trigger\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_eState = eBongo;
-			_level = 0;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoMeiosis_1);
-			videoMgr::GetInstance()->play(eVideoBongo_2);
-			videoMgr::GetInstance()->play(eVideoBongo_3);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eBongo;
+				_level = 0;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoBongo_1);
+				videoMgr::GetInstance()->play(eVideoBongo_2);
+				videoMgr::GetInstance()->play(eVideoBongo_3);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_eState = eBass;
-			_level = 0;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoBass_1);
-			videoMgr::GetInstance()->play(eVideoBass_2);
-			videoMgr::GetInstance()->play(eVideoBass_3);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eBass;
+				_level = 0;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoBass_1);
+				videoMgr::GetInstance()->play(eVideoBass_2);
+				videoMgr::GetInstance()->play(eVideoBass_3);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_eState = eDrumAndBass;
-			_level = 0;
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoBass_1);
-			videoMgr::GetInstance()->play(eVideoBass_2);
-			videoMgr::GetInstance()->play(eVideoBass_3);
-			videoMgr::GetInstance()->play(eVideoDrum_1);
-			videoMgr::GetInstance()->play(eVideoDrum_2);
-			videoMgr::GetInstance()->play(eVideoDrum_3);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_eState = eDrumAndBass;
+				_level = 0;
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoBass_1);
+				videoMgr::GetInstance()->play(eVideoBass_2);
+				videoMgr::GetInstance()->play(eVideoBass_3);
+				videoMgr::GetInstance()->play(eVideoDrum_1);
+				videoMgr::GetInstance()->play(eVideoDrum_2);
+				videoMgr::GetInstance()->play(eVideoDrum_3);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_eState = eDrumAndBassAndRect;
-			_level = 0;
-			_ddr.start();
-			videoMgr::GetInstance()->stopAll();
-			videoMgr::GetInstance()->play(eVideoBass_1);
-			videoMgr::GetInstance()->play(eVideoBass_2);
-			videoMgr::GetInstance()->play(eVideoBass_3);
-			videoMgr::GetInstance()->play(eVideoDrum_1);
-			videoMgr::GetInstance()->play(eVideoDrum_2);
-			videoMgr::GetInstance()->play(eVideoDrum_3);
-			squareMgr::GetInstance()->clearAllSquare();
-			
+			if (value == cMidiButtonPress)
+			{
+				_eState = eDrumAndBassAndRect;
+				_level = 0;
+				_ddr.start();
+				videoMgr::GetInstance()->stopAll();
+				videoMgr::GetInstance()->play(eVideoBass_1);
+				videoMgr::GetInstance()->play(eVideoBass_2);
+				videoMgr::GetInstance()->play(eVideoBass_3);
+				videoMgr::GetInstance()->play(eVideoDrum_1);
+				videoMgr::GetInstance()->play(eVideoDrum_2);
+				videoMgr::GetInstance()->play(eVideoDrum_3);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			
 			break;
 		}
 		case eCtrl_ViewTrigger5:
 		{
-			_level = MIN(_level + 1, 2);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_level = MIN(_level + 1, 2);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
+			
 			break;
 		}
 		case eCtrl_ViewTrigger6:
 		{
-			_level = MAX(_level - 1, 0);
-			squareMgr::GetInstance()->clearAllSquare();
+			if (value == cMidiButtonPress)
+			{
+				_level = MAX(_level - 1, 0);
+				squareMgr::GetInstance()->clearAllSquare();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger7:
 		{
-			_ddr.trigger();
+			if (value == cMidiButtonPress)
+			{
+				_ddr.trigger();
+			}
 			break;
 		}
 		}

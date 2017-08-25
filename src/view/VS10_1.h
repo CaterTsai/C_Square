@@ -87,33 +87,62 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 10-1\n";
+		ss << "1 : Add Ball\n";
+		ss << "2 : Toggle Draw Meta\n";
+		ss << "3 : Toggle Draw Ball\n";
+		ss << "4 : Toggle Draw Wireframe\n";
+		ss << "5 : Random Cam\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
 		{
 		case eCtrl_ViewTrigger1:
 		{
-			_dmb.addBall();
+			if (value == cMidiButtonPress)
+			{
+				_dmb.addBall();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger2:
 		{
-			_dmb.toggleDrawMetaball();
+			if (value == cMidiButtonPress)
+			{
+				_dmb.toggleDrawMetaball();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger3:
 		{
-			_dmb.toggleDrawBall();
+			if (value == cMidiButtonPress)
+			{
+				_dmb.toggleDrawBall();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger4:
 		{
-			_dmb.toggleDrawWireframe();
+			if (value == cMidiButtonPress)
+			{
+				_dmb.toggleDrawWireframe();
+			}
 			break;
 		}
 		case eCtrl_ViewTrigger5:
 		{
-			camCtrl::GetInstance()->_canvasCam.setRandom();
+			if (value == cMidiButtonPress)
+			{
+				camCtrl::GetInstance()->_canvasCam.setRandom();
+			}
 			break;
 		}
 		}
@@ -130,7 +159,9 @@ public:
 	//-------------------------------
 	void stop()
 	{
+		_dmb.clearBall();
 		_dmb.stop();
+		
 	}
 
 private:

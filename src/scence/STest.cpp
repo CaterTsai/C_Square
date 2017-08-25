@@ -63,8 +63,7 @@ void STest::control(eCtrlType ctrl, int value)
 //-------------------------------------
 void STest::initView()
 {
-	_viewList.push_back(ofPtr<VSTest01>(new VSTest01("view/sTest/1.xml")));
-	_viewList.push_back(ofPtr<VSTest02>(new VSTest02("view/sTest/2.xml")));
+
 }
 
 //-------------------------------------

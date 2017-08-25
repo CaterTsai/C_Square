@@ -15,6 +15,8 @@ void ofViewApp::setup()
 	squareMgr::GetInstance()->setup("config/_squareConfig.xml");
 	postFilter::GetInstance()->init(200, 200, cViewCanvasWidth, cViewCanvasWidth);
 	postFilter::GetInstance()->_squarePost.setFlip(false);
+	midiCtrl::GetInstance()->init();
+	midiCtrl::GetInstance()->addListener(this);
 	ofSetFrameRate(60);
 	setupSoundStream();
 	
@@ -27,7 +29,8 @@ void ofViewApp::update()
 	float delta = ofGetElapsedTimef() - _mainTimer;
 	_mainTimer += delta;
 
-	
+	updateMidi();
+
 	camCtrl::GetInstance()->update(delta);
 	_scenceMgr[_nowScence]->update(delta);
 
@@ -46,19 +49,14 @@ void ofViewApp::draw()
 	ofSetBackgroundColor(0);
 	_scenceMgr[_nowScence]->draw();
 
-	switch (_eDisplayType)
-	{
-	case eDisplayEach:
+	if (_targetSquare)
 	{
 		squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
-		break;
 	}
-	case eDisplayGroup:
+	else
 	{
 		_scenceMgr[_nowScence]->drawCanvas(0, 0, 1024, 1024);
 		squareMgr::GetInstance()->displayUnitOnGroup(ofVec2f(0, 0));
-		break;
-	}
 	}
 
 	string filterMsg = (_targetSquare ? "Square" : "Canvas");
@@ -66,7 +64,8 @@ void ofViewApp::draw()
 	ofDrawBitmapStringHighlight("Filter Target :" + filterMsg, ofVec2f(0, 30));
 
 	//Debug
-	camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
+	//camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
+	_scenceMgr[_nowScence]->drawViewMsg(ofVec2f(0, 45));
 }
 
 //--------------------------------------------------------------
@@ -81,7 +80,6 @@ void ofViewApp::keyPressed(int key)
 	{
 		_scenceMgr[_nowScence]->control(type);
 	}
-	
 }
 
 //--------------------------------------------------------------
@@ -97,110 +95,146 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	{
 	case eCtrl_Start:
 	{
-		_scenceMgr[_nowScence]->start();
-		_isStart = true;
+		if (value == cMidiButtonPress)
+		{
+			_scenceMgr[_nowScence]->start();
+			_isStart = true;
+		}
 		break;
 	}
 	case eCtrl_Stop:
 	{
-		_scenceMgr[_nowScence]->stop();
-		_isStart = false;
+		if (value == cMidiButtonPress)
+		{
+			_scenceMgr[_nowScence]->stop();
+			_isStart = false;
+		}
 		break;
 	}
 	case eCtrl_NextScence:
 	{
-		auto nextScence = (eSType)((_nowScence + 1) % eSTypeNum);
-		if (_isStart)
+		if (value == cMidiButtonPress)
 		{
-			_scenceMgr[_nowScence]->stop();
-			_scenceMgr[nextScence]->start();
+			auto nextScence = (eSType)((_nowScence + 1) % eSTypeNum);
+			if (_isStart)
+			{
+				_scenceMgr[_nowScence]->stop();
+				_scenceMgr[nextScence]->start();
+			}
+			_nowScence = nextScence;
+			squareMgr::GetInstance()->clearAllSquare();
+			camCtrl::GetInstance()->reset();
 		}
-		_nowScence = nextScence;
-		squareMgr::GetInstance()->clearAllSquare();
-		camCtrl::GetInstance()->reset();
+		
 		break;
 	}
 	case eCtrl_PrevScence:
 	{
-		auto nextScence = (eSType)((_nowScence - 1) % eSTypeNum);
-		if (nextScence < 0)
+		if (value == cMidiButtonPress)
 		{
-			nextScence = (eSType)(eSTypeNum - 1);
+			auto nextScence = (eSType)((_nowScence - 1) % eSTypeNum);
+			if (nextScence < 0)
+			{
+				nextScence = (eSType)(eSTypeNum - 1);
+			}
+			if (_isStart)
+			{
+				_scenceMgr[_nowScence]->stop();
+				_scenceMgr[nextScence]->start();
+			}
+			_nowScence = nextScence;
+			squareMgr::GetInstance()->clearAllSquare();
+			camCtrl::GetInstance()->reset();
 		}
-		if (_isStart)
-		{
-			_scenceMgr[_nowScence]->stop();
-			_scenceMgr[nextScence]->start();
-		}
-		_nowScence = nextScence;
-		squareMgr::GetInstance()->clearAllSquare();
-		camCtrl::GetInstance()->reset();
-		break;
-	}
-	case eCtrl_DisplayEach:
-	{
-		_eDisplayType = eDisplayEach;
-		break;
-	}
-	case eCtrl_DisplayGroup:
-	{
-		_eDisplayType = eDisplayGroup;
 		break;
 	}
 #pragma region Filter
 	case eCtrl_ChangeFilterTarget:
 	{
-		_targetSquare ^= true;
+		if (value == cMidiButtonPress)
+		{
+			_targetSquare ^= true;
+		}
 		break;
 	}
 	case eCtrl_DisableAllFilter:
 	{
-		postFilter::GetInstance()->disableAll();
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->disableAll();
+		}
 		break;
 	}
 	case eCtrl_Filter1:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostBloom);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostBloom);
+		}
 		break;
 	}
 	case eCtrl_Filter2:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostBloomTwo);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostBloomTwo);
+		}
 		break;
 	}
 	case eCtrl_Filter3:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostEdge);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostEdge);
+		}
 		break;
 	}
 	case eCtrl_Filter4:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostKaleidoscope);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostKaleidoscope);
+		}
 		break;
 	}
 	case eCtrl_Filter5:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostNoiseWarp);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostNoiseWarp);
+		}
 		break;
 	}
 	case eCtrl_Filter6:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostPixel);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostPixel);
+		}
 		break;
 	}
 	case eCtrl_Filter7:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostRGBShift);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostRGBShift);
+		}
 		break;
 	}
 	case eCtrl_Filter8:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostToon);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostToon);
+		}
 		break;
 	}
 	case eCtrl_Filter9:
 	{
-		postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostZoomBlur);
+		if (value == cMidiButtonPress)
+		{
+			postFilter::GetInstance()->filterEnable(_targetSquare, ePostFilterType::ePostZoomBlur);
+		}
 		break;
 	}
 	}
@@ -246,6 +280,34 @@ void ofViewApp::initVideo()
 	videoMgr::GetInstance()->add(eVideoMeiosis_4, "videos/meiosis_4.avi");
 	videoMgr::GetInstance()->add(eVideoMeiosis_5, "videos/meiosis_5.avi");
 	videoMgr::GetInstance()->add(eVideoRotate, "videos/rotate.avi");
+}
+
+//--------------------------------------------------------------
+void ofViewApp::updateMidi()
+{
+	for (int i = 0; i < _midiQueue.size(); i++)
+	{
+		auto ctrl = _midiQueue.begin();
+		if (ctrl->type >= 0 && ctrl->type < eCtrl_GlobalNum)
+		{
+			control(ctrl->type, ctrl->value);
+		}
+		else
+		{
+			_scenceMgr[_nowScence]->control(ctrl->type, ctrl->value);
+		}
+		_midiQueue.pop_front();
+	}
+}
+
+//--------------------------------------------------------------
+void ofViewApp::newMidiMessage(ofxMidiMessage & msg)
+{
+	midiCtrlData newCtrl;
+	newCtrl.type = ctrlMap::GetInstance()->midi2Ctrl[msg.control];
+	newCtrl.value = msg.value;
+	_midiQueue.push_back(newCtrl);
+
 }
 
 //--------------------------------------------------------------

@@ -1,8 +1,7 @@
 #pragma once
 
-#include "VSTest01.h"
-#include "VSTest02.h"
 
+#include "VSIdle.h"
 #include "VS01_1.h"
 #include "VS02_1.h"
 #include "VS03_1.h"

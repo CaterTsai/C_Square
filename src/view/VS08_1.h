@@ -52,6 +52,15 @@ public:
 	};
 
 	//-------------------------------
+	void drawMsg(ofVec2f pos) override
+	{
+		ostringstream ss;
+		ss << "view 8-1\n";
+
+		ofDrawBitmapStringHighlight(ss.str(), pos);
+	}
+
+	//-------------------------------
 	void control(eCtrlType type, int value) override
 	{
 		switch (type)
@@ -97,7 +106,7 @@ public:
 	//-------------------------------
 	void stop()
 	{
-
+		_star.stop();
 	}
 
 private:
