@@ -166,6 +166,7 @@ private:
 
 	void drawSmall()
 	{
+		
 		for (int i = 0; i < cSquareSmallNum; i++)
 		{
 			squareMgr::GetInstance()->updateOnUnitBegin(i);

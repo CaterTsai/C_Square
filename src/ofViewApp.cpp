@@ -51,7 +51,7 @@ void ofViewApp::draw()
 
 	if (_targetSquare)
 	{
-		squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 0), 1024);
+		squareMgr::GetInstance()->displayEachUnit(ofVec2f(0, 500), 1024);
 	}
 	else
 	{
@@ -60,12 +60,17 @@ void ofViewApp::draw()
 	}
 
 	string filterMsg = (_targetSquare ? "Square" : "Canvas");
-	ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getScenceName(), ofVec2f(0, 15));
-	ofDrawBitmapStringHighlight("Filter Target :" + filterMsg, ofVec2f(0, 30));
-
+	
+	ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getScenceName(), ofVec2f(0, 65));
+	ofDrawBitmapStringHighlight("Filter Target :" + filterMsg, ofVec2f(0, 80));
+	ofDrawBitmapStringHighlight("BPM :" + ofToString(gBPM), ofVec2f(0, 95));
 	//Debug
 	//camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
-	_scenceMgr[_nowScence]->drawViewMsg(ofVec2f(0, 45));
+	_scenceMgr[_nowScence]->drawViewMsg(ofVec2f(0, 110));
+	ofPushStyle();
+	ofSetColor(gColor);
+	ofDrawRectangle(0, 0, 100, 50);
+	ofPopStyle();
 }
 
 //--------------------------------------------------------------
@@ -148,6 +153,27 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 		}
 		break;
 	}
+	case eCtrl_ChangeColorR:
+	{
+		gColor.r = ofMap(value, 0, 127, 0, 255);
+		break;
+	}
+	case eCtrl_ChangeColorG:
+	{
+		gColor.g = ofMap(value, 0, 127, 0, 255);
+		break;
+	}
+	case eCtrl_ChangeColorB:
+	{
+		gColor.b = ofMap(value, 0, 127, 0, 255);
+		break;
+	}
+	case eCtrl_ChangeBPM:
+	{
+		gBPM = ofMap(value, 0, 127, 60, 300);
+		break;
+	}
+
 #pragma region Filter
 	case eCtrl_ChangeFilterTarget:
 	{

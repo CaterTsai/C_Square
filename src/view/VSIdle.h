@@ -64,7 +64,9 @@ public:
 
 		for (int i = 0; i < cSquareNum - 1; i++)
 		{
-			camCtrl::GetInstance()->_squareCams[i].setRevolution(ofVec3f(0, -1, 0), PI * ofRandom(0.1, 0.4) * (rand() % 2 == 0)?1:-1);
+			float v = PI * ofRandom(0.1, 0.3);
+			v *= (rand() % 2 == 0 ? -1 : 1);
+			camCtrl::GetInstance()->_squareCams[i].setRevolution(ofVec3f(0, -1, 0), v);
 		}
 		
 	}

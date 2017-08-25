@@ -26,6 +26,10 @@ enum eCtrlType : int
 	, eCtrl_PrevScence
 	, eCtrl_DisplayEach
 	, eCtrl_DisplayGroup
+	, eCtrl_ChangeColorR
+	, eCtrl_ChangeColorG
+	, eCtrl_ChangeColorB
+	, eCtrl_ChangeBPM
 	, eCtrl_GlobalNum
 
 	//scence

@@ -171,7 +171,8 @@ const float cDAudioRectThreshold = .05;
 
 //---------------------------
 #pragma region Static Variable
-
+static ofColor gColor;
+static int gBPM = 60;
 
 #pragma endregion
 

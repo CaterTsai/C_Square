@@ -43,6 +43,11 @@ void ctrlMap::initMidi2Ctrl()
 	midi2Ctrl[eMidiNextBtn] = eCtrl_NextScence;
 	midi2Ctrl[eMidiPrevBtn] = eCtrl_PrevScence;
 
+	midi2Ctrl[eMidiKnob1] = eCtrl_ChangeBPM;
+	midi2Ctrl[eMidiSlider6] = eCtrl_ChangeColorR;
+	midi2Ctrl[eMidiSlider7] = eCtrl_ChangeColorG;
+	midi2Ctrl[eMidiSlider8] = eCtrl_ChangeColorB;
+
 	midi2Ctrl[eMidiTriggerS6] = eCtrl_Filter1;
 	midi2Ctrl[eMidiTriggerS7] = eCtrl_Filter2;
 	midi2Ctrl[eMidiTriggerS8] = eCtrl_Filter3;
