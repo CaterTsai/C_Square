@@ -30,6 +30,7 @@ enum eCtrlType : int
 	, eCtrl_ChangeColorG
 	, eCtrl_ChangeColorB
 	, eCtrl_ChangeBPM
+	, eCtrl_ChangeProjectAlpha
 	, eCtrl_GlobalNum
 
 	//scence

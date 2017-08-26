@@ -81,9 +81,10 @@ void ofProjectorApp::mouseReleased(int x, int y, int button)
 void ofProjectorApp::newMidiMessage(ofxMidiMessage & msg)
 {
 	auto type = ctrlMap::GetInstance()->midi2Ctrl[msg.control];
-	if (type == eMidiSlider1)
+	if (type == eCtrl_ChangeProjectAlpha)
 	{
 		_coverAlpha = ofMap(msg.value, 0, 127, 0, 255);
 	}
+
 }
 
