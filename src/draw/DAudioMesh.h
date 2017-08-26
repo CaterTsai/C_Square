@@ -10,7 +10,7 @@ public:
 		, _isDrawLine(false)
 		, _isDrawBall(true)
 	{
-		setLineNum(2);
+		setLineNum(4);
 	}
 
 	void update(float delta) override;

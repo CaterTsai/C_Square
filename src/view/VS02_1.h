@@ -41,6 +41,8 @@ public:
 		ss << "view 2-1\n";
 		ss << "1 : Center\n";
 		ss << "2 : Middle & Center\n";
+		ss << "3 : (L)Point Random\n";
+		ss << "4 : (L)Breathe\n";
 
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
@@ -68,6 +70,34 @@ public:
 			}
 			break;
 		}
+		case eCtrl_ViewTrigger3:
+		{
+			if (value == cMidiButtonPress)
+			{	
+				LPointRandom pr;
+				pr.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				pr.type = ePlayLoop;
+				sender::GetInstance()->send(eFrontLeftS, pr);
+				sender::GetInstance()->send(eFrontRightS, pr);
+				sender::GetInstance()->send(eBackLeftS, pr);
+				sender::GetInstance()->send(eBackRightS, pr);
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger4:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LStopAll stopLight;
+				sender::GetInstance()->sendAll(stopLight);
+
+				LBreathe breathe;
+				breathe.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				sender::GetInstance()->sendAll(breathe);
+			}
+			break;
+		}
+
 		}
 	}
 

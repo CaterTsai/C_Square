@@ -7,10 +7,11 @@ enum eCtrlType : int
 {
 	//global
 	eCtrl_Global = 0
-	
+
 	, eCtrl_BPM
 	, eCtrl_Start
 	, eCtrl_Stop
+	, eCtrl_StopLight
 	, eCtrl_Filter1
 	, eCtrl_Filter2
 	, eCtrl_Filter3
@@ -29,6 +30,7 @@ enum eCtrlType : int
 	, eCtrl_ChangeColorR
 	, eCtrl_ChangeColorG
 	, eCtrl_ChangeColorB
+	, eCtrl_SetChangeColor
 	, eCtrl_ChangeBPM
 	, eCtrl_ChangeProjectAlpha
 	, eCtrl_GlobalNum

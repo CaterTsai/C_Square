@@ -59,6 +59,7 @@ public:
 		ss << "4 : Move Rect Auto Trigger\n";
 		ss << "5 : Audio Mesh Trigger Ball\n";
 		ss << "6 : Audio Mesh Trigger Line\n";
+		ss << "7 : (L)Open\n";
 
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
@@ -119,6 +120,20 @@ public:
 			if (value == cMidiButtonPress)
 			{
 				_dam.toggleLine();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger7:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LOpen open;
+				open.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				open.type = ePlayLoop;
+				sender::GetInstance()->send(eFrontLeftS, open);
+				sender::GetInstance()->send(eFrontRightS, open);
+				sender::GetInstance()->send(eBackLeftS, open);
+				sender::GetInstance()->send(eBackRightS, open);
 			}
 			break;
 		}

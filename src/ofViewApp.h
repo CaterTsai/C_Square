@@ -6,6 +6,8 @@
 #include "postFilter.h"
 #include "videoMgr.h"
 #include "midiCtrl.h"
+
+#include "lightStruct.h"
 #include "sender.h"
 class ofViewApp : public ofBaseApp, public ofxMidiListener
 {

@@ -40,6 +40,7 @@ void ctrlMap::initMidi2Ctrl()
 {
 	midi2Ctrl[eMidiPlayBtn] = eCtrl_Start;
 	midi2Ctrl[eMidiStopBtn] = eCtrl_Stop;
+	midi2Ctrl[eMidiTriggerM5] = eCtrl_StopLight;
 	midi2Ctrl[eMidiNextBtn] = eCtrl_NextScence;
 	midi2Ctrl[eMidiPrevBtn] = eCtrl_PrevScence;
 
@@ -47,6 +48,7 @@ void ctrlMap::initMidi2Ctrl()
 	midi2Ctrl[eMidiSlider6] = eCtrl_ChangeColorR;
 	midi2Ctrl[eMidiSlider7] = eCtrl_ChangeColorG;
 	midi2Ctrl[eMidiSlider8] = eCtrl_ChangeColorB;
+	midi2Ctrl[eMidiTriggerS5] = eCtrl_SetChangeColor;
 	midi2Ctrl[eMidiKnob7] = eCtrl_ChangeProjectAlpha;
 
 	midi2Ctrl[eMidiTriggerS6] = eCtrl_Filter1;

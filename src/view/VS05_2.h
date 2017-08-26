@@ -57,6 +57,7 @@ public:
 		ss << "2 : Small Texture \n";
 		ss << "3 : Both\n";
 		ss << "4 : Texture Trigger\n";
+		ss << "5 : (L)Point Randoms\n";
 
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
@@ -119,6 +120,20 @@ public:
 			if (value == cMidiButtonPress)
 			{
 				_dtp.trigger();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger5:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LPointRandom pr;
+				pr.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				pr.type = ePlayLoop;
+				sender::GetInstance()->send(eFrontLeftS, pr);
+				sender::GetInstance()->send(eFrontRightS, pr);
+				sender::GetInstance()->send(eBackLeftS, pr);
+				sender::GetInstance()->send(eBackRightS, pr);
 			}
 			break;
 		}

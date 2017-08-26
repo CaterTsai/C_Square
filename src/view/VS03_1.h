@@ -68,7 +68,7 @@ public:
 		ss << "4 : Toggle Ball\n";
 		ss << "5 : Toggle Line\n";
 		ss << "6 : Julia Trigger\n";
-
+		ss << "7 : (L)Run Line\n";
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
 
@@ -122,6 +122,31 @@ public:
 			if (value == cMidiButtonPress)
 			{
 				_djs.trigger();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger7:
+		{
+			if (value == cMidiButtonPress)
+			{
+				_djs.trigger();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger8:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LRunLine runLine;
+				runLine.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				runLine.type = ePlayLoop;
+				runLine.runType = 0;
+				sender::GetInstance()->send(eFrontLeftS, runLine);
+				sender::GetInstance()->send(eBackLeftS, runLine);
+
+				runLine.runType = 2;
+				sender::GetInstance()->send(eFrontRightS, runLine);
+				sender::GetInstance()->send(eBackRightS, runLine);
 			}
 			break;
 		}

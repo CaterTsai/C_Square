@@ -155,8 +155,8 @@ const pair<double, double> cDJSRealPartRange(-1.5, 1.5);
 const pair<double, double> cDJSImaginePartRange(-1.5, 1.5);
 
 //DAudioMesh
-const int cDAudioMeshRows = 11;
-const int cDAudioMeshCols = 50;
+const int cDAudioMeshRows = 13;
+const int cDAudioMeshCols = 40;
 
 //DAudioSpere
 

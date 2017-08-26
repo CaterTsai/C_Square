@@ -49,6 +49,26 @@ public:
 
 };
 
+class LStopAll : public LBasic
+{
+public:
+	LStopAll()
+		:LBasic(2, 101, eStop, 1000)
+		, color(255, 0, 0)
+	{}
+
+	void toPackage(char* package)
+	{
+		package[1] = length;
+		package[2] = id;
+		package[3] = sender::getCmd(type);
+
+	}
+
+	ofColor color;
+
+};
+
 class LFlash : public LBasic
 {
 public:
@@ -84,19 +104,11 @@ public:
 	{}
 };
 
-class LLineRandom : public LBasic
-{
-public:
-	LLineRandom()
-		:LBasic(4, 2, ePlayOne, 1000)
-	{}
-};
-
 class LRunLine : public LBasic
 {
 public:
 	LRunLine()
-		: LBasic(5, 3, ePlayOne, 1000)
+		: LBasic(5, 2, ePlayOne, 1000)
 		, runType(0)
 	{}
 
@@ -116,7 +128,7 @@ class LOpen : public LBasic
 {
 public:
 	LOpen()
-		:LBasic(4, 4, ePlayOne, 1000)
+		:LBasic(4, 3, ePlayOne, 1000)
 	{}
 
 };
@@ -125,7 +137,7 @@ class LRunLineCenter : public LBasic
 {
 public:
 	LRunLineCenter()
-		: LBasic(5, 5, ePlayOne, 1000)
+		: LBasic(5, 4, ePlayOne, 1000)
 		, runType(0)
 	{}
 
@@ -138,4 +150,12 @@ public:
 		package[6] = runType;
 	}
 	unsigned char runType;//0~1
+};
+
+class LBreathe : public LBasic
+{
+public:
+	LBreathe()
+		:LBasic(4, 5, ePlayOne, 1000)
+	{}
 };

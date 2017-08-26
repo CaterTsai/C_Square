@@ -74,6 +74,8 @@ public:
 				_viewList[_viewID]->start();
 				squareMgr::GetInstance()->clearAllSquare();
 				squareMgr::GetInstance()->clearGroup();
+
+				
 			}
 		}
 		else

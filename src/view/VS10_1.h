@@ -96,6 +96,7 @@ public:
 		ss << "3 : Toggle Draw Ball\n";
 		ss << "4 : Toggle Draw Wireframe\n";
 		ss << "5 : Random Cam\n";
+		ss << "6 : (L)Breathe\n";
 
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
@@ -142,6 +143,19 @@ public:
 			if (value == cMidiButtonPress)
 			{
 				camCtrl::GetInstance()->_canvasCam.setRandom();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger6:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LBreathe breathe;
+				breathe.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				sender::GetInstance()->send(eFrontLeftS, breathe);
+				sender::GetInstance()->send(eFrontRightS, breathe);
+				sender::GetInstance()->send(eBackLeftS, breathe);
+				sender::GetInstance()->send(eBackRightS, breathe);
 			}
 			break;
 		}

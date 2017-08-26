@@ -48,7 +48,8 @@ public:
 		ss << "1 : Center\n";
 		ss << "2 : Middle\n";
 		ss << "3 : Small\n";
-		ss << "4 : ECA Trigger\n";;
+		ss << "4 : ECA Trigger\n";
+		ss << "5 : (L)Flash\n";
 
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
@@ -94,6 +95,20 @@ public:
 			}
 			break;
 		}
+		case eCtrl_ViewTrigger5:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LFlash flash;
+				flash.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				flash.enable1 = true;
+				flash.enable2 = true;
+				flash.enable3 = true;
+				flash.enable4 = true;
+				sender::GetInstance()->sendAll(flash);
+			}
+			break;
+		}
 		}
 	}
 
@@ -106,7 +121,7 @@ public:
 
 		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleLeftM].setRevolution(ofVec3f(0, -1, 0), PI * 0.2);
 		camCtrl::GetInstance()->_squareCams[eSquareType::eMiddleRightM].setRevolution(ofVec3f(0, -1, 0), PI * -0.2);
-
+		camCtrl::GetInstance()->reset();
 		_eState = eSingleCenter;
 	}
 	

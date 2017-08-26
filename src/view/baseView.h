@@ -8,6 +8,8 @@
 #include "camCtrl.h"
 #include "postFilter.h"
 #include "midiCtrl.h"
+
+#include "lightStruct.h"
 #include "sender.h"
 class baseView
 {

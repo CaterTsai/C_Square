@@ -71,6 +71,7 @@ public:
 		ss << "5 : Ping-Pong add Ball\n";
 		ss << "6 : Ping-Pong add Ripple\n";
 		ss << "7 : Ping-Pong clear Ball\n";
+		ss << "8 : (L)Flash\n";
 
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
@@ -137,6 +138,20 @@ public:
 			if (value == cMidiButtonPress)
 			{
 				_dpp.clearBall();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger8:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LFlash flash;
+				flash.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				flash.enable1 = true;
+				flash.enable2 = false;
+				flash.enable3 = true;
+				flash.enable4 = false;
+				sender::GetInstance()->sendAll(flash);
 			}
 			break;
 		}

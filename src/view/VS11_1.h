@@ -78,6 +78,9 @@ public:
 		ss << "3 : Flash\n";
 		ss << "4 : Texture Trigger\n";
 		ss << "5 : Audio Sphere Toggle\n";
+		ss << "6 : (L)Flash\n";
+		ss << "7 : (L)Breath\n";
+
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
 
@@ -139,6 +142,33 @@ public:
 			if (value == cMidiButtonPress)
 			{
 				_das.toggleFace();
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger6:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LFlash flash;
+				flash.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				flash.enable1 = true;
+				flash.enable2 = true;
+				flash.enable3 = true;
+				flash.enable4 = true;
+				sender::GetInstance()->sendAll(flash);
+			}
+			break;
+		}
+		case eCtrl_ViewTrigger7:
+		{
+			if (value == cMidiButtonPress)
+			{
+				LStopAll stopLight;
+				sender::GetInstance()->sendAll(stopLight);
+
+				LBreathe breathe;
+				breathe.time = static_cast<int>(60.0 / globalVariable::gBPM * 1000);
+				sender::GetInstance()->sendAll(breathe);
 			}
 			break;
 		}

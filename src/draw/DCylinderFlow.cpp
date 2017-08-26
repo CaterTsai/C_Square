@@ -73,6 +73,12 @@ void DCylinderFlow::stop()
 }
 
 //-------------------------------------
+void DCylinderFlow::trigger()
+{
+	generateParticle();
+}
+
+//-------------------------------------
 void DCylinderFlow::generateParticle()
 {
 	ofSeedRandom();

@@ -86,6 +86,7 @@ void ofViewApp::keyPressed(int key)
 	{
 		_scenceMgr[_nowScence]->control(type);
 	}
+	
 }
 
 //--------------------------------------------------------------
@@ -116,6 +117,17 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 			_isStart = false;
 			squareMgr::GetInstance()->clearAllSquare();
 			squareMgr::GetInstance()->clearGroup();
+			LStopAll stopLight;
+			sender::GetInstance()->sendAll(stopLight);
+		}
+		break;
+	}
+	case eCtrl_StopLight:
+	{
+		if (value == cMidiButtonPress)
+		{
+			LStopAll stopLight;
+			sender::GetInstance()->sendAll(stopLight);
 		}
 		break;
 	}
@@ -123,6 +135,8 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	{
 		if (value == cMidiButtonPress)
 		{
+			camCtrl::GetInstance()->reset();
+			postFilter::GetInstance()->disableAll();
 			auto nextScence = (eSType)((_nowScence + 1) % eSTypeNum);
 			if (_isStart)
 			{
@@ -131,7 +145,11 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 			}
 			_nowScence = nextScence;
 			squareMgr::GetInstance()->clearAllSquare();
-			camCtrl::GetInstance()->reset();
+			squareMgr::GetInstance()->clearGroup();
+			
+
+			LStopAll stopLight;
+			sender::GetInstance()->sendAll(stopLight);
 		}
 		
 		break;
@@ -140,6 +158,8 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	{
 		if (value == cMidiButtonPress)
 		{
+			camCtrl::GetInstance()->reset();
+			postFilter::GetInstance()->disableAll();
 			auto nextScence = (eSType)((_nowScence - 1) % eSTypeNum);
 			if (nextScence < 0)
 			{
@@ -152,7 +172,11 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 			}
 			_nowScence = nextScence;
 			squareMgr::GetInstance()->clearAllSquare();
-			camCtrl::GetInstance()->reset();
+			squareMgr::GetInstance()->clearGroup();
+			
+
+			LStopAll stopLight;
+			sender::GetInstance()->sendAll(stopLight);
 		}
 		break;
 	}
@@ -169,6 +193,13 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	case eCtrl_ChangeColorB:
 	{
 		globalVariable::gColor.b = ofMap(value, 0, 127, 0, 255);
+		break;
+	}
+	case eCtrl_SetChangeColor:
+	{
+		LChangeColor changeColor;
+		changeColor.color = globalVariable::gColor;
+		sender::GetInstance()->sendAll(changeColor);
 		break;
 	}
 	case eCtrl_ChangeBPM:
@@ -350,6 +381,7 @@ void ofViewApp::setupLight()
 	sender::GetInstance()->add(eSquareType::eMiddleLeftM, "192.168.1.106", 11999);
 	sender::GetInstance()->add(eSquareType::eMiddleRightM, "192.168.1.107", 11999);
 	sender::GetInstance()->add(eSquareType::eBackCenerL, "192.168.1.108", 11999);
+	//sender::GetInstance()->add(eSquareType::eFrontLeftS, "COM4", 115200);
 }
 
 //--------------------------------------------------------------

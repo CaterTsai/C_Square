@@ -36,6 +36,8 @@ public:
 	void start() override;
 	void stop() override;
 
+	void trigger() override;
+
 private:
 	
 	void generateParticle();
