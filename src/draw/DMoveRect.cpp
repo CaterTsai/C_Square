@@ -52,7 +52,7 @@ void DMoveRect::start()
 {
 	_isStart = true;
 	
-	_animMove.setDuration(0.5);
+	_animMove.setDuration(globalVariable::gBPM / 60.0);
 	_animMove.setCurve(AnimCurve::EASE_IN_BACK);
 	//_animMove.setRepeatType(AnimRepeat::PLAY_ONCE);
 
@@ -72,6 +72,7 @@ void DMoveRect::stop()
 //----------------------------------
 void DMoveRect::trigger()
 {
+	_animMove.setDuration(60.0/ globalVariable::gBPM);
 	move( (_nowID + 1) % _groupNum);
 }
 

@@ -34,6 +34,7 @@ public:
 	void stop() override;
 
 	void trigger() override;
+	void moveRect(float direction);
 	void setGroupNum(int num);
 
 private:

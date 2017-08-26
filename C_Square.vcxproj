@@ -226,7 +226,7 @@
     <ClCompile Include="src\draw\DStar.cpp" />
     <ClCompile Include="src\draw\DTexturePrimitive.cpp" />
     <ClCompile Include="src\glitchFilter.cpp" />
-    <ClCompile Include="src\lightCtrl\lightCtrl.cpp" />
+    <ClCompile Include="src\globalVariable.cpp" />
     <ClCompile Include="src\lightCtrl\sender.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\midiCtrl.cpp" />
@@ -304,6 +304,7 @@
     <ClCompile Include="src\scence\S09.cpp" />
     <ClCompile Include="src\scence\S10.cpp" />
     <ClCompile Include="src\scence\S11.cpp" />
+    <ClCompile Include="src\scence\S12.cpp" />
     <ClCompile Include="src\scence\SIdle.cpp" />
     <ClCompile Include="src\scence\STest.cpp" />
     <ClCompile Include="src\squareMgr.cpp" />
@@ -368,7 +369,7 @@
     <ClInclude Include="src\draw\DStar.h" />
     <ClInclude Include="src\draw\DTexturePrimitive.h" />
     <ClInclude Include="src\glitchFilter.h" />
-    <ClInclude Include="src\lightCtrl\lightCtrl.h" />
+    <ClInclude Include="src\globalVariable.h" />
     <ClInclude Include="src\lightCtrl\lightStruct.h" />
     <ClInclude Include="src\lightCtrl\sender.h" />
     <ClInclude Include="src\midiCtrl.h" />
@@ -464,6 +465,7 @@
     <ClInclude Include="src\scence\S09.h" />
     <ClInclude Include="src\scence\S10.h" />
     <ClInclude Include="src\scence\S11.h" />
+    <ClInclude Include="src\scence\S12.h" />
     <ClInclude Include="src\scence\SBase.h" />
     <ClInclude Include="src\scence\scence.h" />
     <ClInclude Include="src\scence\SIdle.h" />
@@ -488,6 +490,11 @@
     <ClInclude Include="src\view\VS08_1.h" />
     <ClInclude Include="src\view\VS08_2.h" />
     <ClInclude Include="src\view\VS11_1.h" />
+    <ClInclude Include="src\view\VS12_1.h" />
+    <ClInclude Include="src\view\VS12_2.h" />
+    <ClInclude Include="src\view\VS12_3.h" />
+    <ClInclude Include="src\view\VS12_4.h" />
+    <ClInclude Include="src\view\VS12_5.h" />
     <ClInclude Include="src\view\VSIdle.h" />
     <ClInclude Include="src\view\VSTest01.h" />
     <ClInclude Include="src\view\VSTest02.h" />

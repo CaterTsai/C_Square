@@ -90,7 +90,7 @@ void DSphareParticle::draw(int x, int y, int w, int h)
 	{
 		for (auto& iter : _particleList)
 		{
-			ofDrawSphere(iter._pos, 5);
+			ofDrawSphere(iter._pos, _baseSize * 0.01);
 		}
 		
 		if (_tri.hasIndices())

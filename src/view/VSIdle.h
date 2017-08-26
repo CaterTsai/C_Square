@@ -8,7 +8,7 @@ public:
 	VSIdle(string path)
 		:baseView(path)
 	{
-		_font.load("font/font.otf", 50);
+		_font.load("font/font.ttf", 50);
 
 	}
 

@@ -263,7 +263,7 @@ void DDepthRect::colorUpdate(float delta)
 		_timer -= delta;
 		if (_timer <= 0.0f)
 		{
-			_timer = _colorChangeT;
+			_timer = 0.5 * 60.0 / globalVariable::gBPM;
 			_colorIdx = (_colorIdx + 1) % cDDepthRectNum;
 		}
 	}

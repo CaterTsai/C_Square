@@ -6,7 +6,7 @@
 #include "postFilter.h"
 #include "videoMgr.h"
 #include "midiCtrl.h"
-
+#include "sender.h"
 class ofViewApp : public ofBaseApp, public ofxMidiListener
 {
 public:
@@ -54,6 +54,10 @@ private:
 		int value;
 	};
 	list<midiCtrlData> _midiQueue;
+
+//Sender
+public:
+	void setupLight();
 
 //SoundStream
 public:

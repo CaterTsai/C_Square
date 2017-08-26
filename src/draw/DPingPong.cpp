@@ -7,13 +7,15 @@
 //Ball
 DPingPong::ball::ball()
 	:_pos(0)
-	,_vec(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5))
 	,_r(ofRandom(0.02, 0.05))
 	,_isDead(false)
 	,_isCross(false)
 {
 	_color.set(255, 100, 100);
 	_color.setHueAngle(ofRandom(0, 360));
+
+	_vec.x = ofRandom(-0.5, 0.5);
+	_vec.y = 0.5 * (globalVariable::gBPM / 60.0) * (rand() % 2 == 0 ? -1 : 1);
 }
 
 //-----------------------------------------
@@ -23,7 +25,7 @@ void DPingPong::ball::update(float delta, vector<bet>& betList)
 	{
 		return;
 	}
-
+	_vec.y = 0.5 * (globalVariable::gBPM / 60.0) * (_vec.y > 0 ? 1 : -1);
 	for (auto& iter : betList)
 	{
 		iter.checkTouch(this);

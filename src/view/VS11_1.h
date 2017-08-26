@@ -73,11 +73,11 @@ public:
 	{
 		ostringstream ss;
 		ss << "view 11-1\n";
-		ss << "1 : Sphere Group\n";
+		ss << "1 : Audio Sphere Group\n";
 		ss << "2 : Texture Group\n";
 		ss << "3 : Flash\n";
 		ss << "4 : Texture Trigger\n";
-
+		ss << "5 : Audio Sphere Toggle\n";
 		ofDrawBitmapStringHighlight(ss.str(), pos);
 	}
 
@@ -134,6 +134,14 @@ public:
 			}
 			break;
 		}
+		case eCtrl_ViewTrigger5:
+		{
+			if (value == cMidiButtonPress)
+			{
+				_das.toggleFace();
+			}
+			break;
+		}
 		}
 	}
 
@@ -175,7 +183,7 @@ private:
 		_canvas.begin();
 		ofClear(0);
 
-		postFilter::GetInstance()->_canvasPost.begin();
+		postFilter::GetInstance()->_canvasPost.begin(camCtrl::GetInstance()->getCanvasCam());
 		{
 			ofSetDepthTest(true);
 			_das.draw(0, 0, _canvas.getWidth(), _canvas.getHeight());

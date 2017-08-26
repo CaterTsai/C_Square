@@ -1,7 +1,6 @@
 #pragma once
 
 #include "SIdle.h"
-#include "STest.h"
 #include "S01.h"
 #include "S02.h"
 #include "S03.h"
@@ -13,3 +12,4 @@
 #include "S09.h"
 #include "S10.h"
 #include "S11.h"
+#include "S12.h"

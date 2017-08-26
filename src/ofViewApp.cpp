@@ -15,6 +15,7 @@ void ofViewApp::setup()
 	squareMgr::GetInstance()->setup("config/_squareConfig.xml");
 	postFilter::GetInstance()->init(200, 200, cViewCanvasWidth, cViewCanvasWidth);
 	postFilter::GetInstance()->_squarePost.setFlip(false);
+	setupLight();
 	midiCtrl::GetInstance()->init();
 	midiCtrl::GetInstance()->addListener(this);
 	ofSetFrameRate(60);
@@ -63,12 +64,12 @@ void ofViewApp::draw()
 	
 	ofDrawBitmapStringHighlight("Scence :" + _scenceMgr[_nowScence]->getScenceName(), ofVec2f(0, 65));
 	ofDrawBitmapStringHighlight("Filter Target :" + filterMsg, ofVec2f(0, 80));
-	ofDrawBitmapStringHighlight("BPM :" + ofToString(gBPM), ofVec2f(0, 95));
+	ofDrawBitmapStringHighlight("BPM :" + ofToString(globalVariable::gBPM), ofVec2f(0, 95));
 	//Debug
 	//camCtrl::GetInstance()->displayPos(ofVec2f(0, 45));
 	_scenceMgr[_nowScence]->drawViewMsg(ofVec2f(0, 110));
 	ofPushStyle();
-	ofSetColor(gColor);
+	ofSetColor(globalVariable::gColor);
 	ofDrawRectangle(0, 0, 100, 50);
 	ofPopStyle();
 }
@@ -113,6 +114,8 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 		{
 			_scenceMgr[_nowScence]->stop();
 			_isStart = false;
+			squareMgr::GetInstance()->clearAllSquare();
+			squareMgr::GetInstance()->clearGroup();
 		}
 		break;
 	}
@@ -155,22 +158,22 @@ void ofViewApp::control(eCtrlType ctrl, int value)
 	}
 	case eCtrl_ChangeColorR:
 	{
-		gColor.r = ofMap(value, 0, 127, 0, 255);
+		globalVariable::gColor.r = ofMap(value, 0, 127, 0, 255);
 		break;
 	}
 	case eCtrl_ChangeColorG:
 	{
-		gColor.g = ofMap(value, 0, 127, 0, 255);
+		globalVariable::gColor.g = ofMap(value, 0, 127, 0, 255);
 		break;
 	}
 	case eCtrl_ChangeColorB:
 	{
-		gColor.b = ofMap(value, 0, 127, 0, 255);
+		globalVariable::gColor.b = ofMap(value, 0, 127, 0, 255);
 		break;
 	}
 	case eCtrl_ChangeBPM:
 	{
-		gBPM = ofMap(value, 0, 127, 60, 300);
+		globalVariable::gBPM = ofMap(value, 0, 127, 60, 300);
 		break;
 	}
 
@@ -284,8 +287,9 @@ void ofViewApp::initScence()
 	_scenceMgr.push_back(ofPtr<S09>(new S09()));
 	_scenceMgr.push_back(ofPtr<S10>(new S10()));
 	_scenceMgr.push_back(ofPtr<S11>(new S11()));
+	_scenceMgr.push_back(ofPtr<S12>(new S12()));
 
-	_nowScence = eS09;
+	_nowScence = eSIdle;
 }
 
 //--------------------------------------------------------------
@@ -334,6 +338,18 @@ void ofViewApp::newMidiMessage(ofxMidiMessage & msg)
 	newCtrl.value = msg.value;
 	_midiQueue.push_back(newCtrl);
 
+}
+
+//--------------------------------------------------------------
+void ofViewApp::setupLight()
+{
+	sender::GetInstance()->add(eSquareType::eFrontLeftS, "192.168.1.102", 11999);
+	sender::GetInstance()->add(eSquareType::eFrontRightS, "192.168.1.103", 11999);
+	sender::GetInstance()->add(eSquareType::eBackLeftS, "192.168.1.104", 11999);
+	sender::GetInstance()->add(eSquareType::eBackRightS, "192.168.1.105", 11999);
+	sender::GetInstance()->add(eSquareType::eMiddleLeftM, "192.168.1.106", 11999);
+	sender::GetInstance()->add(eSquareType::eMiddleRightM, "192.168.1.107", 11999);
+	sender::GetInstance()->add(eSquareType::eBackCenerL, "192.168.1.108", 11999);
 }
 
 //--------------------------------------------------------------

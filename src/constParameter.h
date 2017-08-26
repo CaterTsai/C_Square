@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-
+#include "globalVariable.h"
 #define PROJECTION_MODE
 
 //---------------------------
@@ -169,11 +169,5 @@ const float cDAudioRectThreshold = .05;
 
 #pragma endregion
 
-//---------------------------
-#pragma region Static Variable
-static ofColor gColor;
-static int gBPM = 60;
-
-#pragma endregion
 
 

@@ -382,9 +382,6 @@
     <ClCompile Include="src\draw\DAudioRect.cpp">
       <Filter>src\drawer\DElement</Filter>
     </ClCompile>
-    <ClCompile Include="src\lightCtrl\lightCtrl.cpp">
-      <Filter>src\singleton\lightCtrl</Filter>
-    </ClCompile>
     <ClCompile Include="src\lightCtrl\sender.cpp">
       <Filter>src\singleton\lightCtrl</Filter>
     </ClCompile>
@@ -414,6 +411,12 @@
     </ClCompile>
     <ClCompile Include="src\midiCtrl.cpp">
       <Filter>src\singleton\midiCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scence\S12.cpp">
+      <Filter>src\scence\SElement</Filter>
+    </ClCompile>
+    <ClCompile Include="src\globalVariable.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1073,9 +1076,6 @@
     <ClInclude Include="src\view\VS05_2.h">
       <Filter>src\view\VElement</Filter>
     </ClInclude>
-    <ClInclude Include="src\lightCtrl\lightCtrl.h">
-      <Filter>src\singleton\lightCtrl</Filter>
-    </ClInclude>
     <ClInclude Include="src\lightCtrl\lightStruct.h">
       <Filter>src\singleton\lightCtrl</Filter>
     </ClInclude>
@@ -1123,6 +1123,27 @@
     </ClInclude>
     <ClInclude Include="src\view\VSIdle.h">
       <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scence\S12.h">
+      <Filter>src\scence\SElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS12_1.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS12_2.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS12_3.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS12_4.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\VS12_5.h">
+      <Filter>src\view\VElement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\globalVariable.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

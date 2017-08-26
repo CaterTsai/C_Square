@@ -16,3 +16,8 @@
 #include "VS09_2.h"
 #include "VS10_1.h"
 #include "VS11_1.h"
+#include "VS12_1.h"
+#include "VS12_2.h"
+#include "VS12_3.h"
+#include "VS12_4.h"
+#include "VS12_5.h"

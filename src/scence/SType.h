@@ -14,6 +14,7 @@ enum eSType : int
 	, eS09
 	, eS10
 	, eS11
+	, eS12
 	, eSTypeNum
 	, eSTest
 
